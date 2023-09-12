@@ -12,8 +12,6 @@
 
 #include "../inc/minishell.h"
 
-// init_shell() is a function that allocates memory for the shell structure and
-// initializes the environment variable.
 
 t_shell	*init_shell(char **env)
 {
