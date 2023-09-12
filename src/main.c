@@ -12,23 +12,6 @@
 
 #include "../inc/minishell.h"
 
-// ft_check_signal() is a function that checks if the signal is SIGINT or SIGQUIT.
-
-// int	ft_check_signal(void)
-// {
-// 	struct sigaction	sa;
-// 	int		signal = 0;
-
-// 	sa.sa_handler = SIG_IGN;
-// 	sigemptyset(&sa.sa_mask);
-// 	sa.sa_flags = 0;
-// 	if (sigaction(SIGINT, &sa, NULL) == 1)
-// 		signal = SIGINT;
-// 	if (sigaction(SIGQUIT, &sa, NULL) == 1)
-// 		signal = SIGQUIT;
-// 	return (signal);
-// }
-
 // init_shell() is a function that allocates memory for the shell structure and
 // initializes the environment variable.
 
