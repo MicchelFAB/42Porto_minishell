@@ -41,6 +41,7 @@
 *.su
 *.idb
 *.pdb
+*.txt
 
 # Kernel Module Compile Results
 *.mod*
@@ -53,5 +54,4 @@ dkms.conf
 .vscode/c_cpp_properties.json
 .vscode/launch.json
 .vscode/settings.json
-log.txt
 minishell

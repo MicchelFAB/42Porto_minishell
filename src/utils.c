@@ -6,28 +6,12 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 10:48:20 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/09/19 10:09:44 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/09/19 18:17:56 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	ft_addenv_back(t_env **lst, t_env *new)
-{
-	t_env	*last;
-
-	last = *lst;
-	if (lst == NULL || new == NULL)
-		return ;
-	if (*lst == NULL)
-	{
-		*lst = new;
-		return ;
-	}
-	while (last->next != NULL)
-		last = last->next;
-	last->next = new;
-}
 
 /**
 * @brief

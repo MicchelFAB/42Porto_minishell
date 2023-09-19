@@ -37,7 +37,7 @@ NAME		:= minishell
 # ------- SOURCES ------- #
 SRC_DIR		:= src/
 SRC_LIB		:= src/libft
-SRCS		:= main.c utils.c
+SRCS		:= main.c utils.c ft_env.c
 
 SRCS		:= $(SRCS:%=$(SRC_DIR)/%)
 
@@ -92,6 +92,6 @@ leak: all
 
 # ------- RECORD LOG ------- #
 log: all
-	@valgrind --track-origins=yes --leak-check=full --show-leak-kinds=all --suppressions=readline_supression --log-file=log.txt ./$(NAME)
+	@valgrind --track-origins=yes --leak-check=full --show-leak-kinds=all --suppressions=readline_supression --log-file=log%p.txt ./$(NAME)
 
 .PHONY: clean fclean re all bonus leak log
