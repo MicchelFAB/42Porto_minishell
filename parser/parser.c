@@ -161,10 +161,10 @@ void	here_doc(char *limiter, int ac)
 int		main(int ac, char **av, char **envp)
 {
 	int		i;
-	int		file_in;
+	//int		file_in;
 	int		file_out;
 	
-	if (ac >= 5)
+	if (ac >= 4)
 	{
 		if (strncmp(av[1], "here_doc", 8) == 0)
 		{
@@ -174,11 +174,12 @@ int		main(int ac, char **av, char **envp)
 		}
 		else
 		{
-			i = 2;
+			i = 1;
 			file_out = open_file(av[ac - 1], 1);
-			file_in = open_file(av[1], 2);
-			dup2(file_in, STDIN_FILENO);
+			//file_in = open_file(av[1], 2);
+			//dup2(file_in, STDIN_FILENO);
 		}
+		//printf("o envp: %s\n", envp[0]);
 		while (i < ac - 2)
 			child_proc(av[i++], envp);
 		dup2(file_out, STDOUT_FILENO);
