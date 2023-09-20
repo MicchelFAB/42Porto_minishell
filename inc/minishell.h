@@ -6,7 +6,7 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 16:08:31 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/10/17 11:01:26 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/09/20 14:58:10 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,10 +165,16 @@ t_env			*search_path(char *key, t_shell *shell);
 int				go_old_path(char **path, t_shell *shell);
 
 /*-----------Parse-------------*/
-void			parse_execute(t_shell *shell);
-void			parse_pipe(t_tree *tree, int *std_in, t_shell *shell);
-char			**create_cmds(t_tree *tree, t_tree *tmp);
-void			execute(char **cmd, int *fd, int *std_in, t_shell *shell);
-void			exec_cmd(char **cmd, int *fd, int *std_in, t_shell *shell);
+void	parse_execute(t_shell *shell);
+void	parse_pipe(t_tree *tree, int *std_in, t_shell *shell);
+char	**create_cmds(t_tree *tree, t_tree *tmp);
+void	execute(char **cmd, int *fd, int *std_in, t_shell *shell);
+void	exec_cmd(char **cmd, int *fd, int *std_in, t_shell *shell);
+int 	start_cmd(t_shell *shell);
+void	ft_addenv_back(t_env **lst, t_env *new);
+void ft_freeenv(t_env *env);
+t_env	*ft_envnew(char *key, char *value);
+void ft_import_env(t_shell *shell, char **env);
+int ft_printenv(t_env *shell);
 
 #endif
