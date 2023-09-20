@@ -6,11 +6,22 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 10:48:20 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/09/19 18:18:32 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/09/20 14:57:40 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+int start_cmd(t_shell *shell)
+{
+	if(!ft_strcmp(shell->line, "env"))
+		ft_printenv(shell->env);
+	// else if (!ft_strcmp(shell->line, "exp"))
+	// 	ft_printexp(shell->exp);
+	else
+		printf("Command not found\n");
+	return (0);
+}
 
 void	ft_addenv_back(t_env **lst, t_env *new)
 {
@@ -29,22 +40,17 @@ void	ft_addenv_back(t_env **lst, t_env *new)
 	last->next = new;
 }
 
-int start_cmdenv(t_shell *shell)
+int ft_printenv(t_env *shell)
 {
 	t_env *tmp;
 
-	tmp = shell->env;
-	if(!ft_strcmp(shell->line, "env"))
+	tmp = shell;
+	
+	while (tmp)
 	{
-		while (tmp)
-		{
-			printf("%s=%s\n", tmp->key, tmp->value);
-			tmp = tmp->next;
-		}
-		
+		printf("%s=%s\n", tmp->key, tmp->value);
+		tmp = tmp->next;
 	}
-	else
-		printf("Command not found\n");
 	return (0);
 }
 
@@ -75,7 +81,7 @@ t_env	*ft_envnew(char *key, char *value)
 	new_env->value = ft_strdup(value);
 	new_env->next = NULL;
 	return (new_env);
-	}
+}
 
 
 void ft_import_env(t_shell *shell, char **env)

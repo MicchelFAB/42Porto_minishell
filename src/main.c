@@ -6,7 +6,7 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 11:40:49 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/09/19 18:21:45 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/09/20 16:33:44 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,17 +41,14 @@ void	ft_comand_signal(void)
 void init_shell(t_shell *shell, char **env)
 {
 	shell->line = NULL;
-	shell->signal = 0;
 	ft_import_env(shell, env);
-	// shell->exp = ft_import_exp(&shell, env);
+	// ft_import_exp(shell, env);
 }
 
 // loop_shell() is a function that loops the shell and prints the prompt.
 
 void	loop_shell(t_shell *shell)
 {
-	// char	*line;
-
 	while (true)
 	{
 		ft_comand_signal();
@@ -66,7 +63,7 @@ void	loop_shell(t_shell *shell)
 		else 
 		{
 			add_history(shell->line);
-			start_cmdenv(shell);
+			start_cmd(shell);
 		}
 		ft_printf("%s\n", shell->line);
 		free(shell->line);

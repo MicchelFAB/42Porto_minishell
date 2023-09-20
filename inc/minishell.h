@@ -6,7 +6,7 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 16:08:31 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/09/19 18:21:18 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/09/20 14:58:10 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,18 +40,17 @@ typedef struct s_exp
 typedef struct s_shell
 {
 	char	*line;
-	int		signal;
 	t_env	*env;
 	t_exp	*exp;
 }				t_shell;
 
 char 	*ft_rd_instr(char *instr);
 void	ft_addenv_back(t_env **lst, t_env *new);
-int 	start_cmdenv(t_shell *shell);
+int 	start_cmd(t_shell *shell);
 void	ft_addenv_back(t_env **lst, t_env *new);
-int start_cmdenv(t_shell *shell);
 void ft_freeenv(t_env *env);
 t_env	*ft_envnew(char *key, char *value);
 void ft_import_env(t_shell *shell, char **env);
+int ft_printenv(t_env *shell);
 
 #endif
