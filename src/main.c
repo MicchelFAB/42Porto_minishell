@@ -6,78 +6,80 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 11:40:49 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/09/12 09:45:46 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/09/19 18:21:45 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/minishell.h"
+#include "minishell.h"
 
-// ft_check_signal() is a function that checks if the signal is SIGINT or SIGQUIT.
+int g_signal_exit;
 
-// int	ft_check_signal(void)
-// {
-// 	struct sigaction	sa;
-// 	int		signal = 0;
+void ft_ctrlc(int sig)
+{
+	(void)sig;
+	g_signal_exit = 130;
+	ft_printf("\n");
+	rl_replace_line("", 0);
+	rl_on_new_line();
+	rl_redisplay();
+}
 
-// 	sa.sa_handler = SIG_IGN;
-// 	sigemptyset(&sa.sa_mask);
-// 	sa.sa_flags = 0;
-// 	if (sigaction(SIGINT, &sa, NULL) == 1)
-// 		signal = SIGINT;
-// 	if (sigaction(SIGQUIT, &sa, NULL) == 1)
-// 		signal = SIGQUIT;
-// 	return (signal);
-// }
+/**
+ * @brief This function is used to ignore the signal SIGQUIT and to handle the
+ * signal SIGINT.
+ * 
+*/
+void	ft_comand_signal(void)
+{
+
+	signal(SIGQUIT, SIG_IGN);
+	signal(SIGINT, ft_ctrlc);	
+}
 
 // init_shell() is a function that allocates memory for the shell structure and
 // initializes the environment variable.
-
-t_shell	*init_shell(char **env)
+void init_shell(t_shell *shell, char **env)
 {
-	t_shell	*shell;
-
-	shell = malloc(sizeof(t_shell));
-	if (!shell)
-		return (NULL);
-	shell->env = env;
-	return (shell);
+	shell->line = NULL;
+	shell->signal = 0;
+	ft_import_env(shell, env);
+	// shell->exp = ft_import_exp(&shell, env);
 }
 
 // loop_shell() is a function that loops the shell and prints the prompt.
 
 void	loop_shell(t_shell *shell)
 {
-	char	*line;
+	// char	*line;
 
-	shell->fd = 0;
 	while (true)
 	{
-		line = readline("minishell -> "); 
-		//line = get_next_line(shell->fd);
-		if (ft_strcmp(line, "exit") == 0)
+		ft_comand_signal();
+		shell->line = readline("minishell -> "); 
+		if (!shell->line || !ft_strcmp(shell->line, "exit"))
 		{
-			free(line);
+			free(shell->line);
+			ft_freeenv(shell->env);
+			ft_printf("exit\n");
 			exit(0);
 		}
-		ft_printf("%s\n", line);
-		free(line);
-		// shell->signal = ft_check_signal();
-		// if (shell->signal == SIGINT)
-		// 	exit(0);
+		else 
+		{
+			add_history(shell->line);
+			start_cmdenv(shell);
+		}
+		ft_printf("%s\n", shell->line);
+		free(shell->line);
 	}
 }
 
-// ft_debug_terminal() is a function that prints the terminal name.
-
-
-
 int	main(int ac, char **av, char **env) // ac = argument count, av = argument vector, env = environment
 {
-	t_shell	*shell;
+	t_shell	shell;
 
 	(void)ac;
 	(void)av;
-	shell = init_shell(env);
-	loop_shell(shell);
+	init_shell(&shell, env);
+	loop_shell(&shell);
 	return (0);
 }
