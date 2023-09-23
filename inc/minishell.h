@@ -24,11 +24,15 @@
 # include <signal.h>
 # include <unistd.h>
 
-
+typedef struct s_env
+{
+	char			*key;
+	struct s_env	*next;
+}				t_env;
 
 typedef struct minishell
 {
-	char	**env;
+	t_env	*env;
 	int		fd;
 	char	*line;
 	char	**command;
