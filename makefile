@@ -47,7 +47,9 @@ BUILTIN_SRC	:= $(addprefix $(BUILTIN_DIR), $(BUILTIN))
 SRCS		:=	main.c \
 				echo_cmd.c \
 				pwd_cmd.c \
-				builtin.c
+				cd_cmd.c \
+				builtin.c builtin_utils.c \
+				ft_env.c utils.c
 
 SRCS		:= $(SRCS:%=$(SRC_DIR)/%)
 

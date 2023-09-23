@@ -12,7 +12,7 @@
 
 #include "../inc/minishell.h"
 
-int g_signal_exit;
+int		g_signal_exit;
 
 void ft_ctrlc(int sig)
 {
@@ -48,12 +48,13 @@ void init_shell(t_shell *shell, char **env)
 
 void	loop_shell(t_shell *shell)
 {
-	// char	*line;
+	char	**cmd;
 
 	while (true)
 	{
 		ft_comand_signal();
-		shell->line = readline("minishell -> "); 
+		shell->line = readline("minishell -> ");
+		cmd = ft_split(shell->line, ' ');
 		if (!shell->line || !ft_strcmp(shell->line, "exit"))
 		{
 			free(shell->line);
@@ -66,7 +67,9 @@ void	loop_shell(t_shell *shell)
 			add_history(shell->line);
 			start_cmdenv(shell);
 		}
-		ft_printf("%s\n", shell->line);
+		if (is_builtin(cmd))
+			exec_builtin(cmd, shell);
+		//ft_printf("%s\n", shell->line);
 		free(shell->line);
 	}
 }
