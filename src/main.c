@@ -12,36 +12,62 @@
 
 #include "../inc/minishell.h"
 
+int g_signal_exit;
 
-t_shell	*init_shell(char **env)
+void ft_ctrlc(int sig)
 {
-	t_shell	*shell;
+	(void)sig;
+	g_signal_exit = 130;
+	ft_printf("\n");
+	rl_replace_line("", 0);
+	rl_on_new_line();
+	rl_redisplay();
+}
 
-	shell = malloc(sizeof(t_shell));
-	if (!shell)
-		return (NULL);
-	shell->env = env;
-	return (shell);
+/**
+ * @brief This function is used to ignore the signal SIGQUIT and to handle the
+ * signal SIGINT.
+ * 
+*/
+void	ft_comand_signal(void)
+{
+
+	signal(SIGQUIT, SIG_IGN);
+	signal(SIGINT, ft_ctrlc);	
+}
+
+// init_shell() is a function that allocates memory for the shell structure and
+// initializes the environment variable.
+void init_shell(t_shell *shell, char **env)
+{
+	shell->line = NULL;
+	shell->signal = 0;
+	ft_import_env(shell, env);
+	// shell->exp = ft_import_exp(&shell, env);
 }
 
 void	loop_shell(t_shell *shell)
 {
-	shell->fd = 0;
+	// char	*line;
+
 	while (true)
 	{
-		shell->line = readline("minishell -> ");
-		shell->command = ft_split(shell->line, ' ');
-		if (ft_strcmp(shell->command[0], "exit") == 0)
+		ft_comand_signal();
+		shell->line = readline("minishell -> "); 
+		if (!shell->line || !ft_strcmp(shell->line, "exit"))
 		{
 			free(shell->line);
+			ft_freeenv(shell->env);
+			ft_printf("exit\n");
 			exit(0);
 		}
-		if (is_builtin(shell->command))
-			exec_builtin(shell->command);
+		else 
+		{
+			add_history(shell->line);
+			start_cmdenv(shell);
+		}
+		ft_printf("%s\n", shell->line);
 		free(shell->line);
-		// shell->signal = ft_check_signal();
-		// if (shell->signal == SIGINT)
-		// 	exit(0);
 	}
 }
 
@@ -49,11 +75,11 @@ void	loop_shell(t_shell *shell)
 
 int	main(int ac, char **av, char **env) // ac = argument count, av = argument vector, env = environment
 {
-	t_shell	*shell;
+	t_shell	shell;
 
 	(void)ac;
 	(void)av;
-	shell = init_shell(env);
-	loop_shell(shell);
+	init_shell(&shell, env);
+	loop_shell(&shell);
 	return (0);
 }
