@@ -24,24 +24,21 @@ t_shell	*init_shell(char **env)
 	return (shell);
 }
 
-// loop_shell() is a function that loops the shell and prints the prompt.
-
 void	loop_shell(t_shell *shell)
 {
-	char	*line;
-
 	shell->fd = 0;
 	while (true)
 	{
-		line = readline("minishell -> "); 
-		//line = get_next_line(shell->fd);
-		if (ft_strcmp(line, "exit") == 0)
+		shell->line = readline("minishell -> ");
+		shell->command = ft_split(shell->line, ' ');
+		if (ft_strcmp(shell->command[0], "exit") == 0)
 		{
-			free(line);
+			free(shell->line);
 			exit(0);
 		}
-		ft_printf("%s\n", line);
-		free(line);
+		if (is_builtin(shell->command))
+			exec_builtin(shell->command);
+		free(shell->line);
 		// shell->signal = ft_check_signal();
 		// if (shell->signal == SIGINT)
 		// 	exit(0);
@@ -49,8 +46,6 @@ void	loop_shell(t_shell *shell)
 }
 
 // ft_debug_terminal() is a function that prints the terminal name.
-
-
 
 int	main(int ac, char **av, char **env) // ac = argument count, av = argument vector, env = environment
 {

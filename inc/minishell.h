@@ -22,13 +22,28 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 # include <signal.h>
+# include <unistd.h>
+
+
 
 typedef struct minishell
 {
 	char	**env;
 	int		fd;
 	char	*line;
+	char	**command;
 	int		signal;
 }				t_shell;
+
+/*------------main------------*/
+int		main(int ac, char **av, char **env);
+void	loop_shell(t_shell *shell);
+t_shell	*init_shell(char **env);
+
+/*------------builtin---------*/
+void	pwd_cmd(void);
+void	echo_cmd(char **cmd);
+void	exec_builtin(char **cmd);
+int		is_builtin(char **cmd);
 
 #endif
