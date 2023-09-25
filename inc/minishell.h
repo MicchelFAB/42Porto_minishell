@@ -65,6 +65,7 @@ void 	ft_import_env(t_shell *shell, char **env);
 void	pwd_cmd(void);
 void	cd_cmd(char **cmd, t_shell *shell);
 void	echo_cmd(char **cmd);
+void	export_cmd(char **cmd, t_shell *shell)
 void	exec_builtin(char **cmd, t_shell *shell);
 int		is_builtin(char **cmd);
 

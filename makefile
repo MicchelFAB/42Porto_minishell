@@ -48,6 +48,8 @@ SRCS		:=	main.c \
 				echo_cmd.c \
 				pwd_cmd.c \
 				cd_cmd.c \
+				export_cmd.c \
+				export_cmd_utils.c \
 				builtin.c builtin_utils.c \
 				ft_env.c utils.c
 
