@@ -51,7 +51,7 @@ SRCS		:=	main.c \
 				export_cmd.c \
 				export_cmd_utils.c \
 				builtin.c builtin_utils.c \
-				ft_env.c utils.c
+				ft_env.c utils.c ft_exp.c 
 
 SRCS		:= $(SRCS:%=$(SRC_DIR)/%)
 

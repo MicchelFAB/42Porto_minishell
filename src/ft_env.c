@@ -31,8 +31,8 @@ int start_cmdenv(t_shell *shell)
 		}
 		
 	}
-	else
-		printf("Command not found\n");
+	/* else
+		printf("Command not found\n"); */
 	return (0);
 }
 

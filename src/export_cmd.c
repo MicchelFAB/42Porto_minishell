@@ -2,17 +2,16 @@
 
 extern int		g_signal_exit;
 
-void	only_exp(char *key, t_shell *shell)
+void	only_key(char *key, t_shell *shell)
 {
 	if (ft_get_exp(key, shell) == NULL)
 		ft_set_exp(key, NULL, shell);
 }
 
-/*
- * recebe key que é o que está entre o export e o '='
+/*  * recebe key que é o que está entre o export e o '='
  * cmd que é o que está depois do '='
- * type
-*/
+ * type */
+
 int	valid_key(char *key, char *cmd, char *type)
 {
 	int		i;
@@ -26,7 +25,7 @@ int	valid_key(char *key, char *cmd, char *type)
 	i++;
 	while (key[i] != '\0')
 	{
-		if (!(ft_isalnum(key[i] || key[i] == '_')))
+		if (!(ft_isalnum(key[i]) || key[i] == '_'))
 		{
 			printf("minishell: %s: %s: not a valid identifier\n", type, key);
 			return (0);
@@ -48,15 +47,22 @@ void	make_export(char *cmd, t_shell *shell)
 	key = ft_substr(cmd, 0, len);
 	if (!valid_key(key, cmd, "export"))
 	{
+		printf("1\n");
 		free(key);
 		return ;
 	}
 	if (cmd[len] != '=')
 	{
-		only_exp(key, shell);
+		only_key(key, shell);
+		printf("2\n");
 		free(key);
 		return ;
 	}
+	printf("3\n");
+	value = ft_strdup(cmd + len + 1);
+	//ft_set_env()
+	ft_set_exp(key, value, shell);
+	free(value);
 	free(key);
 }
 
@@ -67,6 +73,11 @@ void	export_cmd(char **cmd, t_shell *shell)
 	i = -1;
 	// falta verificar se é pipe!!!!
 	while (cmd[++i])
+	{
+		printf("cmd: %s\n", cmd[i]);
 		make_export(cmd[i], shell);
+	}
+
+	printf("7\n");
 	g_signal_exit = 0;
 }

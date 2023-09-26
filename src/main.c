@@ -31,7 +31,6 @@ void ft_ctrlc(int sig)
 */
 void	ft_comand_signal(void)
 {
-
 	signal(SIGQUIT, SIG_IGN);
 	signal(SIGINT, ft_ctrlc);	
 }
@@ -43,6 +42,7 @@ void init_shell(t_shell *shell, char **env)
 	shell->line = NULL;
 	shell->signal = 0;
 	ft_import_env(shell, env);
+	ft_import_exp(env, shell);
 	// shell->exp = ft_import_exp(&shell, env);
 }
 

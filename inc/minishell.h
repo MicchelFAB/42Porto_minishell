@@ -61,11 +61,19 @@ void 	ft_freeenv(t_env *env);
 t_env	*ft_envnew(char *key, char *value);
 void 	ft_import_env(t_shell *shell, char **env);
 
+/*-----------ft_exp------------*/
+void	ft_import_exp(char **env, t_shell *shell);
+t_exp	*ft_expnew(void *key, void *value);
+void	ft_addexp(t_exp **lst, t_exp *new);
+void	print_export(t_shell *shell);
+char	*ft_get_exp(char *key, t_shell *shell);
+int		ft_set_exp(char *key, char *new_val, t_shell *shell);
+
 /*------------builtin---------*/
 void	pwd_cmd(void);
 void	cd_cmd(char **cmd, t_shell *shell);
 void	echo_cmd(char **cmd);
-void	export_cmd(char **cmd, t_shell *shell)
+void	export_cmd(char **cmd, t_shell *shell);
 void	exec_builtin(char **cmd, t_shell *shell);
 int		is_builtin(char **cmd);
 

@@ -8,6 +8,13 @@ void	exec_builtin(char **cmd, t_shell *shell)
 		echo_cmd(cmd + 1);
 	else if (!ft_strcmp(cmd[0], "cd"))
 		cd_cmd(cmd + 1, shell);
+	else if (!ft_strcmp(cmd[0], "export"))
+	{
+		if (!cmd[1])
+			print_export(shell);
+		else
+			export_cmd(cmd + 1, shell);
+	}
 }
 
 int		is_builtin(char **cmd)
@@ -19,6 +26,8 @@ int		is_builtin(char **cmd)
 	if (!ft_strcmp(cmd[0], "echo"))
 		return (1);
 	if (!ft_strcmp(cmd[0], "cd"))
+		return (1);
+	if (!ft_strcmp(cmd[0], "export"))
 		return (1);
 	return (0);
 }
