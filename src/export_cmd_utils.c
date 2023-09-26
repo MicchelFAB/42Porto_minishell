@@ -47,10 +47,8 @@ int	ft_set_exp(char *key, char *new_val, t_shell *shell)
 	}
 	else
 	{
-		printf("7\n");
 		new_exp = ft_expnew(key, new_val);
 		ft_addexp(&shell->exp, new_exp);
-		printf("8\n");
 		return (0);
 	}
 	return (-1);
@@ -59,7 +57,6 @@ int	ft_set_exp(char *key, char *new_val, t_shell *shell)
 char	*ft_get_exp(char *key, t_shell *shell)
 {
 	t_exp	*search;
-	printf("5\n");
 	search = shell->exp;
 	while (search != NULL)
 	{

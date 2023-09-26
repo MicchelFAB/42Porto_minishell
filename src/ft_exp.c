@@ -32,10 +32,10 @@ t_exp	*ft_expnew(void *key, void *value)
 	new_exp = malloc(sizeof(t_exp));
 	if (!new_exp)
 		return (0);
-	new_exp->key = ft_strdup(key);
-	printf("9\n");
-	new_exp->value = ft_strdup(value);
-	printf("10\n");
+	if (key)
+		new_exp->key = ft_strdup(key);
+	if (value)
+		new_exp->value = ft_strdup(value);
 	new_exp->next = NULL;
 	return (new_exp);
 }

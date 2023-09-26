@@ -47,14 +47,12 @@ void	make_export(char *cmd, t_shell *shell)
 	key = ft_substr(cmd, 0, len);
 	if (!valid_key(key, cmd, "export"))
 	{
-		printf("1\n");
 		free(key);
 		return ;
 	}
 	if (cmd[len] != '=')
 	{
 		only_key(key, shell);
-		printf("2\n");
 		free(key);
 		return ;
 	}
