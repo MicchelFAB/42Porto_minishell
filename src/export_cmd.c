@@ -2,12 +2,6 @@
 
 extern int		g_signal_exit;
 
-void	only_key(char *key, t_shell *shell)
-{
-	if (ft_get_exp(key, shell) == NULL)
-		ft_set_exp(key, NULL, shell);
-}
-
 /*  * recebe key que é o que está entre o export e o '='
  * cmd que é o que está depois do '='
  * type */
@@ -52,13 +46,12 @@ void	make_export(char *cmd, t_shell *shell)
 	}
 	if (cmd[len] != '=')
 	{
-		only_key(key, shell);
+		ft_set_exp(key, NULL, shell);
 		free(key);
 		return ;
 	}
-	printf("3\n");
 	value = ft_strdup(cmd + len + 1);
-	//ft_set_env()
+	ft_set_env(key, value, shell);
 	ft_set_exp(key, value, shell);
 	free(value);
 	free(key);
@@ -72,10 +65,7 @@ void	export_cmd(char **cmd, t_shell *shell)
 	// falta verificar se é pipe!!!!
 	while (cmd[++i])
 	{
-		printf("cmd: %s\n", cmd[i]);
 		make_export(cmd[i], shell);
 	}
-
-	printf("7\n");
 	g_signal_exit = 0;
 }

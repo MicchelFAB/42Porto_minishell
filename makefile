@@ -48,10 +48,11 @@ SRCS		:=	main.c \
 				echo_cmd.c \
 				pwd_cmd.c \
 				cd_cmd.c \
+				exit_cmd.c \
 				export_cmd.c \
 				export_cmd_utils.c \
 				builtin.c builtin_utils.c \
-				ft_env.c utils.c ft_exp.c 
+				ft_env.c ft_env_utils.c utils.c ft_exp.c 
 
 SRCS		:= $(SRCS:%=$(SRC_DIR)/%)
 

@@ -61,6 +61,10 @@ void 	ft_freeenv(t_env *env);
 t_env	*ft_envnew(char *key, char *value);
 void 	ft_import_env(t_shell *shell, char **env);
 
+/*-----------ft_env_utils------*/
+int	ft_set_env(char *key, char *new_val, t_shell *shell);
+t_env	*search_env(char *key, t_shell *shell);
+
 /*-----------ft_exp------------*/
 void	ft_import_exp(char **env, t_shell *shell);
 t_exp	*ft_expnew(void *key, void *value);

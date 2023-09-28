@@ -55,7 +55,7 @@ void	loop_shell(t_shell *shell)
 		ft_comand_signal();
 		shell->line = readline("minishell -> ");
 		cmd = ft_split(shell->line, ' ');
-		if (!shell->line || !ft_strcmp(shell->line, "exit"))
+		if (!shell->line)
 		{
 			free(shell->line);
 			ft_freeenv(shell->env);
