@@ -45,10 +45,12 @@ BUILTIN		:= echo_cmd.c pwd_cmd.c
 BUILTIN_SRC	:= $(addprefix $(BUILTIN_DIR), $(BUILTIN))
 
 SRCS		:=	main.c \
+				clean.c \
 				echo_cmd.c \
 				pwd_cmd.c \
 				cd_cmd.c \
 				exit_cmd.c \
+				exit_cmd_utils.c \
 				export_cmd.c \
 				export_cmd_utils.c \
 				builtin.c builtin_utils.c \

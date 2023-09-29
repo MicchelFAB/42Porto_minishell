@@ -53,6 +53,12 @@ void 	init_shell(t_shell *shell, char **env);
 
 /*------------utils-----------*/
 char 	*ft_rd_instr(char *instr);
+void	print_error(char *msg, int error);
+long long int	ft_atol(const char *nptr);
+
+/*-----------clear------------*/
+void	clean_all(t_shell *shell);
+void	free_split(char **ptr);
 
 /*------------ft_env----------*/
 void	ft_addenv_back(t_env **lst, t_env *new);
@@ -62,11 +68,12 @@ t_env	*ft_envnew(char *key, char *value);
 void 	ft_import_env(t_shell *shell, char **env);
 
 /*-----------ft_env_utils------*/
-int	ft_set_env(char *key, char *new_val, t_shell *shell);
+int		ft_set_env(char *key, char *new_val, t_shell *shell);
 t_env	*search_env(char *key, t_shell *shell);
 
 /*-----------ft_exp------------*/
 void	ft_import_exp(char **env, t_shell *shell);
+void 	ft_freeexp(t_exp *exp);
 t_exp	*ft_expnew(void *key, void *value);
 void	ft_addexp(t_exp **lst, t_exp *new);
 void	print_export(t_shell *shell);
@@ -74,10 +81,19 @@ char	*ft_get_exp(char *key, t_shell *shell);
 int		ft_set_exp(char *key, char *new_val, t_shell *shell);
 
 /*------------builtin---------*/
+void	exit_cmd(char **cmd, t_shell *shell);
+void	ft_exit_two_args(char **cmd, t_shell *shell);
+int		ft_is_all_digit(char *num);
+int		ft_is_number(char *num);
+
 void	pwd_cmd(void);
+
 void	cd_cmd(char **cmd, t_shell *shell);
+
 void	echo_cmd(char **cmd);
+
 void	export_cmd(char **cmd, t_shell *shell);
+
 void	exec_builtin(char **cmd, t_shell *shell);
 int		is_builtin(char **cmd);
 

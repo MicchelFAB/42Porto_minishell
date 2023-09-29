@@ -17,6 +17,8 @@ void	exec_builtin(char **cmd, t_shell *shell)
 	}
 	else if (!ft_strcmp(cmd[0], "exit"))
 		exit_cmd(cmd, shell);
+	else if (!ft_strcmp(cmd[0], "unset"))
+		unset_cmd(cmd + 1, shell);
 }
 
 int		is_builtin(char **cmd)
@@ -32,6 +34,8 @@ int		is_builtin(char **cmd)
 	if (!ft_strcmp(cmd[0], "export"))
 		return (1);
 	if (!ft_strcmp(cmd[0], "exit"))
+		return (1);
+	if (!ft_strcmp(cmd[0], "unset"))
 		return (1);
 	return (0);
 }

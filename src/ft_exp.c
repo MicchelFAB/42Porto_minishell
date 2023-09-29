@@ -25,6 +25,20 @@ void	ft_addexp(t_exp **lst, t_exp *new)
 	}
 }
 
+void	ft_freeexp(t_exp *exp)
+{
+	t_exp *tmp;
+
+	while (exp)
+	{
+		tmp = exp->next;
+		free(exp->key);
+		free(exp->value);
+		free(exp);
+		exp = tmp;
+	}
+}
+
 t_exp	*ft_expnew(void *key, void *value)
 {
 	t_exp	*new_exp;
