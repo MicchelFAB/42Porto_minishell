@@ -97,6 +97,12 @@ void	export_cmd(char **cmd, t_shell *shell);
 void	exec_builtin(char **cmd, t_shell *shell);
 int		is_builtin(char **cmd);
 
+void	unset_cmd(char **cmd, t_shell *shell);
+void	unset_exp(char *key, t_shell *shell);
+void	ft_exp_del(t_exp *exp);
+void	unset_env(char *key, t_shell *shell);
+void	ft_env_del(t_env *env);
+
 /*-----------builtin_utils-----*/
 char	*ft_get_path(char *key, t_shell *shell);
 int		ft_set_path(char *key, char *new_val, t_shell *shell);

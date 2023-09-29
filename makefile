@@ -53,6 +53,7 @@ SRCS		:=	main.c \
 				exit_cmd_utils.c \
 				export_cmd.c \
 				export_cmd_utils.c \
+				unset_cmd.c \
 				builtin.c builtin_utils.c \
 				ft_env.c ft_env_utils.c utils.c ft_exp.c 
 
