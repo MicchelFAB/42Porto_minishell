@@ -38,23 +38,9 @@ NAME		:= minishell
 SRC_DIR		:= src/
 SRC_LIB		:= src/libft
 
-BUILTIN_DIR := builtin/
-
-BUILTIN		:= echo_cmd.c pwd_cmd.c
-
-BUILTIN_SRC	:= $(addprefix $(BUILTIN_DIR), $(BUILTIN))
-
 SRCS		:=	main.c \
-				clean.c \
-				echo_cmd.c \
-				pwd_cmd.c \
-				cd_cmd.c \
-				exit_cmd.c \
-				exit_cmd_utils.c \
-				export_cmd.c \
-				export_cmd_utils.c \
-				unset_cmd.c \
-				builtin.c builtin_utils.c \
+				clean.c echo_cmd.c pwd_cmd.c cd_cmd.c exit_cmd.c exit_cmd_utils.c \
+				export_cmd.c export_cmd_utils.c unset_cmd.c builtin.c builtin_utils.c \
 				ft_env.c ft_env_utils.c utils.c ft_exp.c 
 
 SRCS		:= $(SRCS:%=$(SRC_DIR)/%)
