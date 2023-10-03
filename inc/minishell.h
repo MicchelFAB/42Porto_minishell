@@ -24,6 +24,11 @@
 # include <signal.h>
 # include <unistd.h>
 
+typedef struct s_token
+{
+	t_type	type;
+	
+}
 
 typedef struct s_env
 {
