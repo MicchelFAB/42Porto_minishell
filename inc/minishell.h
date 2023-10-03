@@ -6,7 +6,7 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 16:08:31 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/09/20 14:58:10 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/10/03 15:11:42 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,12 @@
 # define	AND			6
 # define	OR			7
 
+<<<<<<< HEAD
 # define IN		0
 # define OUT	1
 
+=======
+>>>>>>> 92ed04a (03.10.23)
 typedef struct s_lexer
 {
 	char	*token;
@@ -57,14 +60,20 @@ typedef struct s_exp
 	char	*value;
 	struct s_exp *next;
 }				t_exp;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 92ed04a (03.10.23)
 typedef struct s_tree
 {
 	int 			type;
 	char			*str1;
 	struct s_tree *next;
 }	t_tree;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 92ed04a (03.10.23)
 typedef struct s_shell
 {
 	char	*line;
@@ -103,6 +112,7 @@ t_tree		*make_tree(char *str, int size);
 
 /*------------ft_env----------*/
 void	ft_addenv_back(t_env **lst, t_env *new);
+<<<<<<< HEAD
 void	print_cmdenv(t_shell *shell);
 void 	ft_freeenv(t_env *env);
 t_env	*ft_envnew(char *key, char *value);
@@ -157,10 +167,21 @@ char	**create_cmds(t_tree *tree, t_tree *tmp);
 void	execute(char **cmd, int *fd, int *std_in, t_shell *shell);
 void	exec_cmd(char **cmd, int *fd, int *std_in, t_shell *shell);
 int 	start_cmd(t_shell *shell);
+=======
+void 	start_cmd(t_shell *shell);
+>>>>>>> 92ed04a (03.10.23)
 void	ft_addenv_back(t_env **lst, t_env *new);
 void ft_freeenv(t_env *env);
 t_env	*ft_envnew(char *key, char *value);
 void ft_import_env(t_shell *shell, char **env);
 int ft_printenv(t_env *shell);
+int	check_quote_pair(char *s, int double_flag);
+int	skip_quotes(char *s);
+int ft_chk_char(char *line);
+t_tree	*ft_create_tree(int type, char *str);
+int str_whitespace_only(char *str);
+t_tree	*ft_split_lexer(char *str);
+void ft_print_list(t_shell *list);
+
 
 #endif

@@ -170,6 +170,7 @@ t_tree	*ft_lexer(t_shell *line)
 	return (list);
 }
 
+<<<<<<< HEAD
 void ft_print_list(t_shell *list)
 {
 	while(list->tree)
@@ -181,6 +182,8 @@ void ft_print_list(t_shell *list)
 	free(list->tree);
 }
 
+=======
+>>>>>>> 92ed04a (03.10.23)
 void start_cmd(t_shell *shell)
 {
 	if (shell->line[0] != '\0')
@@ -188,7 +191,12 @@ void start_cmd(t_shell *shell)
 		shell->tree = ft_lexer(shell);
 		if (shell->tree == NULL)
 			g_signal_exit = 0;
+<<<<<<< HEAD
 /* 		else
 			ft_print_list(shell); */
+=======
+		else
+			ft_print_list(shell);
+>>>>>>> 92ed04a (03.10.23)
 	}
 }

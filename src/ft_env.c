@@ -6,24 +6,13 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 10:48:20 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/09/20 14:57:40 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/09/27 13:51:47 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 extern int g_signal_exit;
 
 #include "minishell.h"
-
-int start_cmd(t_shell *shell)
-{
-	if(!ft_strcmp(shell->line, "env"))
-		ft_printenv(shell->env);
-	// else if (!ft_strcmp(shell->line, "exp"))
-	// 	ft_printexp(shell->exp);
-	else
-		printf("Command not found\n");
-	return (0);
-}
 
 void	ft_addenv_back(t_env **lst, t_env *new)
 {
