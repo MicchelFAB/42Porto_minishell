@@ -6,7 +6,7 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 14:18:58 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/08/08 13:50:58 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/09/28 11:41:48 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ char	*ft_strdup(const char *s)
 	int		i;
 
 	i = 0;
+	if (!s)
+		return (NULL);
 	src = (char *)ft_calloc(sizeof(char), ft_strlen(s) + 1);
 	if (!src)
 		return (NULL);

@@ -36,14 +36,18 @@ NAME		:= minishell
 
 # ------- SOURCES ------- #
 SRC_DIR		:= src/
+LEXER_DIR	:= lexer
 SRC_LIB		:= src/libft
-SRCS		:= main.c utils.c ft_env.c
+SRCS		:= main.c utils.c ft_env.c 
+SRC_LEXER	:= ft_lexer.c ft_split_lexer.c
 
 SRCS		:= $(SRCS:%=$(SRC_DIR)/%)
+SRC_LEXER	:= $(SRC_LEXER:%=$(LEXER_DIR)/%)
 
 BUILD_DIR	:= .build
 LIBFT		:= $(BUILD_DIR)/libs/libft.a
 OBJS		:= $(SRCS:$(SRC_DIR)/%.c=$(BUILD_DIR)/obj/%.o)
+OBJS		+= $(SRC_LEXER:$(LEXER_DIR)/%.c=$(BUILD_DIR)/obj/%.o)
 DEPS		:= $(OBJS:.o=.d)
 
 # ------- RULES ------- #
@@ -60,8 +64,11 @@ $(NAME): $(OBJS)
 # ------- OBJECTS ------- #
 $(BUILD_DIR)/obj/%.o: $(SRC_DIR)/%.c | $(BUILD_DIR)
 	@printf "\e[2K\r$(YELLOW)Compiling $<$(END)"
-	@$(CC) $(CFLAGS) $(CPPFLAGS) $(RDLINE) -c -O3 $< -o $@ $(INCLUDE)
+	@$(CC) $(CFLAGS) $(CPPFLAGS) $(RDLINE) -c $< -o $@ $(INCLUDE)
 
+$(BUILD_DIR)/obj/%.o: $(LEXER_DIR)/%.c | $(BUILD_DIR)
+	@printf "\e[2K\r$(YELLOW)Compiling $<$(END)"
+	@$(CC) $(CFLAGS) $(CPPFLAGS) $(RDLINE) -c $< -o $@ $(INCLUDE)
 # ------- DEPS ------- #
 -include $(DEPS)
 

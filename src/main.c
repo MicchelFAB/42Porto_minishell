@@ -6,7 +6,7 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 11:40:49 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/09/20 16:33:44 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/10/03 15:50:27 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,34 @@
 
 int g_signal_exit;
 
+void ft_freetree(t_tree *tree)
+{
+	t_tree *tmp;
+
+	while (tree)
+	{
+		tmp = tree;
+		tree = tree->next;
+		free(tmp->str1);
+		free(tmp);
+	}
+}
+
+void ft_freeshell(t_shell *shell)
+{
+	ft_freeenv(shell->env);
+	ft_freetree(shell->tree);
+	free(shell);
+}
+
 void ft_ctrlc(int sig)
 {
 	(void)sig;
-	g_signal_exit = 130;
-	ft_printf("\n");
-	rl_replace_line("", 0);
+	ft_putstr_fd("\n", 2);
 	rl_on_new_line();
+	rl_replace_line("", 0);
 	rl_redisplay();
+	g_signal_exit = 130;
 }
 
 /**
@@ -31,18 +51,23 @@ void ft_ctrlc(int sig)
 */
 void	ft_comand_signal(void)
 {
-
-	signal(SIGQUIT, SIG_IGN);
 	signal(SIGINT, ft_ctrlc);	
+	signal(SIGQUIT, SIG_IGN);
 }
 
 // init_shell() is a function that allocates memory for the shell structure and
 // initializes the environment variable.
-void init_shell(t_shell *shell, char **env)
+t_shell *init_shell(char **env)
 {
+	t_shell *shell;
+	shell = malloc(sizeof(t_shell));
+	if(!shell)
+		exit(EXIT_FAILURE);
 	shell->line = NULL;
+	shell->t_count = 0;
+	shell->tree = NULL;
 	ft_import_env(shell, env);
-	// ft_import_exp(shell, env);
+	return (shell);
 }
 
 // loop_shell() is a function that loops the shell and prints the prompt.
@@ -52,31 +77,79 @@ void	loop_shell(t_shell *shell)
 	while (true)
 	{
 		ft_comand_signal();
-		shell->line = readline("minishell -> "); 
-		if (!shell->line || !ft_strcmp(shell->line, "exit"))
+		shell->line = readline("minishell -> ");
+		if (!shell->line || !ft_strlen(shell->line) || ft_chk_char(shell->line))
 		{
-			free(shell->line);
-			ft_freeenv(shell->env);
-			ft_printf("exit\n");
-			exit(0);
+			if (shell->line)
+			{
+				free(shell->line);
+				continue ;
+			}
+			else
+			{
+				free(shell->line);
+				ft_freeshell(shell);
+				ft_printf("exit\n");
+				exit(0);
+			}
 		}
-		else 
-		{
-			add_history(shell->line);
-			start_cmd(shell);
-		}
-		ft_printf("%s\n", shell->line);
-		free(shell->line);
+		add_history(shell->line);
+		start_cmd(shell);
+		// free(shell->line);
+		// ft_putstr_fd("exit\n", 2);
+		// break ;
 	}
+	ft_freeshell(shell);
+	exit(g_signal_exit);
+}
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <fcntl.h>
+
+void	print_start_minishell(void)
+{
+	char	ascii[2860];
+	int		result;
+	int		fd;
+	ssize_t	read_bytes;
+
+	fd = open("./.ascii", O_RDONLY);
+	if (fd == -1) {
+        perror("open");
+        exit(EXIT_FAILURE);
+    }
+	result = read(fd, &ascii, 2860);
+	read_bytes = write(1, ascii, result);
+	if (read_bytes == -1) 
+	{
+        perror("write");
+        close(fd);
+        exit(EXIT_FAILURE);
+    }
+	close(fd);
+}
+
+void ft_print_list(t_shell *list)
+{
+	while(list->tree)
+	{
+		printf("%s - %i\n",list->tree->str1, list->tree->type);
+		free(list->tree->str1);
+		list->tree = list->tree->next;
+	}
+	free(list->tree);
 }
 
 int	main(int ac, char **av, char **env) // ac = argument count, av = argument vector, env = environment
 {
-	t_shell	shell;
+	t_shell	*shell;
 
 	(void)ac;
 	(void)av;
-	init_shell(&shell, env);
-	loop_shell(&shell);
+	shell = init_shell(env);
+	print_start_minishell();
+	loop_shell(shell);
 	return (0);
 }
