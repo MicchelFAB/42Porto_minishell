@@ -36,7 +36,11 @@ NAME		:= minishell
 
 # ------- SOURCES ------- #
 SRC_DIR		:= src/
+<<<<<<< HEAD
 
+=======
+<<<<<<< HEAD
+>>>>>>> 5bf6c87 (03.10.23)
 BUILTIN_DIR	:= builtin
 LEXER_DIR	:= lexer
 PARSE_DIR	:= parse
@@ -63,12 +67,29 @@ SRC_BUILTIN	:= $(SRC_BUILTIN:%=$(BUILTIN_DIR)/%)
 SRC_LEXER	:= $(SRC_LEXER:%=$(LEXER_DIR)/%)
 SRC_PARSE	:= $(SRC_PARSE:%=$(PARSE_DIR)/%)
 
+<<<<<<< HEAD
+=======
+=======
+LEXER_DIR	:= lexer
+SRC_LIB		:= src/libft
+SRCS		:= main.c utils.c ft_env.c 
+SRC_LEXER	:= ft_lexer.c ft_split_lexer.c
+
+SRCS		:= $(SRCS:%=$(SRC_DIR)/%)
+SRC_LEXER	:= $(SRC_LEXER:%=$(LEXER_DIR)/%)
+>>>>>>> 92ed04a (03.10.23)
+
+>>>>>>> 5bf6c87 (03.10.23)
 BUILD_DIR	:= .build
 LIBFT		:= $(BUILD_DIR)/libs/libft.a
 OBJS		:= $(SRCS:$(SRC_DIR)/%.c=$(BUILD_DIR)/obj/%.o)
+<<<<<<< HEAD
 OBJS		+= $(SRC_BUILTIN:$(BUILTIN_DIR)/%.c=$(BUILD_DIR)/obj/%.o)
 OBJS		+= $(SRC_LEXER:$(LEXER_DIR)/%.c=$(BUILD_DIR)/obj/%.o)
 OBJS		+= $(SRC_PARSE:$(PARSE_DIR)/%.c=$(BUILD_DIR)/obj/%.o)
+=======
+OBJS		+= $(SRC_LEXER:$(LEXER_DIR)/%.c=$(BUILD_DIR)/obj/%.o)
+>>>>>>> 92ed04a (03.10.23)
 DEPS		:= $(OBJS:.o=.d)
 
 # ------- RULES ------- #
@@ -87,6 +108,7 @@ $(BUILD_DIR)/obj/%.o: $(SRC_DIR)/%.c | $(BUILD_DIR)
 	@printf "\e[2K\r$(YELLOW)Compiling $<$(END)"
 	@$(CC) $(CFLAGS) $(CPPFLAGS) $(RDLINE) -c $< -o $@ $(INCLUDE)
 
+<<<<<<< HEAD
 $(BUILD_DIR)/obj/%.o: $(BUILTIN_DIR)/%.c | $(BUILD_DIR)
 	@printf "\e[2K\r$(YELLOW)Compiling $<$(END)"
 	@$(CC) $(CFLAGS) $(CPPFLAGS) $(RDLINE) -c -O3 $< -o $@ $(INCLUDE)
@@ -99,6 +121,11 @@ $(BUILD_DIR)/obj/%.o: $(PARSE_DIR)/%.c | $(BUILD_DIR)
 	@printf "\e[2K\r$(YELLOW)Compiling $<$(END)"
 	@$(CC) $(CFLAGS) $(CPPFLAGS) $(RDLINE) -c $< -o $@ $(INCLUDE)
 
+=======
+$(BUILD_DIR)/obj/%.o: $(LEXER_DIR)/%.c | $(BUILD_DIR)
+	@printf "\e[2K\r$(YELLOW)Compiling $<$(END)"
+	@$(CC) $(CFLAGS) $(CPPFLAGS) $(RDLINE) -c $< -o $@ $(INCLUDE)
+>>>>>>> 92ed04a (03.10.23)
 # ------- DEPS ------- #
 -include $(DEPS)
 

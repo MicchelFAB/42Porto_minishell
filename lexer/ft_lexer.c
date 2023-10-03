@@ -185,6 +185,18 @@ t_tree	*ft_lexer(t_shell *line)
 	return (list);
 }
 
+
+void ft_print_list(t_shell *list)
+{
+	while(list->tree)
+	{
+		printf("%s - %i\n",list->tree->str1, list->tree->type);
+		free(list->tree->str1);
+		list->tree = list->tree->next;
+	}
+	free(list->tree);
+}
+
 void start_cmd(t_shell *shell)
 {
 	if (shell->line[0] != '\0')

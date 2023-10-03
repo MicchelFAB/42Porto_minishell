@@ -1,3 +1,4 @@
+
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
@@ -72,9 +73,62 @@ void	ft_import_exp(char **env, t_shell *shell)
 			new = ft_expnew(key, value);
 			new->next = NULL;
 			ft_addexp(&shell->exp, new);
+			ft_addenv_back(&shell->env, new);
 			free(key);
 			free(value);
 		}
 		i++;
 	}
+}
+
+void	ft_addexp(t_exp **old, t_exp *new)
+{
+	t_exp	*present;
+
+	if (old == NULL || new == NULL)
+		return ;
+	if (*old == NULL || ft_strcmp((*old)->key, new->key) >= 0)
+	{
+		new->next = *old;
+		*old = new;
+	}
+	else
+	{
+		present = *old;		
+		while (present->next != NULL 
+			&& ft_strcmp(present->next->key, new->key) < 0)
+			present = present->next;
+		new->next = present->next;
+		present->next = new;
+	}
+}
+
+// Function to print the exported variables
+void ft_printexp(t_exp *head)
+{
+    t_exp *temp;
+	
+	temp = head;
+
+	while (temp)
+	{
+		printf("EXPORT %s=\"%s\"\n", temp->key, temp->value);
+		temp = temp->next;
+	}
+}
+
+// Function to free the memory allocated for the linked list
+void ft_freeexp(t_exp *head)
+{
+    t_exp *temp;
+	
+    while (temp)
+    {
+        temp = head->next;
+        free(head->key);
+        free(head->value);
+        free(head);
+        head = temp;
+    }
+    head = NULL;
 }
