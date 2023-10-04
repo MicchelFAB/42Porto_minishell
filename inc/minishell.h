@@ -6,7 +6,7 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 16:08:31 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/10/03 15:11:42 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/10/03 18:00:04 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,6 +182,6 @@ t_tree	*ft_create_tree(int type, char *str);
 int str_whitespace_only(char *str);
 t_tree	*ft_split_lexer(char *str);
 void ft_print_list(t_shell *list);
-
+void ft_freetree(t_tree *tree);
 
 #endif
