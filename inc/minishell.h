@@ -6,7 +6,11 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 16:08:31 by mamaral-          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/10/12 18:57:03 by mamaral-         ###   ########.fr       */
+=======
+/*   Updated: 2023/10/03 18:00:04 by mamaral-         ###   ########.fr       */
+>>>>>>> 49850c4 (Lexer Leaks removed)
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,6 +187,7 @@ int str_whitespace_only(char *str);
 t_tree	*ft_split_lexer(char *str);
 void ft_print_list(t_shell *list);
 void ft_freetree(t_tree *tree);
+<<<<<<< HEAD
 
 /*  EXPANDER */
 
@@ -199,5 +204,7 @@ char	*ft_quote_data(char *str, t_shell *line, int *i, int *j);
 char	*ft_strjoin_null(char *s1, char *s2);
 void	ft_putspecial(char *str, char *line, int *i, int *j);
 int		ft_verify_quote(char *s, int i);
+=======
+>>>>>>> 49850c4 (Lexer Leaks removed)
 
 #endif

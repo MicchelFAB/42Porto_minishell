@@ -6,7 +6,11 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 13:52:07 by mamaral-          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/10/12 22:27:48 by mamaral-         ###   ########.fr       */
+=======
+/*   Updated: 2023/10/03 18:40:33 by mamaral-         ###   ########.fr       */
+>>>>>>> 49850c4 (Lexer Leaks removed)
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -195,7 +199,12 @@ t_tree	*ft_lexer(t_shell *line)
 	
 	if (line->line == NULL)
 		return (NULL);
+<<<<<<< HEAD
 	line->line = ft_expand_env(line);
+=======
+	// list = ft_create_tree(NULL_S, NULL);
+	//line->line = ft_expand_env(line->line, line->env);
+>>>>>>> 49850c4 (Lexer Leaks removed)
 	rm_whitespace(line->line);
 	list = ft_split_lexer(line->line);
 	if(list == NULL)

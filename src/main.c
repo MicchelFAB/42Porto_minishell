@@ -6,7 +6,11 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 11:40:49 by mamaral-          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/10/16 14:04:31 by mamaral-         ###   ########.fr       */
+=======
+/*   Updated: 2023/10/04 10:52:21 by mamaral-         ###   ########.fr       */
+>>>>>>> 49850c4 (Lexer Leaks removed)
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +34,10 @@ void	ft_freetree(t_tree *tree)
 void	ft_freeshell(t_shell *shell)
 {
 	ft_freeenv(shell->env);
+<<<<<<< HEAD
 	ft_freeexp(shell->exp);
+=======
+>>>>>>> 49850c4 (Lexer Leaks removed)
 	free(shell->line);
 	free(shell);
 }
@@ -73,6 +80,7 @@ t_shell	*init_shell(char **env)
 	return (shell);
 }
 
+<<<<<<< HEAD
 void	ctrl_d(t_shell *shell)
 {
 	ft_freeshell(shell);
@@ -106,6 +114,16 @@ void	ctrl_d(t_shell *shell)
 		free(shell->line);
 	}
 } */
+=======
+void ctrl_d(t_shell *shell)
+{
+		ft_freeshell(shell);
+		ft_printf("exit\n");
+		exit(0);
+}
+
+// loop_shell() is a function that loops the shell and prints the prompt.
+>>>>>>> 49850c4 (Lexer Leaks removed)
 
 void	loop_shell(t_shell *shell)
 {
@@ -113,6 +131,7 @@ void	loop_shell(t_shell *shell)
 	{
 		ft_comand_signal();
 		shell->line = readline("minishell -> ");
+<<<<<<< HEAD
 		if (!shell->line)
 			ctrl_d(shell);
 		else if (!ft_strlen(shell->line) || ft_chk_char(shell->line))
@@ -122,6 +141,20 @@ void	loop_shell(t_shell *shell)
 			add_history(shell->line);
 			start_cmd(shell);
 			parse_execute(shell);
+=======
+		if (!shell->line || !ft_strcmp(shell->line, "exit"))
+			ctrl_d(shell);
+		if (!ft_strlen(shell->line) || ft_chk_char(shell->line))
+		{
+			ft_freeshell(shell);
+			ft_printf("exit\n");
+			exit(0);
+		}
+		else
+		{
+			add_history(shell->line);
+			start_cmd(shell);
+>>>>>>> 49850c4 (Lexer Leaks removed)
 			free(shell->line);
 			ft_freetree(shell->tree);
 		}
@@ -156,6 +189,7 @@ void	print_start_minishell(void)
 
 void ft_print_list(t_shell *list)
 {
+<<<<<<< HEAD
 	t_tree	*tmp;
 
 	tmp = list->tree;
@@ -165,6 +199,17 @@ void ft_print_list(t_shell *list)
 		tmp = tmp->next;
 	}
 	free(tmp);
+=======
+	t_tree *tmp;
+	
+	tmp = list->tree;
+	while(tmp)
+	{
+		printf("%s - %i\n",tmp->str1, tmp->type);
+		tmp = tmp->next;
+	}
+	free(tmp);	
+>>>>>>> 49850c4 (Lexer Leaks removed)
 }
 
 int	main(int ac, char **av, char **env)
