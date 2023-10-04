@@ -21,7 +21,7 @@ CC			:= cc
 RM			:= rm -rf
 
 # ------- FLAGS ------- #
-CFLAGS		:= -Wall -Wextra -Werror -g
+CFLAGS		:= -Wall -Wextra -Werror -g #-fsanitize=address
 CPPFLAGS	:= -MMD -MP 
 RDLINE		:= -lreadline -lXext -lX11 -lm
 MAKEFLAGS	+= --no-print-directory

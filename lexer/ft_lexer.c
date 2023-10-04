@@ -6,7 +6,7 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 13:52:07 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/10/03 15:50:22 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/10/03 18:40:33 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,18 +160,18 @@ t_tree	*ft_lexer(t_shell *line)
 	
 	if (line->line == NULL)
 		return (NULL);
-	list = ft_create_tree(NULL_S, NULL);
-	if(list == NULL)
-		return (NULL);
+	// list = ft_create_tree(NULL_S, NULL);
 	//line->line = ft_expand_env(line->line, line->env);
 	rm_whitespace(line->line);
 	list = ft_split_lexer(line->line);
-	
+	if(list == NULL)
+		return (NULL);
 	return (list);
 }
 
 void start_cmd(t_shell *shell)
 {
+	
 	if (shell->line[0] != '\0')
 	{
 		shell->tree = ft_lexer(shell);
