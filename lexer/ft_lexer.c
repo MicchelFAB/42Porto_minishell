@@ -178,6 +178,8 @@ t_tree	*ft_lexer(t_shell *line)
 	if (line->line == NULL)
 		return (NULL);
 	line->line = ft_expand_env(line);
+	// list = ft_create_tree(NULL_S, NULL);
+	//line->line = ft_expand_env(line->line, line->env);
 	rm_whitespace(line->line);
 	list = ft_split_lexer(line->line);
 	if(list == NULL)
@@ -199,6 +201,7 @@ void ft_print_list(t_shell *list)
 
 void start_cmd(t_shell *shell)
 {
+	
 	if (shell->line[0] != '\0')
 	{
 		shell->tree = ft_lexer(shell);
