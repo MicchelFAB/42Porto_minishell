@@ -24,11 +24,22 @@
 # include <signal.h>
 # include <unistd.h>
 
-typedef struct s_token
+# define	NULL_S		0
+# define	WORD		1
+# define	REDIR		2
+# define	PIPE		3
+# define	CMD			4
+# define	SIMP_CMD	5
+# define	AND			6
+# define	OR			7
+
+typedef struct s_lexer
 {
-	t_type	type;
-	
-}
+	char	*token;
+	char	*args;
+	struct s_lexer *next;
+} 				t_lexer;
+
 
 typedef struct s_env
 {
@@ -43,12 +54,21 @@ typedef struct s_exp
 	char	*value;
 	struct s_exp *next;
 }				t_exp;
+
+typedef struct s_tree
+{
+	int 			type;
+	char			*str1;
+	struct s_tree *next;
+}	t_tree;
+
 typedef struct s_shell
 {
 	char	*line;
-	int		signal;
 	t_env	*env;
 	t_exp	*exp;
+	t_tree	*tree;
+	int		t_count;
 }				t_shell;
 
 /*------------main------------*/

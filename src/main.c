@@ -40,7 +40,6 @@ void	ft_comand_signal(void)
 void init_shell(t_shell *shell, char **env)
 {
 	shell->line = NULL;
-	shell->signal = 0;
 	ft_import_env(shell, env);
 	ft_import_exp(env, shell);
 	// shell->exp = ft_import_exp(&shell, env);

@@ -36,18 +36,33 @@ NAME		:= minishell
 
 # ------- SOURCES ------- #
 SRC_DIR		:= src/
+BUILTIN_DIR	:= builtin
+LEXER_DIR	:= lexer
 SRC_LIB		:= src/libft
 
 SRCS		:=	main.c \
-				clean.c echo_cmd.c pwd_cmd.c cd_cmd.c exit_cmd.c exit_cmd_utils.c \
-				export_cmd.c export_cmd_utils.c unset_cmd.c builtin.c builtin_utils.c \
-				ft_env.c ft_env_utils.c utils.c ft_exp.c 
+				clean.c\
+				ft_env.c ft_env_utils.c utils.c ft_exp.c
+
+SRC_BUILTIN	:=  echo_cmd.c \
+				pwd_cmd.c \
+				cd_cmd.c \
+				exit_cmd.c exit_cmd_utils.c \
+				export_cmd.c export_cmd_utils.c \
+				unset_cmd.c \
+				builtin.c builtin_utils.c
+
+SRC_LEXER	:= ft_lexer.c ft_split_lexer.c
 
 SRCS		:= $(SRCS:%=$(SRC_DIR)/%)
+SRC_BUILTIN	:= $(SRC_BUILTIN:%=$(BUILTIN_DIR)/%)
+SRC_LEXER	:= $(SRC_LEXER:%=$(LEXER_DIR)/%)
 
 BUILD_DIR	:= .build
 LIBFT		:= $(BUILD_DIR)/libs/libft.a
 OBJS		:= $(SRCS:$(SRC_DIR)/%.c=$(BUILD_DIR)/obj/%.o)
+OBJS		+= $(SRC_BUILTIN:$(BUILTIN_DIR)/%.c=$(BUILD_DIR)/obj/%.o)
+OBJS		+= $(SRC_LEXER:$(LEXER_DIR)/%.c=$(BUILD_DIR)/obj/%.o)
 DEPS		:= $(OBJS:.o=.d)
 
 # ------- RULES ------- #
@@ -66,6 +81,13 @@ $(BUILD_DIR)/obj/%.o: $(SRC_DIR)/%.c | $(BUILD_DIR)
 	@printf "\e[2K\r$(YELLOW)Compiling $<$(END)"
 	@$(CC) $(CFLAGS) $(CPPFLAGS) $(RDLINE) -c -O3 $< -o $@ $(INCLUDE)
 
+$(BUILD_DIR)/obj/%.o: $(BUILTIN_DIR)/%.c | $(BUILD_DIR)
+	@printf "\e[2K\r$(YELLOW)Compiling $<$(END)"
+	@$(CC) $(CFLAGS) $(CPPFLAGS) $(RDLINE) -c -O3 $< -o $@ $(INCLUDE)
+
+$(BUILD_DIR)/obj/%.o: $(LEXER_DIR)/%.c | $(BUILD_DIR)
+	@printf "\e[2K\r$(YELLOW)Compiling $<$(END)"
+	@$(CC) $(CFLAGS) $(CPPFLAGS) $(RDLINE) -c $< -o $@ $(INCLUDE)
 # ------- DEPS ------- #
 -include $(DEPS)
 
