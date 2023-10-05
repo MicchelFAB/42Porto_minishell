@@ -74,7 +74,7 @@ typedef struct s_shell
 /*------------main------------*/
 int		main(int ac, char **av, char **env);
 void	loop_shell(t_shell *shell);
-void 	init_shell(t_shell *shell, char **env);
+t_shell 	*init_shell(char **env);
 
 /*------------utils-----------*/
 char 	*ft_rd_instr(char *instr);
@@ -84,6 +84,19 @@ long long int	ft_atol(const char *nptr);
 /*-----------clear------------*/
 void	clean_all(t_shell *shell);
 void	free_split(char **ptr);
+
+/*-----------lexer------------*/
+void start_cmd(t_shell *shell);
+t_tree	*ft_lexer(t_shell *line);
+t_tree	*ft_create_tree(int type, char *str);
+int str_whitespace_only(char *str);
+int ft_chk_char(char *line);
+int	check_quote_pair(char *s, int size);
+int	skip_quotes(char *s);
+
+t_tree	*ft_split_lexer(char *str);
+t_tree	*make_tree(char *str, int size);
+
 
 /*------------ft_env----------*/
 void	ft_addenv_back(t_env **lst, t_env *new);
