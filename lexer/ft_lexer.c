@@ -188,7 +188,7 @@ void start_cmd(t_shell *shell)
 		shell->tree = ft_lexer(shell);
 		if (shell->tree == NULL)
 			g_signal_exit = 0;
-		else
-			ft_print_list(shell);
+/* 		else
+			ft_print_list(shell); */
 	}
 }

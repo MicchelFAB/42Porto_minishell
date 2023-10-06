@@ -14,7 +14,7 @@ int		cmds_len(t_tree *tree, t_tree *tmp)
 	return (len);
 }
 
-char	**cmds_array(t_tree *tree, t_tree *tmp, char **cmd);
+char	**cmds_array(t_tree *tree, t_tree *tmp, char **cmd)
 {
 	int		len;
 

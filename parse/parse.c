@@ -1,6 +1,6 @@
 #include "../inc/minishell.h"
 
-static void	create_pipe(t_shell *tmp, int *std_in)
+static void	create_pipe(t_tree *tmp, int *std_in)
 {
 	int		new_fd[2];
 
@@ -15,7 +15,7 @@ static void	create_pipe(t_shell *tmp, int *std_in)
 	*std_in = new_fd[IN];
 }
 
-void	parse_cmd(t_tree *tree, t_tree *tmp int *std_in, t_shell shell)
+void	parse_cmd(t_tree *tree, t_tree *tmp, int *std_in, t_shell *shell)
 {
 	int		fd[2];
 	char	**cmd;

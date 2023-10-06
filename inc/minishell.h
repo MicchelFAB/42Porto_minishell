@@ -154,6 +154,6 @@ int		go_old_path(char **path, t_shell *shell);
 void	parse_execute(t_shell *shell);
 void	parse_pipe(t_tree *tree, int *std_in, t_shell *shell);
 char	**create_cmds(t_tree *tree, t_tree *tmp);
-
+void	execute(char **cmd, int *fd, int *std_in, t_shell *shell);
 
 #endif
