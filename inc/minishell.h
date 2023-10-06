@@ -33,6 +33,9 @@
 # define	AND			6
 # define	OR			7
 
+# define IN		0
+# define OUT	1
+
 typedef struct s_lexer
 {
 	char	*token;
@@ -146,5 +149,11 @@ char	*ft_get_path(char *key, t_shell *shell);
 int		ft_set_path(char *key, char *new_val, t_shell *shell);
 t_env	*search_path(char *key, t_shell *shell);
 int		go_old_path(char **path, t_shell *shell);
+
+/*-----------Parse-------------*/
+void	parse_execute(t_shell *shell);
+void	parse_pipe(t_tree *tree, int *std_in, t_shell *shell);
+char	**create_cmds(t_tree *tree, t_tree *tmp);
+
 
 #endif

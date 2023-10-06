@@ -38,6 +38,7 @@ NAME		:= minishell
 SRC_DIR		:= src/
 BUILTIN_DIR	:= builtin
 LEXER_DIR	:= lexer
+PARSE_DIR	:= parse
 SRC_LIB		:= src/libft
 
 SRCS		:=	main.c \
@@ -52,17 +53,21 @@ SRC_BUILTIN	:=  echo_cmd.c \
 				unset_cmd.c \
 				builtin.c builtin_utils.c
 
-SRC_LEXER	:= ft_lexer.c ft_split_lexer.c
+SRC_LEXER	:=	ft_lexer.c ft_split_lexer.c
+
+SRC_PARSE	:=	parse.c parse_utils.c
 
 SRCS		:= $(SRCS:%=$(SRC_DIR)/%)
 SRC_BUILTIN	:= $(SRC_BUILTIN:%=$(BUILTIN_DIR)/%)
 SRC_LEXER	:= $(SRC_LEXER:%=$(LEXER_DIR)/%)
+SRC_PARSE	:= $(SRC_PARSE:%=$(PARSE_DIR)/%)
 
 BUILD_DIR	:= .build
 LIBFT		:= $(BUILD_DIR)/libs/libft.a
 OBJS		:= $(SRCS:$(SRC_DIR)/%.c=$(BUILD_DIR)/obj/%.o)
 OBJS		+= $(SRC_BUILTIN:$(BUILTIN_DIR)/%.c=$(BUILD_DIR)/obj/%.o)
 OBJS		+= $(SRC_LEXER:$(LEXER_DIR)/%.c=$(BUILD_DIR)/obj/%.o)
+OBJS		+= $(SRC_PARSE:$(PARSE_DIR)/%.c=$(BUILD_DIR)/obj/%.o)
 DEPS		:= $(OBJS:.o=.d)
 
 # ------- RULES ------- #
@@ -88,6 +93,11 @@ $(BUILD_DIR)/obj/%.o: $(BUILTIN_DIR)/%.c | $(BUILD_DIR)
 $(BUILD_DIR)/obj/%.o: $(LEXER_DIR)/%.c | $(BUILD_DIR)
 	@printf "\e[2K\r$(YELLOW)Compiling $<$(END)"
 	@$(CC) $(CFLAGS) $(CPPFLAGS) $(RDLINE) -c $< -o $@ $(INCLUDE)
+
+$(BUILD_DIR)/obj/%.o: $(PARSE_DIR)/%.c | $(BUILD_DIR)
+	@printf "\e[2K\r$(YELLOW)Compiling $<$(END)"
+	@$(CC) $(CFLAGS) $(CPPFLAGS) $(RDLINE) -c $< -o $@ $(INCLUDE)
+
 # ------- DEPS ------- #
 -include $(DEPS)
 

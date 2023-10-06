@@ -121,6 +121,7 @@ void	loop_shell(t_shell *shell)
 		}
 		add_history(shell->line);
 		start_cmd(shell);
+		parse_execute(shell);
 		// free(shell->line);
 		// ft_putstr_fd("exit\n", 2);
 		// break ;
