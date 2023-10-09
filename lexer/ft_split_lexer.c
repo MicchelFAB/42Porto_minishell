@@ -25,7 +25,6 @@ char *ft_remove_quotes(char *str)
 	free(str);
 	return(stash);
 }
-
 void	add_next(t_tree *new, t_tree *start)
 {
 	t_tree	*curr;

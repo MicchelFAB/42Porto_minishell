@@ -73,7 +73,7 @@ SRC_PARSE	:= $(SRC_PARSE:%=$(PARSE_DIR)/%)
 LEXER_DIR	:= lexer
 SRC_LIB		:= src/libft
 SRCS		:= main.c utils.c ft_env.c 
-SRC_LEXER	:= ft_lexer.c ft_split_lexer.c
+SRC_LEXER	:= ft_lexer.c ft_split_lexer.c ft_expander.c
 
 SRCS		:= $(SRCS:%=$(SRC_DIR)/%)
 SRC_LEXER	:= $(SRC_LEXER:%=$(LEXER_DIR)/%)
