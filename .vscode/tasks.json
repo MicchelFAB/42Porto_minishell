@@ -3,7 +3,7 @@
 		{
 			"label": "build",
 			"type": "shell",
-			"command": "make -C ./",
+			"command": "make -C",
 			"group": {
 				"kind": "build",
 				"isDefault": true

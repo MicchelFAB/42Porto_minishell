@@ -6,7 +6,7 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 16:46:29 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/10/03 13:10:31 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/10/09 13:39:19 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,10 @@ int	ft_lencheck(char const *s, unsigned int start, size_t len)
 	else
 		return (len);
 }
+/**
+ * @brief This function allocates and returns a substring from the string ’s’.
+ * The substring begins at index ’start’ and is of maximum size ’len’.
+ */
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
