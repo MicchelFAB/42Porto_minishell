@@ -7,10 +7,14 @@
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 16:08:31 by mamaral-          #+#    #+#             */
 <<<<<<< HEAD
+<<<<<<< HEAD
 /*   Updated: 2023/10/12 18:57:03 by mamaral-         ###   ########.fr       */
 =======
 /*   Updated: 2023/10/03 18:00:04 by mamaral-         ###   ########.fr       */
 >>>>>>> 49850c4 (Lexer Leaks removed)
+=======
+/*   Updated: 2023/10/09 18:37:58 by mamaral-         ###   ########.fr       */
+>>>>>>> c9d4cc5 (09-10)
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -206,5 +210,20 @@ void	ft_putspecial(char *str, char *line, int *i, int *j);
 int		ft_verify_quote(char *s, int i);
 =======
 >>>>>>> 49850c4 (Lexer Leaks removed)
+
+/*  EXPANDER */
+
+char	*ft_expand_env(t_shell *line);
+char	check_next_char(char *str, int i);
+char	*get_merged_str(t_shell *line, char *str, int *i);
+char	*get_env_to_str(char *str, t_env *env);
+char	*ft_join_str_env(char *s, char *env);
+char	*get_env_name(char *s);
+int		env_key_size(char *s);
+int		ft_elements(char *str, int i);
+char 	*ft_exit_nbr(char *str);
+char	*ft_quote_data(char *str, t_shell *line, int *i, int *j);
+char	*ft_strjoin_null(char *s1, char *s2);
+void	ft_putspecial(char *str, char *line, int *i, int *j);
 
 #endif

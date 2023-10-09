@@ -7,10 +7,14 @@
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 11:40:49 by mamaral-          #+#    #+#             */
 <<<<<<< HEAD
+<<<<<<< HEAD
 /*   Updated: 2023/10/16 14:04:31 by mamaral-         ###   ########.fr       */
 =======
 /*   Updated: 2023/10/04 10:52:21 by mamaral-         ###   ########.fr       */
 >>>>>>> 49850c4 (Lexer Leaks removed)
+=======
+/*   Updated: 2023/10/09 18:44:53 by mamaral-         ###   ########.fr       */
+>>>>>>> c9d4cc5 (09-10)
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,12 +148,8 @@ void	loop_shell(t_shell *shell)
 =======
 		if (!shell->line || !ft_strcmp(shell->line, "exit"))
 			ctrl_d(shell);
-		if (!ft_strlen(shell->line) || ft_chk_char(shell->line))
-		{
-			ft_freeshell(shell);
-			ft_printf("exit\n");
-			exit(0);
-		}
+		else if (ft_chk_char(shell->line))
+			free(shell->line);
 		else
 		{
 			add_history(shell->line);

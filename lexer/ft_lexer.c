@@ -7,10 +7,14 @@
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 13:52:07 by mamaral-          #+#    #+#             */
 <<<<<<< HEAD
+<<<<<<< HEAD
 /*   Updated: 2023/10/12 22:27:48 by mamaral-         ###   ########.fr       */
 =======
 /*   Updated: 2023/10/03 18:40:33 by mamaral-         ###   ########.fr       */
 >>>>>>> 49850c4 (Lexer Leaks removed)
+=======
+/*   Updated: 2023/10/09 18:31:39 by mamaral-         ###   ########.fr       */
+>>>>>>> c9d4cc5 (09-10)
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +56,49 @@ int	ft_elements(char *s, int i)
 		return (0);
 }
 
+<<<<<<< HEAD
+=======
+/* char	*malloc_rd(char *s)
+{
+	char	*rest;
+	int		n;
+	int		i;
+
+	n = 0;
+	i = 0;
+	while (s[i])
+	{
+		if (ft_elements(s, i))
+			n++;
+		i++;
+	}
+	rest = (char *)malloc(sizeof(char) * (i + 2 * n + 1));
+	if (!rest)
+		return (NULL);
+	ft_bzero(rest, i + 2 * n + 1);
+	return (rest);
+} */
+
+char	*ft_quote_data(char *str, t_shell *line, int *i, int *j)
+{
+	if (line->line[*i + 1] && line->line[*i + 1] == '\"')
+		str[(*j)++] = (char)(line->line[(*i)++]);
+	else if (line->line[*i + 1] && line->line[*i + 1] == '\'')
+		(*i)++;
+	else
+	{
+		str[*j] = check_next_char(line->line, *i);
+			if (str[*j] == -2)
+			{
+				str = get_merged_str(line, str, j);
+				while(!isspace(line->line[*i]) && line->line[*i] != '\0')
+					(*i)++;
+			}
+	}
+	return(str);
+}
+
+>>>>>>> c9d4cc5 (09-10)
 int	skip_quotes(char *s)
 {
 	int	i;
@@ -200,11 +247,15 @@ t_tree	*ft_lexer(t_shell *line)
 	if (line->line == NULL)
 		return (NULL);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	line->line = ft_expand_env(line);
 =======
 	// list = ft_create_tree(NULL_S, NULL);
 	//line->line = ft_expand_env(line->line, line->env);
 >>>>>>> 49850c4 (Lexer Leaks removed)
+=======
+	line->line = ft_expand_env(line);
+>>>>>>> c9d4cc5 (09-10)
 	rm_whitespace(line->line);
 	list = ft_split_lexer(line->line);
 	if(list == NULL)
