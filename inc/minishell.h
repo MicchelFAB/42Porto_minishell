@@ -89,13 +89,13 @@ void	clean_all(t_shell *shell);
 void	free_split(char **ptr);
 
 /*-----------lexer------------*/
-void start_cmd(t_shell *shell);
+void 	start_cmd(t_shell *shell);
 t_tree	*ft_lexer(t_shell *line);
 t_tree	*ft_create_tree(int type, char *str);
-int str_whitespace_only(char *str);
-int ft_chk_char(char *line);
-int	check_quote_pair(char *s, int size);
-int	skip_quotes(char *s);
+int 	str_whitespace_only(char *str);
+int		ft_chk_char(char *line);
+int		check_quote_pair(char *s, int size);
+int		skip_quotes(char *s);
 
 t_tree	*ft_split_lexer(char *str);
 t_tree	*make_tree(char *str, int size);
@@ -103,7 +103,7 @@ t_tree	*make_tree(char *str, int size);
 
 /*------------ft_env----------*/
 void	ft_addenv_back(t_env **lst, t_env *new);
-int 	start_cmdenv(t_shell *shell);
+void	print_cmdenv(t_shell *shell);
 void 	ft_freeenv(t_env *env);
 t_env	*ft_envnew(char *key, char *value);
 void 	ft_import_env(t_shell *shell, char **env);

@@ -1,5 +1,7 @@
 #include "../inc/minishell.h"
 
+extern int g_signal_exit;
+
 void	ft_addenv_back(t_env **lst, t_env *new)
 {
 	t_env	*last;
@@ -17,23 +19,17 @@ void	ft_addenv_back(t_env **lst, t_env *new)
 	last->next = new;
 }
 
-int start_cmdenv(t_shell *shell)
+void print_cmdenv(t_shell *shell)
 {
 	t_env *tmp;
 
 	tmp = shell->env;
-	if(!ft_strcmp(shell->line, "env"))
+	while (tmp)
 	{
-		while (tmp)
-		{
-			printf("%s=%s\n", tmp->key, tmp->value);
-			tmp = tmp->next;
-		}
-		
+		printf("%s=%s\n", tmp->key, tmp->value);
+		tmp = tmp->next;
 	}
-	/* else
-		printf("Command not found\n"); */
-	return (0);
+	g_signal_exit = 0;
 }
 
 void ft_freeenv(t_env *env)
