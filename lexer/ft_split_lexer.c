@@ -6,11 +6,25 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 11:46:54 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/10/09 18:28:19 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/10/12 22:28:08 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+char *ft_remove_quotes(char *str)
+{
+	char *stash;
+	
+	if(str[0] == '\'')
+		stash = ft_strtrim(str, "\'");
+	else if (str[0] == '\"')
+		stash = ft_strtrim(str, "\"");
+	else
+		stash = ft_strdup(str);
+	free(str);
+	return(stash);
+}
 
 void	add_next(t_tree *new, t_tree *start)
 {
@@ -38,7 +52,11 @@ t_tree	*make_tree(char *str, int size)
 	else if (new_str[0] == '>')
 		type = REDIR;
 	else
+	{
+		if (new_str[0] == '\'' || new_str[0] == '\"')
+			new_str = ft_remove_quotes(new_str);
 		type = WORD;
+	}
 	tree = ft_create_tree(type, new_str);
 	return (tree);
 }
