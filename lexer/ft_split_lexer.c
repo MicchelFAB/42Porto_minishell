@@ -25,6 +25,21 @@ char *ft_remove_quotes(char *str)
 	free(str);
 	return(stash);
 }
+
+char *ft_remove_quotes(char *str)
+{
+	char *stash;
+	
+	if(str[0] == '\'')
+		stash = ft_strtrim(str, "\'");
+	else if (str[0] == '\"')
+		stash = ft_strtrim(str, "\"");
+	else
+		stash = ft_strdup(str);
+	free(str);
+	return(stash);
+}
+
 void	add_next(t_tree *new, t_tree *start)
 {
 	t_tree	*curr;

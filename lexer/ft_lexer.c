@@ -187,7 +187,6 @@ t_tree	*ft_lexer(t_shell *line)
 	return (list);
 }
 
-
 void ft_print_list(t_shell *list)
 {
 	while(list->tree)
