@@ -6,7 +6,7 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 16:08:31 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/09/12 09:27:12 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/09/19 18:21:18 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ typedef struct s_lexer
 	char	*args;
 	struct s_lexer *next;
 } 				t_lexer;
-
 
 typedef struct s_env
 {
@@ -156,6 +155,5 @@ void	parse_pipe(t_tree *tree, int *std_in, t_shell *shell);
 char	**create_cmds(t_tree *tree, t_tree *tmp);
 void	execute(char **cmd, int *fd, int *std_in, t_shell *shell);
 void	exec_cmd(char **cmd, int *fd, int *std_in, t_shell *shell);
-
 
 #endif

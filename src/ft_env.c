@@ -1,6 +1,18 @@
-#include "../inc/minishell.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_env.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/18 10:48:20 by mamaral-          #+#    #+#             */
+/*   Updated: 2023/09/19 18:18:32 by mamaral-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 extern int g_signal_exit;
+
+#include "minishell.h"
 
 void	ft_addenv_back(t_env **lst, t_env *new)
 {

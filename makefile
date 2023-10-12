@@ -62,6 +62,7 @@ SRC_BUILTIN	:= $(SRC_BUILTIN:%=$(BUILTIN_DIR)/%)
 SRC_LEXER	:= $(SRC_LEXER:%=$(LEXER_DIR)/%)
 SRC_PARSE	:= $(SRC_PARSE:%=$(PARSE_DIR)/%)
 
+
 BUILD_DIR	:= .build
 LIBFT		:= $(BUILD_DIR)/libs/libft.a
 OBJS		:= $(SRCS:$(SRC_DIR)/%.c=$(BUILD_DIR)/obj/%.o)

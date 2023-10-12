@@ -18,7 +18,7 @@ void	print_error(char *msg, int error)
 {
 	g_signal_exit = error;
 	printf("%s\n", msg);
-}
+
 
 /**
 * @brief
