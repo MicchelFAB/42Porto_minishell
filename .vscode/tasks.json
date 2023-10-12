@@ -2,6 +2,7 @@
 	"tasks": [
 		{
 <<<<<<< HEAD
+<<<<<<< HEAD
 			"label": "run the makefile",
 			"type": "shell",
 			"command": "make -C ${workspaceFolder}",
@@ -10,6 +11,11 @@
 			"type": "shell",
 			"command": "make -C",
 >>>>>>> c9d4cc5 (09-10)
+=======
+			"label": "run the makefile",
+			"type": "shell",
+			"command": "make -C ${workspaceFolder}",
+>>>>>>> 8fd3012 (12/10/23)
 			"group": {
 				"kind": "build",
 				"isDefault": true
@@ -18,7 +24,35 @@
 	],
 	"version": "2.0.0"
 <<<<<<< HEAD
+<<<<<<< HEAD
 }
 =======
 }
 >>>>>>> c9d4cc5 (09-10)
+=======
+}
+
+// {
+//     "tasks": [
+// 		{
+//             "label": "run the makefile",
+//             "type": "shell",
+//             "command": "cc",
+// 			"args": [
+// 				"-Wall",
+// 				"-Wextra",
+// 				"-Werror",
+// 				"-g",
+// 				"test.c",
+// 				"./.build/libs/libft.a"
+// 			],
+//             "group": {
+//                 "kind": "build",
+//                 "isDefault": true,
+// 				"problemMatcher": "$gcc"
+//             }
+//         }
+// 	],
+//     "version": "2.0.0"
+// }
+>>>>>>> 8fd3012 (12/10/23)

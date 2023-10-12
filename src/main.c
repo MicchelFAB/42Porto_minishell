@@ -8,6 +8,7 @@
 /*   Created: 2023/09/11 11:40:49 by mamaral-          #+#    #+#             */
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 /*   Updated: 2023/10/16 14:04:31 by mamaral-         ###   ########.fr       */
 =======
 /*   Updated: 2023/10/04 10:52:21 by mamaral-         ###   ########.fr       */
@@ -15,6 +16,9 @@
 =======
 /*   Updated: 2023/10/09 18:44:53 by mamaral-         ###   ########.fr       */
 >>>>>>> c9d4cc5 (09-10)
+=======
+/*   Updated: 2023/10/10 11:49:09 by mamaral-         ###   ########.fr       */
+>>>>>>> 8fd3012 (12/10/23)
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,9 +105,15 @@ void	ctrl_d(t_shell *shell)
 		ft_comand_signal();
 
 		shell->line = readline("minishell -> ");
+<<<<<<< HEAD
 		cmd = ft_split(shell->line, ' ');
 		if (!shell->line)
 		{
+=======
+		if (!shell->line || !ft_strcmp(shell->line, "exit"))
+			ctrl_d(shell);
+		else if (!ft_strlen(shell->line) || ft_chk_char(shell->line))
+>>>>>>> 8fd3012 (12/10/23)
 			free(shell->line);
 		else
 		{

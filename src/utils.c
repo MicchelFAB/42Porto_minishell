@@ -7,10 +7,14 @@
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 10:48:20 by mamaral-          #+#    #+#             */
 <<<<<<< HEAD
+<<<<<<< HEAD
 /*   Updated: 2023/10/12 21:56:44 by mamaral-         ###   ########.fr       */
 =======
 /*   Updated: 2023/10/09 18:31:48 by mamaral-         ###   ########.fr       */
 >>>>>>> c9d4cc5 (09-10)
+=======
+/*   Updated: 2023/10/10 12:01:14 by mamaral-         ###   ########.fr       */
+>>>>>>> 8fd3012 (12/10/23)
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +98,7 @@ char	*ft_strjoin_null(char *s1, char *s2)
 	{
 		result = ft_strjoin(s1, s2);
 		free(s1);
-		// free(s2);
+		free(s2);
 		return (result);
 	}
 	if (s1 == NULL && s2 != NULL)

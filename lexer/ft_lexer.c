@@ -8,6 +8,7 @@
 /*   Created: 2023/09/27 13:52:07 by mamaral-          #+#    #+#             */
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 /*   Updated: 2023/10/12 22:27:48 by mamaral-         ###   ########.fr       */
 =======
 /*   Updated: 2023/10/03 18:40:33 by mamaral-         ###   ########.fr       */
@@ -15,6 +16,9 @@
 =======
 /*   Updated: 2023/10/09 18:31:39 by mamaral-         ###   ########.fr       */
 >>>>>>> c9d4cc5 (09-10)
+=======
+/*   Updated: 2023/10/10 11:51:02 by mamaral-         ###   ########.fr       */
+>>>>>>> 8fd3012 (12/10/23)
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +83,7 @@ int	ft_elements(char *s, int i)
 	return (rest);
 } */
 
-char	*ft_quote_data(char *str, t_shell *line, int *i, int *j)
+/* char	*ft_quote_data(char *str, t_shell *line, int *i, int *j)
 {
 	if (line->line[*i + 1] && line->line[*i + 1] == '\"')
 		str[(*j)++] = (char)(line->line[(*i)++]);
@@ -96,7 +100,7 @@ char	*ft_quote_data(char *str, t_shell *line, int *i, int *j)
 			}
 	}
 	return(str);
-}
+} */
 
 >>>>>>> c9d4cc5 (09-10)
 int	skip_quotes(char *s)
