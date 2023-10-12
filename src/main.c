@@ -9,6 +9,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 /*   Updated: 2023/10/16 14:04:31 by mamaral-         ###   ########.fr       */
 =======
 /*   Updated: 2023/10/04 10:52:21 by mamaral-         ###   ########.fr       */
@@ -19,6 +20,9 @@
 =======
 /*   Updated: 2023/10/10 11:49:09 by mamaral-         ###   ########.fr       */
 >>>>>>> 8fd3012 (12/10/23)
+=======
+/*   Updated: 2023/10/12 23:04:28 by mamaral-         ###   ########.fr       */
+>>>>>>> bc19d77 (Day End)
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +47,13 @@ void	ft_freeshell(t_shell *shell)
 {
 	ft_freeenv(shell->env);
 <<<<<<< HEAD
+<<<<<<< HEAD
 	ft_freeexp(shell->exp);
 =======
 >>>>>>> 49850c4 (Lexer Leaks removed)
+=======
+	ft_freeexp(shell->exp);
+>>>>>>> bc19d77 (Day End)
 	free(shell->line);
 	free(shell);
 }
@@ -128,6 +136,7 @@ void	ctrl_d(t_shell *shell)
 		free(shell->line);
 	}
 } */
+<<<<<<< HEAD
 =======
 void ctrl_d(t_shell *shell)
 {
@@ -138,6 +147,8 @@ void ctrl_d(t_shell *shell)
 
 // loop_shell() is a function that loops the shell and prints the prompt.
 >>>>>>> 49850c4 (Lexer Leaks removed)
+=======
+>>>>>>> bc19d77 (Day End)
 
 void	loop_shell(t_shell *shell)
 {
@@ -146,6 +157,9 @@ void	loop_shell(t_shell *shell)
 		ft_comand_signal();
 		shell->line = readline("minishell -> ");
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> bc19d77 (Day End)
 		if (!shell->line)
 			ctrl_d(shell);
 		else if (!ft_strlen(shell->line) || ft_chk_char(shell->line))
@@ -155,6 +169,7 @@ void	loop_shell(t_shell *shell)
 			add_history(shell->line);
 			start_cmd(shell);
 			parse_execute(shell);
+<<<<<<< HEAD
 =======
 		if (!shell->line || !ft_strcmp(shell->line, "exit"))
 			ctrl_d(shell);
@@ -165,6 +180,8 @@ void	loop_shell(t_shell *shell)
 			add_history(shell->line);
 			start_cmd(shell);
 >>>>>>> 49850c4 (Lexer Leaks removed)
+=======
+>>>>>>> bc19d77 (Day End)
 			free(shell->line);
 			ft_freetree(shell->tree);
 		}
@@ -181,24 +198,39 @@ void	print_start_minishell(void)
 	ssize_t	read_bytes;
 
 	fd = open("./.ascii", O_RDONLY);
+<<<<<<< HEAD
 	if (fd == -1) 
 	{
 		perror("open");
 		exit(EXIT_FAILURE);
 	}
+=======
+	if (fd == -1) {
+        perror("open");
+        exit(EXIT_FAILURE);
+    }
+>>>>>>> bc19d77 (Day End)
 	result = read(fd, &ascii, 2860);
 	read_bytes = write(1, ascii, result);
 	if (read_bytes == -1) 
 	{
+<<<<<<< HEAD
 		perror("write");
 		close(fd);
 		exit(EXIT_FAILURE);
 	}
+=======
+        perror("write");
+        close(fd);
+        exit(EXIT_FAILURE);
+    }
+>>>>>>> bc19d77 (Day End)
 	close(fd);
 }
 
 void ft_print_list(t_shell *list)
 {
+<<<<<<< HEAD
 <<<<<<< HEAD
 	t_tree	*tmp;
 
@@ -210,6 +242,8 @@ void ft_print_list(t_shell *list)
 	}
 	free(tmp);
 =======
+=======
+>>>>>>> bc19d77 (Day End)
 	t_tree *tmp;
 	
 	tmp = list->tree;
@@ -219,9 +253,15 @@ void ft_print_list(t_shell *list)
 		tmp = tmp->next;
 	}
 	free(tmp);	
+<<<<<<< HEAD
 >>>>>>> 49850c4 (Lexer Leaks removed)
 }
 
+=======
+}
+
+
+>>>>>>> bc19d77 (Day End)
 int	main(int ac, char **av, char **env)
 {
 	t_shell	*shell;

@@ -9,6 +9,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 /*   Updated: 2023/10/12 22:27:48 by mamaral-         ###   ########.fr       */
 =======
 /*   Updated: 2023/10/03 18:40:33 by mamaral-         ###   ########.fr       */
@@ -19,6 +20,9 @@
 =======
 /*   Updated: 2023/10/10 11:51:02 by mamaral-         ###   ########.fr       */
 >>>>>>> 8fd3012 (12/10/23)
+=======
+/*   Updated: 2023/10/12 22:27:48 by mamaral-         ###   ########.fr       */
+>>>>>>> bc19d77 (Day End)
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -265,17 +269,6 @@ t_tree	*ft_lexer(t_shell *line)
 	if(list == NULL)
 		return (NULL);
 	return (list);
-}
-
-void ft_print_list(t_shell *list)
-{
-	while(list->tree)
-	{
-		printf("%s - %i\n",list->tree->str1, list->tree->type);
-		free(list->tree->str1);
-		list->tree = list->tree->next;
-	}
-	free(list->tree);
 }
 
 void start_cmd(t_shell *shell)

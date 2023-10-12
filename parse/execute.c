@@ -55,6 +55,7 @@ char	**cmd_array(t_shell *shell)
 	return (envp);
 }
 
+<<<<<<< HEAD
 int	ft_check_path(char **path, t_shell *shell)
 {
 	t_env	*env_path;
@@ -152,6 +153,8 @@ void	error_execve(char **env, char **cmd, t_shell *shell)
 	exit(127);
 }
 
+=======
+>>>>>>> bc19d77 (Day End)
 void	exec_cmd(char **cmd, int *fd, int *std_in, t_shell *shell)
 {
 	char	**envp;
