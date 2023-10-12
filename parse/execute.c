@@ -125,6 +125,7 @@ int		cmd_path(char **cmd, int *fd, t_shell *shell)
 			print_error("minishell: command not found.", 127);
 			return (0);
 		}
+		// cmd[0] = cmd_abs;
 		free(cmd[0]);
 		cmd[0] = cmd_abs;
 	}
