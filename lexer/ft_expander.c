@@ -6,12 +6,11 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:28:36 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/10/12 19:21:51 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/10/12 21:59:33 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
 
 char	*ft_expand_env(t_shell *line)
 {

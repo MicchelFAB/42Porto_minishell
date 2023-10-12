@@ -6,7 +6,7 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 13:52:07 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/10/10 11:51:02 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/10/12 22:27:48 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,46 +47,6 @@ int	ft_elements(char *s, int i)
 	else
 		return (0);
 }
-
-/* char	*malloc_rd(char *s)
-{
-	char	*rest;
-	int		n;
-	int		i;
-
-	n = 0;
-	i = 0;
-	while (s[i])
-	{
-		if (ft_elements(s, i))
-			n++;
-		i++;
-	}
-	rest = (char *)malloc(sizeof(char) * (i + 2 * n + 1));
-	if (!rest)
-		return (NULL);
-	ft_bzero(rest, i + 2 * n + 1);
-	return (rest);
-} */
-
-/* char	*ft_quote_data(char *str, t_shell *line, int *i, int *j)
-{
-	if (line->line[*i + 1] && line->line[*i + 1] == '\"')
-		str[(*j)++] = (char)(line->line[(*i)++]);
-	else if (line->line[*i + 1] && line->line[*i + 1] == '\'')
-		(*i)++;
-	else
-	{
-		str[*j] = check_next_char(line->line, *i);
-			if (str[*j] == -2)
-			{
-				str = get_merged_str(line, str, j);
-				while(!isspace(line->line[*i]) && line->line[*i] != '\0')
-					(*i)++;
-			}
-	}
-	return(str);
-} */
 
 int	skip_quotes(char *s)
 {
@@ -222,9 +182,10 @@ t_tree	*ft_create_tree(int type, char *str)
 	new_tree = (t_tree *)malloc(sizeof(t_tree));
 	if (new_tree == NULL)
 		return (NULL);
-	new_tree->str1 = str;
+	new_tree->str1 = ft_strdup(str);
 	new_tree->type = type;
 	new_tree->next = NULL;
+	free(str);
 	return (new_tree);
 }
 
@@ -242,7 +203,6 @@ t_tree	*ft_lexer(t_shell *line)
 	return (list);
 }
 
-<<<<<<< HEAD
 void ft_print_list(t_shell *list)
 {
 	while(list->tree)
@@ -254,8 +214,6 @@ void ft_print_list(t_shell *list)
 	free(list->tree);
 }
 
-=======
->>>>>>> 92ed04a (03.10.23)
 void start_cmd(t_shell *shell)
 {
 	
@@ -264,12 +222,5 @@ void start_cmd(t_shell *shell)
 		shell->tree = ft_lexer(shell);
 		if (shell->tree == NULL)
 			g_signal_exit = 0;
-<<<<<<< HEAD
-/* 		else
-			ft_print_list(shell); */
-=======
-		else
-			ft_print_list(shell);
->>>>>>> 92ed04a (03.10.23)
 	}
 }
