@@ -1,21 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/18 10:48:20 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/10/10 12:01:14 by mamaral-         ###   ########.fr       */
+/*   Created: 2023/10/12 14:26:28 by mamaral-          #+#    #+#             */
+/*   Updated: 2023/10/12 14:27:28 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-extern int		g_signal_exit;
-
-void	print_error(char *msg, int error)
+char *ft_strcpy(char *dest, char *src)
 {
-	g_signal_exit = error;
-	printf("%s\n", msg);
+	int i;
+
+	i = 0;
+	while (src[i])
+	{
+		dest[i] = src[i]; 
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
 }

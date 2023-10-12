@@ -80,33 +80,6 @@ void	ctrl_d(t_shell *shell)
 	exit(0);
 }
 
-/* void	loop_shell(t_shell *shell)
-{
-	char	**cmd;
-
-	while (true)
-	{
-		ft_comand_signal();
-
-		shell->line = readline("minishell -> ");
-		cmd = ft_split(shell->line, ' ');
-		if (!shell->line)
-		{
-			free(shell->line);
-		else
-		{
-			add_history(shell->line);
-			start_cmd(shell);
-			free(shell->line);
-			ft_freetree(shell->tree);
-		}
-		if (is_builtin(cmd))
-			exec_builtin(cmd, shell);
-		//ft_printf("%s\n", shell->line);
-		free(shell->line);
-	}
-} */
-
 void	loop_shell(t_shell *shell)
 {
 	while (true)
