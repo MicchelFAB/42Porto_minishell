@@ -109,7 +109,7 @@ char *ft_rd_instr(char *instr)
 	return(temp);
 }
 
-long long int	ft_atol(const char *nptr)
+/* long long int	ft_atol(const char *nptr)
 {
 	long long int	res;
 	long long int	sinal;
@@ -128,4 +128,4 @@ long long int	ft_atol(const char *nptr)
 		nptr++;
 	}
 	return (res * sinal);
-}
+} */

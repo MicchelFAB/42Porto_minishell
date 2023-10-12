@@ -81,7 +81,6 @@ t_shell 	*init_shell(char **env);
 /*------------utils-----------*/
 char 	*ft_rd_instr(char *instr);
 void	print_error(char *msg, int error);
-long long int	ft_atol(const char *nptr);
 
 /*-----------clear------------*/
 void	clean_all(t_shell *shell);
