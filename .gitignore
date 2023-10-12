@@ -51,7 +51,5 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
-.vscode/c_cpp_properties.json
-.vscode/launch.json
-.vscode/settings.json
 minishell
+test.c

@@ -6,7 +6,7 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 16:08:31 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/10/09 18:37:58 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/10/12 18:57:03 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void ft_freetree(t_tree *tree);
 
 char	*ft_expand_env(t_shell *line);
 char	check_next_char(char *str, int i);
-char	*get_merged_str(t_shell *line, char *str, int *i);
+void	*get_merged_str(t_shell *line, int *i);
 char	*get_env_to_str(char *str, t_env *env);
 char	*ft_join_str_env(char *s, char *env);
 char	*get_env_name(char *s);
@@ -98,5 +98,6 @@ char 	*ft_exit_nbr(char *str);
 char	*ft_quote_data(char *str, t_shell *line, int *i, int *j);
 char	*ft_strjoin_null(char *s1, char *s2);
 void	ft_putspecial(char *str, char *line, int *i, int *j);
+int		ft_verify_quote(char *s, int i);
 
 #endif
