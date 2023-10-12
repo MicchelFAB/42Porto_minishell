@@ -242,15 +242,25 @@ t_tree	*ft_lexer(t_shell *line)
 	return (list);
 }
 
+void ft_print_list(t_shell *list)
+{
+	while(list->tree)
+	{
+		printf("%s - %i\n",list->tree->str1, list->tree->type);
+		free(list->tree->str1);
+		list->tree = list->tree->next;
+	}
+	free(list->tree);
+}
+
 void start_cmd(t_shell *shell)
 {
-	
 	if (shell->line[0] != '\0')
 	{
 		shell->tree = ft_lexer(shell);
 		if (shell->tree == NULL)
 			g_signal_exit = 0;
-		else
-			ft_print_list(shell);
+/* 		else
+			ft_print_list(shell); */
 	}
 }

@@ -12,6 +12,13 @@
 
 #include "minishell.h"
 
+extern int		g_signal_exit;
+
+void	print_error(char *msg, int error)
+{
+	g_signal_exit = error;
+	printf("%s\n", msg);
+
 
 /**
 * @brief
@@ -102,6 +109,7 @@ char *ft_rd_instr(char *instr)
 	return(temp);
 }
 
+
 char	*ft_strjoin_null(char *s1, char *s2)
 {
 	char	*result;
@@ -126,4 +134,25 @@ char	*ft_strjoin_null(char *s1, char *s2)
 		return (result);
 	}
 	return (NULL);
+}
+
+long long int	ft_atol(const char *nptr)
+{
+	long long int	res;
+	long long int	sinal;
+
+	res = 0;
+	sinal = 1;
+	while (*nptr == 32 || (*nptr >= 9 && *nptr <= 13))
+		nptr++;
+	if (*nptr == '-')
+		sinal *= -1;
+	if (*nptr == '-' || *nptr == '+')
+		nptr++;
+	while (*nptr >= '0' && *nptr <= '9')
+	{
+		res = res * 10 + *nptr - '0';
+		nptr++;
+	}
+	return (res * sinal);
 }
