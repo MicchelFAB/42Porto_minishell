@@ -6,7 +6,7 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 10:48:20 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/09/19 18:17:56 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/10/10 12:01:14 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,33 @@ char *ft_rd_instr(char *instr)
 	}
 	printf("\n");
 	return(temp);
+}
+
+
+char	*ft_strjoin_null(char *s1, char *s2)
+{
+	char	*result;
+
+	if (s1 != NULL && s2 != NULL)
+	{
+		result = ft_strjoin(s1, s2);
+		free(s1);
+		free(s2);
+		return (result);
+	}
+	if (s1 == NULL && s2 != NULL)
+	{
+		result = ft_strdup(s2);
+		free(s2);
+		return (result);
+	}
+	if (s1 != NULL && s2 == NULL)
+	{
+		result = ft_strdup(s1);
+		free(s1);
+		return (result);
+	}
+	return (NULL);
 }
 
 long long int	ft_atol(const char *nptr)

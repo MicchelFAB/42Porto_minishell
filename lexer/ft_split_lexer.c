@@ -6,27 +6,11 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 11:46:54 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/10/03 15:21:20 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/10/09 18:28:19 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-void	malloc_failed(char *str)
-{
-	printf("malloc failed in %s\n", str);
-	exit (1);
-}
-
-char	*safe_ft_substr(char *s1, int start, int size, char *s2)
-{
-	char	*new;
-
-	new = ft_substr(s1, start, size);
-	if (new == NULL)
-		malloc_failed(s2);
-	return (new);
-}
 
 void	add_next(t_tree *new, t_tree *start)
 {

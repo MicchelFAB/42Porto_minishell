@@ -6,7 +6,7 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 10:48:20 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/09/19 18:18:32 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/09/27 13:51:47 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	ft_addenv_back(t_env **lst, t_env *new)
 		last = last->next;
 	last->next = new;
 }
+
 
 void print_cmdenv(t_shell *shell)
 {
@@ -71,7 +72,7 @@ t_env	*ft_envnew(char *key, char *value)
 	new_env->value = ft_strdup(value);
 	new_env->next = NULL;
 	return (new_env);
-	}
+}
 
 
 void ft_import_env(t_shell *shell, char **env)

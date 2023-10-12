@@ -21,7 +21,7 @@ CC			:= cc
 RM			:= rm -rf
 
 # ------- FLAGS ------- #
-CFLAGS		:= -Wall -Wextra -Werror -g
+CFLAGS		:= -Wall -Wextra -Werror -g #-fsanitize=address
 CPPFLAGS	:= -MMD -MP 
 RDLINE		:= -lreadline -lXext -lX11 -lm
 MAKEFLAGS	+= --no-print-directory
@@ -36,6 +36,7 @@ NAME		:= minishell
 
 # ------- SOURCES ------- #
 SRC_DIR		:= src/
+
 BUILTIN_DIR	:= builtin
 LEXER_DIR	:= lexer
 PARSE_DIR	:= parse
@@ -62,7 +63,6 @@ SRC_BUILTIN	:= $(SRC_BUILTIN:%=$(BUILTIN_DIR)/%)
 SRC_LEXER	:= $(SRC_LEXER:%=$(LEXER_DIR)/%)
 SRC_PARSE	:= $(SRC_PARSE:%=$(PARSE_DIR)/%)
 
-
 BUILD_DIR	:= .build
 LIBFT		:= $(BUILD_DIR)/libs/libft.a
 OBJS		:= $(SRCS:$(SRC_DIR)/%.c=$(BUILD_DIR)/obj/%.o)
@@ -85,7 +85,7 @@ $(NAME): $(OBJS)
 # ------- OBJECTS ------- #
 $(BUILD_DIR)/obj/%.o: $(SRC_DIR)/%.c | $(BUILD_DIR)
 	@printf "\e[2K\r$(YELLOW)Compiling $<$(END)"
-	@$(CC) $(CFLAGS) $(CPPFLAGS) $(RDLINE) -c -O3 $< -o $@ $(INCLUDE)
+	@$(CC) $(CFLAGS) $(CPPFLAGS) $(RDLINE) -c $< -o $@ $(INCLUDE)
 
 $(BUILD_DIR)/obj/%.o: $(BUILTIN_DIR)/%.c | $(BUILD_DIR)
 	@printf "\e[2K\r$(YELLOW)Compiling $<$(END)"

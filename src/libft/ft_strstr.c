@@ -1,27 +1,53 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/11 19:12:13 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/10/09 13:28:53 by mamaral-         ###   ########.fr       */
+/*   Created: 2023/10/12 17:37:45 by mamaral-          #+#    #+#             */
+/*   Updated: 2023/10/12 17:38:43 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/**
- * @brief This function compares the two strings s1 and s2. It returns an integer
- * @return 0 if the strings are identical, otherwise it returns the difference
-  */
-int	ft_strcmp(char *s1, char *s2)
+int ft_strstr_end(char *str, char *to_find)
 {
-	int	i;
-
+	int i;
+	int j;
+	
 	i = 0;
-	while (s1[i] == s2[i] && s1[i] != '\0' && s2[i] != '\0')
+	j = 0;
+	while (str[i])
+	{
+		while (str[i + j] == to_find[j])
+		{
+			if (to_find[j + 1] == '\0')
+				return (i + j);
+			j++;
+		}
 		i++;
-	return (s1[i] - s2[i]);
+	}
+	return (0);
+}
+
+int ft_strstr_init(char *str, char *to_find)
+{
+	int i;
+	int j;
+	
+	i = 0;
+	j = 0;
+	while (str[i])
+	{
+		while (str[i + j] == to_find[j])
+		{
+			if (to_find[j + 1] == '\0')
+				return (i);
+			j++;
+		}
+		i++;
+	}
+	return (0);
 }

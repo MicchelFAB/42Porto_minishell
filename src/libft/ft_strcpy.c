@@ -1,18 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isspace.c                                       :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/29 10:37:41 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/09/27 13:35:18 by mamaral-         ###   ########.fr       */
+/*   Created: 2023/10/12 14:26:28 by mamaral-          #+#    #+#             */
+/*   Updated: 2023/10/12 14:27:28 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isspace(int c)
+char *ft_strcpy(char *dest, char *src)
 {
-	return ((c >= 9 && c <= 13) || c == ' ');
+	int i;
+
+	i = 0;
+	while (src[i])
+	{
+		dest[i] = src[i]; 
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
 }

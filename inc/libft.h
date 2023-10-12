@@ -6,7 +6,7 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 13:53:51 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/09/19 09:55:04 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/10/12 18:56:52 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ typedef struct s_list
 	struct s_list	*next;
 }t_list;
 
-// # Check functions #
+/*  # Check functions # */
+
 int				ft_isalpha(int c);
 int				ft_isdigit(int c);
 int				ft_isalnum(int c);
@@ -46,6 +47,7 @@ char			*ft_strtrim(char const *s1, char const *set);
 char			*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char			**ft_split(char const *s, char c);
 void			ft_striteri(char *s, void (*f)(unsigned int, char *));
+char 			*ft_str_replace(char *str, char *old, char *new);
 
 // # Memory functions #
 size_t			ft_strlen(const char *s);
@@ -94,5 +96,8 @@ int				ft_putnbrpf(int n);
 int				ft_putunbrpf(unsigned int n);
 int				ft_putptrpf(unsigned long n);
 long long int	ft_atol(const char *nptr);
+char 			*ft_strcpy(char *dest, char *src);
+int ft_strstr_init(char *str, char *to_find);
+int ft_strstr_end(char *str, char *to_find);
 
 #endif

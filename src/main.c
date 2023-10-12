@@ -6,13 +6,33 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 11:40:49 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/09/19 18:21:45 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/10/10 11:49:09 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 int g_signal_exit;
+
+void ft_freetree(t_tree *tree)
+{
+	t_tree *tmp;
+
+	while (tree)
+	{
+		tmp = tree->next;
+		free(tree->str1);
+		free(tree);
+		tree = tmp;
+	}
+}
+
+void ft_freeshell(t_shell *shell)
+{
+	ft_freeenv(shell->env);
+	free(shell->line);
+	free(shell);
+}
 
 void ft_ctrlc(int sig)
 {
@@ -47,8 +67,15 @@ t_shell *init_shell(char **env)
 	shell->t_count = 0;
 	shell->tree = NULL;
 	ft_import_env(shell, env);
-	ft_import_exp(env, shell);
+  ft_import_exp(env, shell);
 	return (shell);
+}
+
+void ctrl_d(t_shell *shell)
+{
+		ft_freeshell(shell);
+		ft_printf("exit\n");
+		exit(0);
 }
 
 /* void	loop_shell(t_shell *shell)
@@ -64,14 +91,12 @@ t_shell *init_shell(char **env)
 		if (!shell->line)
 		{
 			free(shell->line);
-			ft_freeenv(shell->env);
-			ft_printf("exit\n");
-			exit(0);
-		}
-		else 
+		else
 		{
 			add_history(shell->line);
-			start_cmdenv(shell);
+			start_cmd(shell);
+			free(shell->line);
+			ft_freetree(shell->tree);
 		}
 		if (is_builtin(cmd))
 			exec_builtin(cmd, shell);
@@ -132,13 +157,14 @@ void	loop_shell(t_shell *shell)
 	exit(g_signal_exit);
 }
 
-int	main(int ac, char **av, char **env) // ac = argument count, av = argument vector, env = environment
+int	main(int ac, char **av, char **env)
 {
-	t_shell	shell;
+	t_shell	*shell;
 
 	(void)ac;
 	(void)av;
-	init_shell(&shell, env);
-	loop_shell(&shell);
+	shell = init_shell(env);
+	print_start_minishell();
+	loop_shell(shell);
 	return (0);
 }
