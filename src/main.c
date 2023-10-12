@@ -6,7 +6,7 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 11:40:49 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/10/10 11:49:09 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/10/12 23:04:28 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void ft_freetree(t_tree *tree)
 void ft_freeshell(t_shell *shell)
 {
 	ft_freeenv(shell->env);
+	ft_freeexp(shell->exp);
 	free(shell->line);
 	free(shell);
 }
@@ -67,7 +68,7 @@ t_shell *init_shell(char **env)
 	shell->t_count = 0;
 	shell->tree = NULL;
 	ft_import_env(shell, env);
-  ft_import_exp(env, shell);
+	ft_import_exp(env, shell);
 	return (shell);
 }
 
@@ -105,57 +106,65 @@ void ctrl_d(t_shell *shell)
 	}
 } */
 
-void ft_freetree(t_tree *tree)
-{
-	t_tree *tmp;
-
-	while (tree)
-	{
-		tmp = tree;
-		tree = tree->next;
-		free(tmp->str1);
-		free(tmp);
-	}
-}
-
-void ft_freeshell(t_shell *shell)
-{
-	ft_freeenv(shell->env);
-	ft_freetree(shell->tree);
-	free(shell);
-}
-
 void	loop_shell(t_shell *shell)
 {
 	while (true)
 	{
 		ft_comand_signal();
 		shell->line = readline("minishell -> ");
-		if (!shell->line || !ft_strlen(shell->line) || ft_chk_char(shell->line))
+		if (!shell->line)
+			ctrl_d(shell);
+		else if (!ft_strlen(shell->line) || ft_chk_char(shell->line))
+			free(shell->line);
+		else
 		{
-			if (shell->line)
-			{
-				free(shell->line);
-				continue ;
-			}
-			else
-			{
-				free(shell->line);
-				ft_freeshell(shell);
-				ft_printf("exit\n");
-				exit(0);
-			}
+			add_history(shell->line);
+			start_cmd(shell);
+			parse_execute(shell);
+			free(shell->line);
+			ft_freetree(shell->tree);
 		}
-		add_history(shell->line);
-		start_cmd(shell);
-		parse_execute(shell);
-		// free(shell->line);
-		// ft_putstr_fd("exit\n", 2);
-		// break ;
 	}
 	ft_freeshell(shell);
 	exit(g_signal_exit);
 }
+
+void	print_start_minishell(void)
+{
+	char	ascii[2860];
+	int		result;
+	int		fd;
+	ssize_t	read_bytes;
+
+	fd = open("./.ascii", O_RDONLY);
+	if (fd == -1) {
+        perror("open");
+        exit(EXIT_FAILURE);
+    }
+	result = read(fd, &ascii, 2860);
+	read_bytes = write(1, ascii, result);
+	if (read_bytes == -1) 
+	{
+        perror("write");
+        close(fd);
+        exit(EXIT_FAILURE);
+    }
+	close(fd);
+}
+
+void ft_print_list(t_shell *list)
+{
+	t_tree *tmp;
+	
+	tmp = list->tree;
+	while(tmp)
+	{
+		printf("%s - %i\n",tmp->str1, tmp->type);
+		tmp = tmp->next;
+	}
+	free(tmp);	
+}
+
 
 int	main(int ac, char **av, char **env)
 {

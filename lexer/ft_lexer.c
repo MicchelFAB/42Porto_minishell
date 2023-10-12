@@ -6,7 +6,7 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 13:52:07 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/10/10 11:51:02 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/10/12 22:27:48 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -222,9 +222,10 @@ t_tree	*ft_create_tree(int type, char *str)
 	new_tree = (t_tree *)malloc(sizeof(t_tree));
 	if (new_tree == NULL)
 		return (NULL);
-	new_tree->str1 = str;
+	new_tree->str1 = ft_strdup(str);
 	new_tree->type = type;
 	new_tree->next = NULL;
+	free(str);
 	return (new_tree);
 }
 
@@ -240,17 +241,6 @@ t_tree	*ft_lexer(t_shell *line)
 	if(list == NULL)
 		return (NULL);
 	return (list);
-}
-
-void ft_print_list(t_shell *list)
-{
-	while(list->tree)
-	{
-		printf("%s - %i\n",list->tree->str1, list->tree->type);
-		free(list->tree->str1);
-		list->tree = list->tree->next;
-	}
-	free(list->tree);
 }
 
 void start_cmd(t_shell *shell)

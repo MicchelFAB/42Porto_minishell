@@ -1,4 +1,16 @@
-#include "../inc/minishell.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   execute.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/12 21:57:23 by mamaral-          #+#    #+#             */
+/*   Updated: 2023/10/12 21:58:07 by mamaral-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "minishell.h"
 
 char	*ft_strjoin_join(char *key, char *iqual, char *value)
 {
@@ -43,7 +55,7 @@ char	**cmd_array(t_shell *shell)
 	return (envp);
 }
 
-void	(char **cmd, int *fd, int *std_in, t_shell *shell)
+void	exec_cmd(char **cmd, int *fd, int *std_in, t_shell *shell)
 {
 	char	**envp;
 	(void)fd;
