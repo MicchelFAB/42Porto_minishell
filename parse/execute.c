@@ -152,7 +152,7 @@ void	exec_cmd(char **cmd, int *fd, int *std_in, t_shell *shell)
 	// fazer fork
 
 	// refistar os sinais ctrl+c e ctrl+/
-	ft_comand_signal();
+	//ft_comand_signal();
 	// registar o pid atual e contar processo++
 
 	//se for process child (pid == 0)
