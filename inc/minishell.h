@@ -74,29 +74,30 @@ typedef struct s_shell
 }				t_shell;
 
 /*------------main------------*/
-int		main(int ac, char **av, char **env);
-void	loop_shell(t_shell *shell);
+int			main(int ac, char **av, char **env);
+void		loop_shell(t_shell *shell);
 t_shell 	*init_shell(char **env);
+void		ft_comand_signal(void);
 
 /*------------utils-----------*/
-char 	*ft_rd_instr(char *instr);
-void	print_error(char *msg, int error);
+char		*ft_rd_instr(char *instr);
+void		print_error(char *msg, int error);
 
 /*-----------clear------------*/
-void	clean_all(t_shell *shell);
-void	free_split(char **ptr);
+void		clean_all(t_shell *shell);
+void		free_split(char **ptr);
 
 /*-----------lexer------------*/
-void 	start_cmd(t_shell *shell);
-t_tree	*ft_lexer(t_shell *line);
-t_tree	*ft_create_tree(int type, char *str);
-int 	str_whitespace_only(char *str);
-int		ft_chk_char(char *line);
-int		check_quote_pair(char *s, int size);
-int		skip_quotes(char *s);
+void 		start_cmd(t_shell *shell);
+t_tree		*ft_lexer(t_shell *line);
+t_tree		*ft_create_tree(int type, char *str);
+int 		str_whitespace_only(char *str);
+int			ft_chk_char(char *line);
+int			check_quote_pair(char *s, int size);
+int			skip_quotes(char *s);
 
-t_tree	*ft_split_lexer(char *str);
-t_tree	*make_tree(char *str, int size);
+t_tree		*ft_split_lexer(char *str);
+t_tree		*make_tree(char *str, int size);
 
 
 /*------------ft_env----------*/
