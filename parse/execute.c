@@ -180,8 +180,6 @@ void	exec_cmd(char **cmd, int *fd, int *std_in, t_shell *shell)
 		if (execve(cmd[0], cmd, envp) == -1)
 			error_execve(envp, cmd, shell);
 	}
-	
-
 }
 
 void	execute(char **cmd, int *fd, int *std_in, t_shell *shell)
