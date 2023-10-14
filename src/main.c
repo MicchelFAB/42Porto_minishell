@@ -6,9 +6,10 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 11:40:49 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/09/19 18:21:45 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/10/14 16:35:18 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "minishell.h"
 
@@ -58,7 +59,6 @@ t_shell *init_shell(char **env)
 	while (true)
 	{
 		ft_comand_signal();
-
 		shell->line = readline("minishell -> ");
 		cmd = ft_split(shell->line, ' ');
 		if (!shell->line)
@@ -132,13 +132,15 @@ void	loop_shell(t_shell *shell)
 	exit(g_signal_exit);
 }
 
+
+
 int	main(int ac, char **av, char **env) // ac = argument count, av = argument vector, env = environment
 {
-	t_shell	shell;
+	t_shell	*shell;
 
 	(void)ac;
 	(void)av;
-	init_shell(&shell, env);
-	loop_shell(&shell);
+	shell = init_shell(env);
+	loop_shell(shell);
 	return (0);
 }
