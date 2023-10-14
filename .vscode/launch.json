@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "${workspaceFolder}",
-      "program": "${workspaceFolder}/minishell",
+      "cwd": "/home/michel-batista/Documents/42Porto-lvl_3_minishell",
+      "program": "/home/michel-batista/Documents/42Porto-lvl_3_minishell/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
@@ -18,34 +18,7 @@
           "text": "-enable-pretty-printing",
           "ignoreFailures": true
         }
-      ],
-	  "preLaunchTask": "run the makefile"
+      ]
     }
   ]
 }
-
-// {
-// 	"version": "0.2.0",
-// 	"configurations": [
-// 	  {
-// 		"name": "C/C++ Runner: Debug Session",
-// 		"type": "cppdbg",
-// 		"request": "launch",
-// 		"args": [],
-// 		"stopAtEntry": false,
-// 		"externalConsole": false,
-// 		"cwd": "${workspaceFolder}",
-// 		"program": "${workspaceFolder}/a.out",
-// 		"MIMode": "gdb",
-// 		"miDebuggerPath": "gdb",
-// 		"setupCommands": [
-// 		  {
-// 			"description": "Enable pretty-printing for gdb",
-// 			"text": "-enable-pretty-printing",
-// 			"ignoreFailures": true
-// 		  }
-// 		],
-// 		"preLaunchTask": "run the makefile"
-// 	  }
-// 	]
-//   }
