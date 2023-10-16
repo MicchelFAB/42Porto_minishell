@@ -6,7 +6,23 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 13:52:07 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/10/16 15:00:56 by mamaral-         ###   ########.fr       */
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+/*   Updated: 2023/10/12 22:27:48 by mamaral-         ###   ########.fr       */
+=======
+/*   Updated: 2023/10/03 18:40:33 by mamaral-         ###   ########.fr       */
+>>>>>>> 49850c4 (Lexer Leaks removed)
+=======
+/*   Updated: 2023/10/09 18:31:39 by mamaral-         ###   ########.fr       */
+>>>>>>> c9d4cc5 (09-10)
+=======
+/*   Updated: 2023/10/10 11:51:02 by mamaral-         ###   ########.fr       */
+>>>>>>> 8fd3012 (12/10/23)
+=======
+/*   Updated: 2023/10/12 22:27:48 by mamaral-         ###   ########.fr       */
+>>>>>>> bc19d77 (Day End)
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +64,8 @@ int	ft_elements(char *s, int i)
 		return (0);
 }
 
+<<<<<<< HEAD
+=======
 /* char	*malloc_rd(char *s)
 {
 	char	*rest;
@@ -88,6 +106,7 @@ int	ft_elements(char *s, int i)
 	return(str);
 } */
 
+>>>>>>> c9d4cc5 (09-10)
 int	skip_quotes(char *s)
 {
 	int	i;
@@ -197,7 +216,7 @@ void	rm_whitespace(char *s)
 		{
 			i += skip_quotes(&s[i]);
 		}
-		else if (ft_isspace(s[i]) && (i == 0 || s[i - 1] != '\\'))
+		else if (ft_isspace(s[i]))
 			s[i] = -1;
 		if (s[i] != '\0')
 			i++;
@@ -235,7 +254,16 @@ t_tree	*ft_lexer(t_shell *line)
 	
 	if (line->line == NULL)
 		return (NULL);
+<<<<<<< HEAD
+<<<<<<< HEAD
 	line->line = ft_expand_env(line);
+=======
+	// list = ft_create_tree(NULL_S, NULL);
+	//line->line = ft_expand_env(line->line, line->env);
+>>>>>>> 49850c4 (Lexer Leaks removed)
+=======
+	line->line = ft_expand_env(line);
+>>>>>>> c9d4cc5 (09-10)
 	rm_whitespace(line->line);
 	list = ft_split_lexer(line->line);
 	if(list == NULL)
@@ -245,12 +273,11 @@ t_tree	*ft_lexer(t_shell *line)
 
 void start_cmd(t_shell *shell)
 {
+	
 	if (shell->line[0] != '\0')
 	{
 		shell->tree = ft_lexer(shell);
 		if (shell->tree == NULL)
 			g_signal_exit = 0;
-/*		else
-			ft_print_list(shell); */
 	}
 }
