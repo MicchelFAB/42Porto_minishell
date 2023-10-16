@@ -6,7 +6,7 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 16:08:31 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/10/12 18:57:03 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/10/16 19:02:48 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include <readline/history.h>
 # include <signal.h>
 # include <unistd.h>
+# include <sys/wait.h>
 
 # define	NULL_S		0
 # define	WORD		1
