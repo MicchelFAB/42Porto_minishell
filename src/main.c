@@ -6,7 +6,7 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 11:40:49 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/10/14 16:35:18 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/10/14 16:39:07 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,34 +52,6 @@ t_shell *init_shell(char **env)
 	return (shell);
 }
 
-/* void	loop_shell(t_shell *shell)
-{
-	char	**cmd;
-
-	while (true)
-	{
-		ft_comand_signal();
-		shell->line = readline("minishell -> ");
-		cmd = ft_split(shell->line, ' ');
-		if (!shell->line)
-		{
-			free(shell->line);
-			ft_freeenv(shell->env);
-			ft_printf("exit\n");
-			exit(0);
-		}
-		else 
-		{
-			add_history(shell->line);
-			start_cmdenv(shell);
-		}
-		if (is_builtin(cmd))
-			exec_builtin(cmd, shell);
-		//ft_printf("%s\n", shell->line);
-		free(shell->line);
-	}
-} */
-
 void ft_freetree(t_tree *tree)
 {
 	t_tree *tmp;
@@ -124,6 +96,7 @@ void	loop_shell(t_shell *shell)
 		add_history(shell->line);
 		start_cmd(shell);
 		parse_execute(shell);
+		wait(0);
 		// free(shell->line);
 		// ft_putstr_fd("exit\n", 2);
 		// break ;

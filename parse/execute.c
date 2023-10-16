@@ -143,6 +143,8 @@ void	error_execve(char **env, char **cmd, t_shell *shell)
 void	exec_cmd(char **cmd, int *fd, int *std_in, t_shell *shell)
 {
 	char	**envp;
+	int		pid;
+
 	(void)fd;
 	(void)std_in;
 	// verificar se cmd existe e se o PATH existe
@@ -150,19 +152,23 @@ void	exec_cmd(char **cmd, int *fd, int *std_in, t_shell *shell)
 		return ;
 	
 	// fazer fork
-
+	pid = fork();
 	// refistar os sinais ctrl+c e ctrl+/
 	//ft_comand_signal();
 	// registar o pid atual e contar processo++
 
 	//se for process child (pid == 0)
+	if (pid == 0)
+	{
 		//fechar os fd's
 		//fechar std_in se for depois da 1 passagem
 		// criar, para colocar no execve, um char ** onde tem o shell->env
-	envp = cmd_array(shell);
-	//lidar com o execve
-	if (execve(cmd[0], cmd, envp) == -1)
-		error_execve(envp, cmd, shell);	
+		envp = cmd_array(shell);
+		//lidar com o execve
+		if (execve(cmd[0], cmd, envp) == -1)
+			error_execve(envp, cmd, shell);
+	}
+	
 
 }
 

@@ -23,6 +23,7 @@
 # include <readline/history.h>
 # include <signal.h>
 # include <unistd.h>
+# include <sys/wait.h>
 
 # define	NULL_S		0
 # define	WORD		1
