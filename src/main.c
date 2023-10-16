@@ -6,17 +6,17 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 11:40:49 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/10/12 23:04:28 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/10/16 14:04:31 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int g_signal_exit;
+int	g_signal_exit;
 
-void ft_freetree(t_tree *tree)
+void	ft_freetree(t_tree *tree)
 {
-	t_tree *tmp;
+	t_tree	*tmp;
 
 	while (tree)
 	{
@@ -27,7 +27,7 @@ void ft_freetree(t_tree *tree)
 	}
 }
 
-void ft_freeshell(t_shell *shell)
+void	ft_freeshell(t_shell *shell)
 {
 	ft_freeenv(shell->env);
 	ft_freeexp(shell->exp);
@@ -35,7 +35,7 @@ void ft_freeshell(t_shell *shell)
 	free(shell);
 }
 
-void ft_ctrlc(int sig)
+void	ft_ctrlc(int sig)
 {
 	(void)sig;
 	ft_putstr_fd("\n", 2);
@@ -52,17 +52,18 @@ void ft_ctrlc(int sig)
 */
 void	ft_comand_signal(void)
 {
-	signal(SIGINT, ft_ctrlc);	
+	signal(SIGINT, ft_ctrlc);
 	signal(SIGQUIT, SIG_IGN);
 }
 
 // init_shell() is a function that allocates memory for the shell structure and
 // initializes the environment variable.
-t_shell *init_shell(char **env)
+t_shell	*init_shell(char **env)
 {
-	t_shell *shell;
+	t_shell	*shell;
+
 	shell = malloc(sizeof(t_shell));
-	if(!shell)
+	if (!shell)
 		exit(EXIT_FAILURE);
 	shell->line = NULL;
 	shell->t_count = 0;
@@ -72,11 +73,11 @@ t_shell *init_shell(char **env)
 	return (shell);
 }
 
-void ctrl_d(t_shell *shell)
+void	ctrl_d(t_shell *shell)
 {
-		ft_freeshell(shell);
-		ft_printf("exit\n");
-		exit(0);
+	ft_freeshell(shell);
+	ft_printf("exit\n");
+	exit(0);
 }
 
 /* void	loop_shell(t_shell *shell)
@@ -137,34 +138,34 @@ void	print_start_minishell(void)
 	ssize_t	read_bytes;
 
 	fd = open("./.ascii", O_RDONLY);
-	if (fd == -1) {
-        perror("open");
-        exit(EXIT_FAILURE);
-    }
+	if (fd == -1) 
+	{
+		perror("open");
+		exit(EXIT_FAILURE);
+	}
 	result = read(fd, &ascii, 2860);
 	read_bytes = write(1, ascii, result);
 	if (read_bytes == -1) 
 	{
-        perror("write");
-        close(fd);
-        exit(EXIT_FAILURE);
-    }
+		perror("write");
+		close(fd);
+		exit(EXIT_FAILURE);
+	}
 	close(fd);
 }
 
 void ft_print_list(t_shell *list)
 {
-	t_tree *tmp;
-	
+	t_tree	*tmp;
+
 	tmp = list->tree;
-	while(tmp)
+	while (tmp)
 	{
-		printf("%s - %i\n",tmp->str1, tmp->type);
+		printf("%s - %i\n", tmp->str1, tmp->type);
 		tmp = tmp->next;
 	}
-	free(tmp);	
+	free(tmp);
 }
-
 
 int	main(int ac, char **av, char **env)
 {
