@@ -6,19 +6,7 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 16:08:31 by mamaral-          #+#    #+#             */
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 /*   Updated: 2023/10/12 18:57:03 by mamaral-         ###   ########.fr       */
-=======
-/*   Updated: 2023/10/03 18:00:04 by mamaral-         ###   ########.fr       */
->>>>>>> 49850c4 (Lexer Leaks removed)
-=======
-/*   Updated: 2023/10/09 18:37:58 by mamaral-         ###   ########.fr       */
->>>>>>> c9d4cc5 (09-10)
-=======
-/*   Updated: 2023/10/12 18:57:03 by mamaral-         ###   ########.fr       */
->>>>>>> 8fd3012 (12/10/23)
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +23,6 @@
 # include <readline/history.h>
 # include <signal.h>
 # include <unistd.h>
-# include <sys/wait.h>
 
 # define	NULL_S		0
 # define	WORD		1
@@ -46,12 +33,9 @@
 # define	AND			6
 # define	OR			7
 
-<<<<<<< HEAD
 # define IN		0
 # define OUT	1
 
-=======
->>>>>>> 92ed04a (03.10.23)
 typedef struct s_lexer
 {
 	char	*token;
@@ -72,20 +56,14 @@ typedef struct s_exp
 	char	*value;
 	struct s_exp *next;
 }				t_exp;
-<<<<<<< HEAD
 
-=======
->>>>>>> 92ed04a (03.10.23)
 typedef struct s_tree
 {
 	int 			type;
 	char			*str1;
 	struct s_tree *next;
 }	t_tree;
-<<<<<<< HEAD
 
-=======
->>>>>>> 92ed04a (03.10.23)
 typedef struct s_shell
 {
 	char	*line;
@@ -96,35 +74,64 @@ typedef struct s_shell
 }				t_shell;
 
 /*------------main------------*/
-int			main(int ac, char **av, char **env);
-void		loop_shell(t_shell *shell);
+int		main(int ac, char **av, char **env);
+void	loop_shell(t_shell *shell);
 t_shell 	*init_shell(char **env);
-void		ft_comand_signal(void);
 
 /*------------utils-----------*/
-char		*ft_rd_instr(char *instr);
-void		print_error(char *msg, int error);
+char 	*ft_rd_instr(char *instr);
+void	print_error(char *msg, int error);
+long long int	ft_atol(const char *nptr);
 
 /*-----------clear------------*/
-void		clean_all(t_shell *shell);
-void		free_split(char **ptr);
+void	clean_all(t_shell *shell);
+void	free_split(char **ptr);
 
 /*-----------lexer------------*/
-void 		start_cmd(t_shell *shell);
-t_tree		*ft_lexer(t_shell *line);
-t_tree		*ft_create_tree(int type, char *str);
-int 		str_whitespace_only(char *str);
-int			ft_chk_char(char *line);
-int			check_quote_pair(char *s, int size);
-int			skip_quotes(char *s);
+void 	start_cmd(t_shell *shell);
+t_tree	*ft_lexer(t_shell *line);
+t_tree	*ft_create_tree(int type, char *str);
+int 	str_whitespace_only(char *str);
+int		ft_chk_char(char *line);
+int		check_quote_pair(char *s, int size);
+int		skip_quotes(char *s);
 
-t_tree		*ft_split_lexer(char *str);
-t_tree		*make_tree(char *str, int size);
+t_tree	*ft_split_lexer(char *str);
+t_tree	*make_tree(char *str, int size);
 
 
 /*------------ft_env----------*/
 void	ft_addenv_back(t_env **lst, t_env *new);
-<<<<<<< HEAD
+void 	start_cmd(t_shell *shell);
+void	ft_addenv_back(t_env **lst, t_env *new);
+void ft_freeenv(t_env *env);
+t_env	*ft_envnew(char *key, char *value);
+void ft_import_env(t_shell *shell, char **env);
+int ft_printenv(t_env *shell);
+int	check_quote_pair(char *s, int double_flag);
+int	skip_quotes(char *s);
+int ft_chk_char(char *line);
+t_tree	*ft_create_tree(int type, char *str);
+int str_whitespace_only(char *str);
+t_tree	*ft_split_lexer(char *str);
+void ft_print_list(t_shell *list);
+void ft_freetree(t_tree *tree);
+
+/*  EXPANDER */
+
+char	*ft_expand_env(t_shell *line);
+char	check_next_char(char *str, int i);
+void	*get_merged_str(t_shell *line, int *i);
+char	*get_env_to_str(char *str, t_env *env);
+char	*ft_join_str_env(char *s, char *env);
+char	*get_env_name(char *s);
+int		env_key_size(char *s);
+int		ft_elements(char *str, int i);
+char 	*ft_exit_nbr(char *str);
+char	*ft_quote_data(char *str, t_shell *line, int *i, int *j);
+char	*ft_strjoin_null(char *s1, char *s2);
+void	ft_putspecial(char *str, char *line, int *i, int *j);
+int		ft_verify_quote(char *s, int i);
 void	print_cmdenv(t_shell *shell);
 void 	ft_freeenv(t_env *env);
 t_env	*ft_envnew(char *key, char *value);
@@ -178,57 +185,5 @@ void	parse_pipe(t_tree *tree, int *std_in, t_shell *shell);
 char	**create_cmds(t_tree *tree, t_tree *tmp);
 void	execute(char **cmd, int *fd, int *std_in, t_shell *shell);
 void	exec_cmd(char **cmd, int *fd, int *std_in, t_shell *shell);
-int 	start_cmd(t_shell *shell);
-=======
-void 	start_cmd(t_shell *shell);
->>>>>>> 92ed04a (03.10.23)
-void	ft_addenv_back(t_env **lst, t_env *new);
-void ft_freeenv(t_env *env);
-t_env	*ft_envnew(char *key, char *value);
-void ft_import_env(t_shell *shell, char **env);
-int ft_printenv(t_env *shell);
-int	check_quote_pair(char *s, int double_flag);
-int	skip_quotes(char *s);
-int ft_chk_char(char *line);
-t_tree	*ft_create_tree(int type, char *str);
-int str_whitespace_only(char *str);
-t_tree	*ft_split_lexer(char *str);
-void ft_print_list(t_shell *list);
-void ft_freetree(t_tree *tree);
-<<<<<<< HEAD
-
-/*  EXPANDER */
-
-char	*ft_expand_env(t_shell *line);
-char	check_next_char(char *str, int i);
-void	*get_merged_str(t_shell *line, int *i);
-char	*get_env_to_str(char *str, t_env *env);
-char	*ft_join_str_env(char *s, char *env);
-char	*get_env_name(char *s);
-int		env_key_size(char *s);
-int		ft_elements(char *str, int i);
-char 	*ft_exit_nbr(char *str);
-char	*ft_quote_data(char *str, t_shell *line, int *i, int *j);
-char	*ft_strjoin_null(char *s1, char *s2);
-void	ft_putspecial(char *str, char *line, int *i, int *j);
-int		ft_verify_quote(char *s, int i);
-=======
->>>>>>> 49850c4 (Lexer Leaks removed)
-
-/*  EXPANDER */
-
-char	*ft_expand_env(t_shell *line);
-char	check_next_char(char *str, int i);
-void	*get_merged_str(t_shell *line, int *i);
-char	*get_env_to_str(char *str, t_env *env);
-char	*ft_join_str_env(char *s, char *env);
-char	*get_env_name(char *s);
-int		env_key_size(char *s);
-int		ft_elements(char *str, int i);
-char 	*ft_exit_nbr(char *str);
-char	*ft_quote_data(char *str, t_shell *line, int *i, int *j);
-char	*ft_strjoin_null(char *s1, char *s2);
-void	ft_putspecial(char *str, char *line, int *i, int *j);
-int		ft_verify_quote(char *s, int i);
 
 #endif

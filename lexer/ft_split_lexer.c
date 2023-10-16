@@ -6,28 +6,12 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 11:46:54 by mamaral-          #+#    #+#             */
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 /*   Updated: 2023/10/12 22:28:08 by mamaral-         ###   ########.fr       */
-=======
-/*   Updated: 2023/10/03 18:44:40 by mamaral-         ###   ########.fr       */
->>>>>>> 49850c4 (Lexer Leaks removed)
-=======
-/*   Updated: 2023/10/09 18:28:19 by mamaral-         ###   ########.fr       */
->>>>>>> c9d4cc5 (09-10)
-=======
-/*   Updated: 2023/10/12 22:28:08 by mamaral-         ###   ########.fr       */
->>>>>>> bc19d77 (Day End)
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> bc19d77 (Day End)
 char *ft_remove_quotes(char *str)
 {
 	char *stash;
@@ -42,11 +26,6 @@ char *ft_remove_quotes(char *str)
 	return(stash);
 }
 
-<<<<<<< HEAD
-=======
->>>>>>> c9d4cc5 (09-10)
-=======
->>>>>>> bc19d77 (Day End)
 void	add_next(t_tree *new, t_tree *start)
 {
 	t_tree	*curr;

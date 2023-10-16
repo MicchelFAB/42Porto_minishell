@@ -31,19 +31,18 @@ void	ft_addenv_back(t_env **lst, t_env *new)
 	last->next = new;
 }
 
-int ft_printenv(t_env *shell)
+
+void print_cmdenv(t_shell *shell)
 {
 	t_env *tmp;
 
-	tmp = shell;
-	
+	tmp = shell->env;
 	while (tmp)
 	{
 		printf("%s=%s\n", tmp->key, tmp->value);
 		tmp = tmp->next;
 	}
 	g_signal_exit = 0;
-	return (0);
 }
 
 void ft_freeenv(t_env *env)

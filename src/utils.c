@@ -6,19 +6,7 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 10:48:20 by mamaral-          #+#    #+#             */
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 /*   Updated: 2023/10/12 21:56:44 by mamaral-         ###   ########.fr       */
-=======
-/*   Updated: 2023/10/09 18:31:48 by mamaral-         ###   ########.fr       */
->>>>>>> c9d4cc5 (09-10)
-=======
-/*   Updated: 2023/10/10 12:01:14 by mamaral-         ###   ########.fr       */
->>>>>>> 8fd3012 (12/10/23)
-=======
-/*   Updated: 2023/10/12 21:56:44 by mamaral-         ###   ########.fr       */
->>>>>>> bc19d77 (Day End)
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +18,6 @@ void	print_error(char *msg, int error)
 {
 	g_signal_exit = error;
 	printf("%s\n", msg);
-<<<<<<< HEAD
-=======
 }
 
 /**
@@ -62,10 +48,7 @@ int ft_is_special(char c)
 	else if (c == '>' || c == '<')
 		return (6);
 	return (0);
->>>>>>> bc19d77 (Day End)
 }
-<<<<<<< HEAD
-=======
 
 void ft_rd_sign(char *instr)
 {
@@ -127,34 +110,6 @@ char *ft_rd_instr(char *instr)
 	return(temp);
 }
 
-<<<<<<< HEAD
-char	*ft_strjoin_null(char *s1, char *s2)
-{
-	char	*result;
-
-	if (s1 != NULL && s2 != NULL)
-	{
-		result = ft_strjoin(s1, s2);
-		free(s1);
-		free(s2);
-		return (result);
-	}
-	if (s1 == NULL && s2 != NULL)
-	{
-		result = ft_strdup(s2);
-		free(s2);
-		return (result);
-	}
-	if (s1 != NULL && s2 == NULL)
-	{
-		result = ft_strdup(s1);
-		free(s1);
-		return (result);
-	}
-	return (NULL);
-}
->>>>>>> c9d4cc5 (09-10)
-=======
 // char	*ft_strjoin_null(char *s1, char *s2)
 // {
 // 	char	*result;
@@ -201,4 +156,3 @@ char	*ft_strjoin_null(char *s1, char *s2)
 // 	}
 // 	return (res * sinal);
 // }
->>>>>>> bc19d77 (Day End)
