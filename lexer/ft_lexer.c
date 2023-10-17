@@ -6,7 +6,7 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 13:52:07 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/10/17 11:40:47 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/10/17 16:42:31 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,16 +117,17 @@ int	check_special(char *line)
 	return (0);
 }
 
-int ft_chk_char(char *line)
+int	ft_chk_char(char *line)
 {
-	int size;
+	int	size;
 
 	size = ft_strlen(line);
-	if (check_quote_pair(line, size) || check_special(line)
-			|| str_whitespace_only(line))
+	if (check_quote_pair(line, size) || check_special(line) 
+		|| str_whitespace_only(line))
 		return (1);
-	return(0);
+	return (0);
 }
+
 
 void	rm_whitespace(char *s)
 {
@@ -173,14 +174,16 @@ t_tree	*ft_create_tree(int type, char *str)
 
 t_tree	*ft_lexer(t_shell *line)
 {
-	t_tree *list;
-	
+	t_tree	*list;
+
 	if (line->line == NULL)
 		return (NULL);
+	if (ft_strchr(line->line, '~') && !ft_chk_char(line->line))
+		line->line = ft_str_replace(line->line, "~", "$HOME");
 	line->line = ft_expand_env(line);
 	rm_whitespace(line->line);
 	list = ft_split_lexer(line->line);
-	if(list == NULL)
+	if (list == NULL)
 		return (NULL);
 	return (list);
 }
