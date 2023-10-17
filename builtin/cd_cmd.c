@@ -61,7 +61,8 @@ void	cd_cmd(char **cmd, t_shell *shell)
 		printf("Too many arguments!");
 		return ;
 	}
-	if ((path == NULL || *path == '\0') || (*path == '-' && *(path + 1) == '-' && *(path + 2) == '\0'))
+	if ((path == NULL || *path == '\0') || (*path == '-' && *(path + 1) == '-' 
+			&& *(path + 2) == '\0'))
 		path = ft_get_path("HOME", shell);
 	else if (*path == '-' && *(path + 1) == '\0')
 	{

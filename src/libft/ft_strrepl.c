@@ -6,7 +6,7 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 17:32:25 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/10/12 17:45:51 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/10/17 15:35:15 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 char *ft_str_join(char *str, char *old, char *new, int i)
 {
-	char *start;
-	char *merge;
-	char *end;
+	char	*start;
+	char	*merge;
+	char	*end;
 
 	start = ft_substr(str, 0, i);
 	merge = ft_strjoin(start, new);
@@ -24,14 +24,14 @@ char *ft_str_join(char *str, char *old, char *new, int i)
 	free(start);
 	free(merge);
 	free(str);
-	return(end);
+	return (end);
 }
 
-char *ft_str_replace(char *str, char *old, char *new)
+char	*ft_str_replace(char *str, char *old, char *new)
 {
-	int i;
-	int j;
-	
+	int	i;
+	int	j;
+
 	i = 0;
 	while (str[i])
 	{
@@ -40,7 +40,7 @@ char *ft_str_replace(char *str, char *old, char *new)
 			j++;
 		if (!old[j])
 		{
-			str = ft_str_join(str,old,new,i);
+			str = ft_str_join(str, old, new, i);
 			i += ft_strlen(new);
 		}
 		else

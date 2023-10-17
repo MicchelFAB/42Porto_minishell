@@ -6,13 +6,13 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 11:40:49 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/10/17 11:02:44 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/10/17 14:48:11 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int g_signal_exit;
+int	g_signal_exit;
 
 void	ft_ctrlc(int sig)
 {
@@ -31,7 +31,7 @@ void	ft_ctrlc(int sig)
 */
 void	ft_comand_signal(void)
 {
-	signal(SIGINT, ft_ctrlc);	
+	signal(SIGINT, ft_ctrlc);
 	signal(SIGQUIT, SIG_IGN);
 }
 
