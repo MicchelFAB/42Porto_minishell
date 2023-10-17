@@ -43,7 +43,7 @@ PARSE_DIR	:= parse
 SRC_LIB		:= src/libft
 
 SRCS		:=	main.c \
-				clean.c\
+				clean.c ft_free.c\
 				ft_env.c ft_env_utils.c utils.c ft_exp.c
 
 SRC_BUILTIN	:=  echo_cmd.c \
