@@ -6,7 +6,7 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 16:08:31 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/10/17 10:00:09 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/10/17 11:01:26 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ t_shell			*init_shell(char **env);
 void			print_error(char *msg, int error);
 int				check_quote_pair(char *s, int double_flag);
 char			check_next_char(char *str, int i);
+void			print_start_minishell(void);
 char			*ft_exit_nbr(char *str);
 
 /*-----------clear------------*/

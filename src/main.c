@@ -6,7 +6,7 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 11:40:49 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/10/17 10:03:39 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/10/17 11:02:44 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ void	ft_comand_signal(void)
 
 void	ctrl_d(t_shell *shell)
 {
-		ft_freeshell(shell);
-		ft_printf("exit\n");
-		exit(0);
+	ft_freeshell(shell);
+	ft_printf("exit\n");
+	exit(0);
 }
 
 void	loop_shell(t_shell *shell)
