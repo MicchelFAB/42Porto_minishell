@@ -6,7 +6,7 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 23:43:06 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/10/17 09:40:25 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/10/17 10:01:14 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	print_cmdenv(t_shell *shell)
 	g_signal_exit = 0;
 }
 
-void ft_print_list(t_shell *list)
+void	ft_print_list(t_shell *list)
 {
 	t_tree	*tmp;
 

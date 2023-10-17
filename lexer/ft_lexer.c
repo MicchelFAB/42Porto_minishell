@@ -6,7 +6,7 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 13:52:07 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/10/17 09:36:10 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/10/17 10:00:36 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,7 +139,7 @@ void	rm_whitespace(char *s)
 		{
 			i += skip_quotes(&s[i]);
 		}
-		else if (ft_isspace(s[i]) && (i == 0 || s[i - 1] != '\\'))
+		else if (ft_isspace(s[i]))
 			s[i] = -1;
 		if (s[i] != '\0')
 			i++;
@@ -192,7 +192,7 @@ void start_cmd(t_shell *shell)
 		shell->tree = ft_lexer(shell);
 		if (shell->tree == NULL)
 			g_signal_exit = 0;
-/*		else
+/* 		else
 			ft_print_list(shell); */
 	}
 }

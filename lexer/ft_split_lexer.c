@@ -6,71 +6,24 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 11:46:54 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/10/16 15:38:32 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/10/12 22:28:08 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	ft_skip_char(char *str, char c)
+char *ft_remove_quotes(char *str)
 {
-	int	i;
-
-	i = 0;
-	while (*str)
-	{
-		if (*str != c)
-			i++;
-		str++;
-	}
-	return (i);
-}
-
-char	*ft_char_rm(char *s1, char set)
-{
-	int		i;
-	int		j;
-	char	*str;
-
-	i = 0;
-	j = 0;
-	str = malloc(sizeof(char) * (ft_skip_char(s1, set) + 1));
-	while (s1[i])
-	{
-		if (s1[i] != set)
-			str[j++] = s1[i];
-		i++;
-	}
-	str[j] = '\0';
-	return (str);
-}
-
-char	*ft_remove_quotes(char *str)
-{
-	char	*stash;
-
-	if (str[0] == '\'')
-		stash = ft_char_rm(str, '\'');
+	char *stash;
+	
+	if(str[0] == '\'')
+		stash = ft_strtrim(str, "\'");
 	else if (str[0] == '\"')
-		stash = ft_char_rm(str, '\"');
+		stash = ft_strtrim(str, "\"");
 	else
 		stash = ft_strdup(str);
 	free(str);
-	return (stash);
-}
-
-char	*ft_remove_escape(char *str)
-{
-	char	*stash;
-
-	if (ft_strchr(str, '\\'))
-	{
-		stash = ft_char_rm(str, '\\');
-		free(str);
-		return (stash);
-	}
-	else
-		return (str);
+	return(stash);
 }
 
 void	add_next(t_tree *new, t_tree *start)
@@ -102,8 +55,6 @@ t_tree	*make_tree(char *str, int size)
 	{
 		if (new_str[0] == '\'' || new_str[0] == '\"')
 			new_str = ft_remove_quotes(new_str);
-		else
-			new_str = ft_remove_escape(new_str);
 		type = WORD;
 	}
 	tree = ft_create_tree(type, new_str);
@@ -135,3 +86,4 @@ t_tree	*ft_split_lexer(char *str)
 	}
 	return (start);
 }
+

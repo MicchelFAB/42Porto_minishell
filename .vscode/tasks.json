@@ -16,25 +16,25 @@
 
 // {
 //     "tasks": [
-//		{
+// 		{
 //             "label": "run the makefile",
 //             "type": "shell",
 //             "command": "cc",
-//			"args": [
-//				"-Wall",
-//				"-Wextra",
-//				"-Werror",
-//				"-g",
-//				"test.c",
-//				"./.build/libs/libft.a"
-//			],
+// 			"args": [
+// 				"-Wall",
+// 				"-Wextra",
+// 				"-Werror",
+// 				"-g",
+// 				"test.c",
+// 				"./.build/libs/libft.a"
+// 			],
 //             "group": {
 //                 "kind": "build",
 //                 "isDefault": true,
-//				"problemMatcher": "$gcc"
+// 				"problemMatcher": "$gcc"
 //             }
 //         }
-//	],
+// 	],
 //     "version": "2.0.0"
 // }
 

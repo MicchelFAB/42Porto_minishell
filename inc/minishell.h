@@ -6,7 +6,7 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 16:08:31 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/10/17 09:45:28 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/10/17 10:00:09 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include <readline/history.h>
 # include <signal.h>
 # include <unistd.h>
+# include <sys/wait.h>
 
 # define NULL_S		0
 # define WORD		1
@@ -96,7 +97,6 @@ int				str_whitespace_only(char *str);
 int				ft_chk_char(char *line);
 int				check_quote_pair(char *s, int size);
 int				skip_quotes(char *s);
-char			*ft_remove_quotes(char *str);
 
 t_tree			*ft_split_lexer(char *str);
 t_tree			*make_tree(char *str, int size);

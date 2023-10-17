@@ -6,13 +6,13 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 11:40:49 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/10/17 09:47:16 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/10/17 10:03:39 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	g_signal_exit;
+int g_signal_exit;
 
 void	ft_ctrlc(int sig)
 {
@@ -31,15 +31,15 @@ void	ft_ctrlc(int sig)
 */
 void	ft_comand_signal(void)
 {
-	signal(SIGINT, ft_ctrlc);
+	signal(SIGINT, ft_ctrlc);	
 	signal(SIGQUIT, SIG_IGN);
 }
 
 void	ctrl_d(t_shell *shell)
 {
-	ft_freeshell(shell);
-	ft_printf("exit\n");
-	exit(0);
+		ft_freeshell(shell);
+		ft_printf("exit\n");
+		exit(0);
 }
 
 void	loop_shell(t_shell *shell)
@@ -57,6 +57,7 @@ void	loop_shell(t_shell *shell)
 			add_history(shell->line);
 			start_cmd(shell);
 			parse_execute(shell);
+			wait(0);
 			free(shell->line);
 			ft_freetree(shell->tree);
 		}
