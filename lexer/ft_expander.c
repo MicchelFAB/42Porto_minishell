@@ -6,7 +6,7 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:28:36 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/10/12 21:59:33 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/10/17 09:38:20 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,14 @@ char	*ft_expand_env(t_shell *line)
 			{
 				line->line = get_merged_str(line, &i);
 				if (line->line == NULL)
-				break ;
+					break ;
 			}
 		}
 		else
 			i++;
 	}
 	line->line[i] = '\0';
-	return(line->line);
+	return (line->line);
 }
 
 int	ft_verify_quote(char *s, int i)
@@ -47,16 +47,6 @@ int	ft_verify_quote(char *s, int i)
 	else if (skip_quotes(s) != 0 && i == 0)
 		i = 1;
 	return (i);
-}
-
-char	check_next_char(char *str, int i)
-{
-	if (str[i + 1] == '?')
-		return(-2);
-	else if (!(ft_isalnum(str[i + 1]) || str[i + 1] == '_'))
-		return(-3);
-	else
-		return(-2);
 }
 
 void	*get_merged_str(t_shell *line, int *i)

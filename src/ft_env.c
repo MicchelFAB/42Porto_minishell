@@ -6,7 +6,7 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 10:48:20 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/10/12 23:42:50 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/10/17 09:43:08 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,33 +29,6 @@ void	ft_addenv_back(t_env **lst, t_env *new)
 	while (last->next != NULL)
 		last = last->next;
 	last->next = new;
-}
-
-void	print_cmdenv(t_shell *shell)
-{
-	t_env	*tmp;
-
-	tmp = shell->env;
-	while (tmp)
-	{
-		printf("%s=%s\n", tmp->key, tmp->value);
-		tmp = tmp->next;
-	}
-	g_signal_exit = 0;
-}
-
-void	ft_freeenv(t_env *env)
-{
-	t_env	*tmp;
-
-	while (env)
-	{
-		tmp = env->next;
-		free(env->key);
-		free(env->value);
-		free(env);
-		env = tmp;
-	}
 }
 
 t_env	*ft_envnew(char *key, char *value)

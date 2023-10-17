@@ -6,87 +6,28 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 13:52:07 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/10/16 15:00:56 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/10/17 09:36:10 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-extern int g_signal_exit;
+extern int	g_signal_exit;
 
-char *ft_exit_nbr(char *str)
+char	*ft_exit_nbr(char *str)
 {
-	char *nbr;
+	char	*nbr;
+
 	nbr = ft_itoa(g_signal_exit);
 	free(str);
-	return (nbr);	
+	return (nbr);
 }
 
-char *ft_change_str(char *s1, char *s2)
+char	*ft_change_str(char *s1, char *s2)
 {
 	free(s1);
 	return (s2);
 }
-
-void	ft_putspecial(char *str, char *line, int *i, int *j)
-{
-	str[(*j)++] = ' ';
-	str[(*j)++] = line[(*i)++];
-	if (check_quote_pair(line, *i) == 0
-		&& (line[*i] == '>' || line[*i] == '<' || line[*i] == '|'))
-		str[(*j)++] = line[(*i)++];
-	str[(*j)++] = ' ';
-}
-
-int	ft_elements(char *s, int i)
-{
-	if (i > 0 && s[i - 1] == '\\' && ft_strchr("><;|", s[i]))
-		return (0);
-	else if (ft_strchr("><;|", s[i]) && check_quote_pair(s, i) == 0)
-		return (1);
-	else
-		return (0);
-}
-
-/* char	*malloc_rd(char *s)
-{
-	char	*rest;
-	int		n;
-	int		i;
-
-	n = 0;
-	i = 0;
-	while (s[i])
-	{
-		if (ft_elements(s, i))
-			n++;
-		i++;
-	}
-	rest = (char *)malloc(sizeof(char) * (i + 2 * n + 1));
-	if (!rest)
-		return (NULL);
-	ft_bzero(rest, i + 2 * n + 1);
-	return (rest);
-} */
-
-/* char	*ft_quote_data(char *str, t_shell *line, int *i, int *j)
-{
-	if (line->line[*i + 1] && line->line[*i + 1] == '\"')
-		str[(*j)++] = (char)(line->line[(*i)++]);
-	else if (line->line[*i + 1] && line->line[*i + 1] == '\'')
-		(*i)++;
-	else
-	{
-		str[*j] = check_next_char(line->line, *i);
-			if (str[*j] == -2)
-			{
-				str = get_merged_str(line, str, j);
-				while(!isspace(line->line[*i]) && line->line[*i] != '\0')
-					(*i)++;
-			}
-	}
-	return(str);
-} */
 
 int	skip_quotes(char *s)
 {
@@ -99,7 +40,7 @@ int	skip_quotes(char *s)
 		if (s[i] == '\0')
 			return (0);
 		while (s[i] != '\"' && s[i] != '\0')
-				i++;
+			i++;
 	}
 	else if (s[i] == '\'')
 	{
@@ -107,7 +48,7 @@ int	skip_quotes(char *s)
 		if (s[i] == '\0')
 			return (0);
 		while (s[i] != '\'' && s[i] != '\0')
-				i++;
+			i++;
 	}
 	if (s[i] == '\0')
 		return (0);
@@ -148,6 +89,7 @@ int	check_quote_pair(char *s, int size)
 	}
 	return (result);
 }
+
 int	check_special(char *line)
 {
 	int	i;
