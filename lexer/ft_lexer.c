@@ -6,7 +6,7 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 13:52:07 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/10/17 10:00:36 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/10/17 11:40:47 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,8 +178,6 @@ t_tree	*ft_lexer(t_shell *line)
 	if (line->line == NULL)
 		return (NULL);
 	line->line = ft_expand_env(line);
-	// list = ft_create_tree(NULL_S, NULL);
-	//line->line = ft_expand_env(line->line, line->env);
 	rm_whitespace(line->line);
 	list = ft_split_lexer(line->line);
 	if(list == NULL)
@@ -187,20 +185,8 @@ t_tree	*ft_lexer(t_shell *line)
 	return (list);
 }
 
-void ft_print_list(t_shell *list)
-{
-	while(list->tree)
-	{
-		printf("%s - %i\n",list->tree->str1, list->tree->type);
-		free(list->tree->str1);
-		list->tree = list->tree->next;
-	}
-	free(list->tree);
-}
-
 void start_cmd(t_shell *shell)
 {
-	
 	if (shell->line[0] != '\0')
 	{
 		shell->tree = ft_lexer(shell);

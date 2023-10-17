@@ -6,7 +6,7 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 16:08:31 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/10/03 15:11:42 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/10/17 11:34:50 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,30 +75,32 @@ typedef struct s_shell
 }			t_shell;
 
 /*------------main------------*/
-int		main(int ac, char **av, char **env);
-void	loop_shell(t_shell *shell);
-t_shell 	*init_shell(char **env);
+int				main(int ac, char **av, char **env);
+void			loop_shell(t_shell *shell);
+t_shell			*init_shell(char **env);
 
 /*------------utils-----------*/
-char 	*ft_rd_instr(char *instr);
-void	print_error(char *msg, int error);
+void			print_error(char *msg, int error);
+int				check_quote_pair(char *s, int double_flag);
+char			check_next_char(char *str, int i);
+void			print_start_minishell(void);
+char			*ft_exit_nbr(char *str);
 
 /*-----------clear------------*/
-void	clean_all(t_shell *shell);
-void	free_split(char **ptr);
+void			clean_all(t_shell *shell);
+void			free_split(char **ptr);
 
 /*-----------lexer------------*/
-void 	start_cmd(t_shell *shell);
-t_tree	*ft_lexer(t_shell *line);
-t_tree	*ft_create_tree(int type, char *str);
-int 	str_whitespace_only(char *str);
-int		ft_chk_char(char *line);
-int		check_quote_pair(char *s, int size);
-int		skip_quotes(char *s);
+void			start_cmd(t_shell *shell);
+t_tree			*ft_lexer(t_shell *line);
+t_tree			*ft_create_tree(int type, char *str);
+int				str_whitespace_only(char *str);
+int				ft_chk_char(char *line);
+int				check_quote_pair(char *s, int size);
+int				skip_quotes(char *s);
 
-t_tree	*ft_split_lexer(char *str);
-t_tree	*make_tree(char *str, int size);
-
+t_tree			*ft_split_lexer(char *str);
+t_tree			*make_tree(char *str, int size);
 
 /*------------ft_env----------*/
 void			ft_addenv_back(t_env **lst, t_env *new);
@@ -106,28 +108,15 @@ t_env			*ft_envnew(char *key, char *value);
 void			ft_import_env(t_shell *shell, char **env);
 int				ft_printenv(t_env *shell);
 void			ft_print_list(t_shell *list);
-void			ft_freetree(t_tree *tree);
 
-/*  EXPANDER */
-
-char	*ft_expand_env(t_shell *line);
-char	check_next_char(char *str, int i);
-void	*get_merged_str(t_shell *line, int *i);
-char	*get_env_to_str(char *str, t_env *env);
-char	*ft_join_str_env(char *s, char *env);
-char	*get_env_name(char *s);
-int		env_key_size(char *s);
-int		ft_elements(char *str, int i);
-char	*ft_exit_nbr(char *str);
-char	*ft_quote_data(char *str, t_shell *line, int *i, int *j);
-char	*ft_strjoin_null(char *s1, char *s2);
-void	ft_putspecial(char *str, char *line, int *i, int *j);
-int		ft_verify_quote(char *s, int i);
-void	ft_addenv_back(t_env **lst, t_env *new);
-void	print_cmdenv(t_shell *shell);
-void	ft_freeenv(t_env *env);
-t_env	*ft_envnew(char *key, char *value);
-void	ft_import_env(t_shell *shell, char **env);
+/*------------ft_expander----------*/
+char			*ft_expand_env(t_shell *line);
+void			*get_merged_str(t_shell *line, int *i);
+char			*get_env_to_str(char *str, t_env *env);
+char			*ft_join_str_env(char *s, char *env);
+char			*get_env_name(char *s);
+int				env_key_size(char *s);
+int				ft_verify_quote(char *s, int i);
 
 /*-----------ft_env_utils------*/
 int				ft_set_env(char *key, char *new_val, t_shell *shell);
@@ -178,40 +167,10 @@ t_env			*search_path(char *key, t_shell *shell);
 int				go_old_path(char **path, t_shell *shell);
 
 /*-----------Parse-------------*/
-void	parse_execute(t_shell *shell);
-void	parse_pipe(t_tree *tree, int *std_in, t_shell *shell);
-char	**create_cmds(t_tree *tree, t_tree *tmp);
-void	execute(char **cmd, int *fd, int *std_in, t_shell *shell);
-void	exec_cmd(char **cmd, int *fd, int *std_in, t_shell *shell);
-int 	start_cmd(t_shell *shell);
-
-void	ft_addenv_back(t_env **lst, t_env *new);
-void ft_freeenv(t_env *env);
-t_env	*ft_envnew(char *key, char *value);
-void ft_import_env(t_shell *shell, char **env);
-int ft_printenv(t_env *shell);
-int	check_quote_pair(char *s, int double_flag);
-int	skip_quotes(char *s);
-int ft_chk_char(char *line);
-t_tree	*ft_create_tree(int type, char *str);
-int str_whitespace_only(char *str);
-t_tree	*ft_split_lexer(char *str);
-void ft_print_list(t_shell *list);
-
-
-/*  EXPANDER */
-
-char	*ft_expand_env(t_shell *line);
-char	check_next_char(char *str, int i);
-char	*get_merged_str(t_shell *line, char *str, int *i);
-char	*get_env_to_str(char *str, t_env *env);
-char	*ft_join_str_env(char *s, char *env);
-char	*get_env_name(char *s);
-int		env_key_size(char *s);
-int		ft_elements(char *str, int i);
-char 	*ft_exit_nbr(char *str);
-char	*ft_quote_data(char *str, t_shell *line, int *i, int *j);
-char	*ft_strjoin_null(char *s1, char *s2);
-void	ft_putspecial(char *str, char *line, int *i, int *j);
+void			parse_execute(t_shell *shell);
+void			parse_pipe(t_tree *tree, int *std_in, t_shell *shell);
+char			**create_cmds(t_tree *tree, t_tree *tmp);
+void			execute(char **cmd, int *fd, int *std_in, t_shell *shell);
+void			exec_cmd(char **cmd, int *fd, int *std_in, t_shell *shell);
 
 #endif
