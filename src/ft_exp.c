@@ -6,7 +6,7 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 09:46:45 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/10/17 10:03:06 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/10/17 11:41:51 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	ft_addexp(t_exp **lst, t_exp *new)
 		while (cur->next && ft_strcmp(cur->next->key, new->key) < 0)
 			cur = cur->next;
 		new->next = cur->next;
-		cur->next = new;		
+		cur->next = new;	
 	}
 }
 
