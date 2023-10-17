@@ -6,7 +6,7 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 11:46:54 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/10/12 22:28:08 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/10/17 11:39:50 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,4 +86,3 @@ t_tree	*ft_split_lexer(char *str)
 	}
 	return (start);
 }
-

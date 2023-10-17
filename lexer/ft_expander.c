@@ -49,6 +49,16 @@ int	ft_verify_quote(char *s, int i)
 	return (i);
 }
 
+char	check_next_char(char *str, int i)
+{
+	if (str[i + 1] == '?')
+		return(-2);
+	else if (!(ft_isalnum(str[i + 1]) || str[i + 1] == '_'))
+		return(-3);
+	else
+		return(-2);
+}
+
 void	*get_merged_str(t_shell *line, int *i)
 {
 	char	*key;
