@@ -6,7 +6,7 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 09:46:45 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/09/20 10:55:50 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/10/17 10:03:06 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,20 +34,6 @@ void	ft_addexp(t_exp **lst, t_exp *new)
 			cur = cur->next;
 		new->next = cur->next;
 		cur->next = new;		
-	}
-}
-
-void	ft_freeexp(t_exp *exp)
-{
-	t_exp *tmp;
-
-	while (exp)
-	{
-		tmp = exp->next;
-		free(exp->key);
-		free(exp->value);
-		free(exp);
-		exp = tmp;
 	}
 }
 
