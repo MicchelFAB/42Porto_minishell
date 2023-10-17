@@ -24,13 +24,13 @@ void	parse_cmd(t_tree *tree, t_tree *tmp, int *std_in, t_shell *shell)
 	fd[OUT] = dup(STDOUT_FILENO);
 	create_pipe(tmp, std_in);
 	//falta verificar se existe redirects
-	cmd = create_cmds(tree, tmp);
-	execute(cmd, fd, std_in, shell);
-	free_split(cmd);
-	dup2(fd[IN], STDIN_FILENO);
-	close(fd[IN]);
-	dup2(fd[OUT], STDOUT_FILENO);
-	close(fd[OUT]);
+		cmd = create_cmds(tree, tmp);
+		execute(cmd, fd, std_in, shell);
+		free_split(cmd);
+		dup2(fd[IN], STDIN_FILENO);
+		close(fd[IN]);
+		dup2(fd[OUT], STDOUT_FILENO);
+		close(fd[OUT]);
 }
 
 void	parse_pipe(t_tree *tree, int *std_in, t_shell *shell)
