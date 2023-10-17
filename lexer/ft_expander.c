@@ -6,7 +6,7 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:28:36 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/10/17 09:38:20 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/10/17 15:39:32 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	*get_merged_str(t_shell *line, int *i)
 	char	*value;
 	char	*str;
 	char	*result;
-	
+
 	str = ft_strdup(&line->line[*i]);
 	key = get_env_name(str + 1);
 	free(str);
@@ -73,18 +73,18 @@ void	*get_merged_str(t_shell *line, int *i)
 	value = get_env_to_str(key, line->env);
 	*i += ft_strlen(value);
 	result = ft_str_replace(line->line, str, value);
-	if(*value)
+	if (*value)
 		free(value);
 	free(str);
 	free(key);
-	return(result);
+	return (result);
 }
 
 char	*get_env_to_str(char *str, t_env *env)
 {
-	t_env *tmp;
-	char *name;
-	
+	t_env	*tmp;
+	char	*name;
+
 	tmp = env;
 	if (env == NULL)
 		return (NULL);
