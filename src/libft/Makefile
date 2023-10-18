@@ -6,7 +6,7 @@
 #    By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/24 12:11:35 by mamaral-          #+#    #+#              #
-#    Updated: 2023/10/12 17:40:06 by mamaral-         ###   ########.fr        #
+#    Updated: 2023/10/18 11:22:24 by mamaral-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,7 @@ RM			= rm -rf
 SRCS		= ft_arrlen.c ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c \
 				ft_isprint.c ft_strlen.c ft_memset.c ft_bzero.c ft_memcpy.c ft_strcpy.c\
 				ft_memmove.c ft_strlcpy.c ft_strlcat.c ft_toupper.c ft_tolower.c \
-				ft_strchr.c ft_strrchr.c ft_strncmp.c ft_memchr.c ft_memcmp.c \
+				ft_strchr.c ft_strrchr.c ft_strncmp.c ft_memchr.c ft_memcmp.c ft_rmvchar.c\
 				ft_strnstr.c ft_atoi.c ft_calloc.c ft_strdup.c ft_substr.c ft_strrepl.c\
 				ft_strjoin.c ft_strtrim.c ft_split.c ft_swap.c ft_itoa.c ft_joinstr.c \
 				ft_strmapi.c ft_striteri.c ft_putchar_fd.c ft_putstr_fd.c ft_strstr.c \

@@ -164,3 +164,9 @@ char	check_next_char(char *str, int i)
 	else
 		return(-2);
 }
+
+char	*ft_change_str(char *s1, char *s2)
+{
+	free(s1);
+	return (s2);
+}
