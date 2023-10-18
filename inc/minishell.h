@@ -6,7 +6,7 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 16:08:31 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/10/17 11:34:50 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/10/18 19:54:53 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ typedef struct s_shell
 }			t_shell;
 
 /*------------main------------*/
-int				main(int ac, char **av, char **env);
+// int				main(int ac, char **av, char **env);
 void			loop_shell(t_shell *shell);
 t_shell			*init_shell(char **env);
 
@@ -98,9 +98,10 @@ int				str_whitespace_only(char *str);
 int				ft_chk_char(char *line);
 int				check_quote_pair(char *s, int size);
 int				skip_quotes(char *s);
-
+int				check_special(char *line);
 t_tree			*ft_split_lexer(char *str);
 t_tree			*make_tree(char *str, int size);
+void			ft_convert_especial(t_shell *shell);
 
 /*------------ft_env----------*/
 void			ft_addenv_back(t_env **lst, t_env *new);
@@ -172,5 +173,10 @@ void			parse_pipe(t_tree *tree, int *std_in, t_shell *shell);
 char			**create_cmds(t_tree *tree, t_tree *tmp);
 void			execute(char **cmd, int *fd, int *std_in, t_shell *shell);
 void			exec_cmd(char **cmd, int *fd, int *std_in, t_shell *shell);
+
+
+char			*ft_remove_quotes(char *str);
+int				check_special(char *line);
+int				ft_skip_escape(char *s, int i);
 
 #endif

@@ -54,7 +54,7 @@ SRC_BUILTIN	:=  echo_cmd.c \
 				unset_cmd.c \
 				builtin.c builtin_utils.c
 
-SRC_LEXER	:=	ft_lexer.c ft_split_lexer.c ft_expander.c
+SRC_LEXER	:=	ft_lexer.c ft_split_lexer.c ft_expander.c ft_quoting.c
 
 SRC_PARSE	:=	parse.c parse_utils.c execute.c
 
