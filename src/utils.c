@@ -6,7 +6,7 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 10:48:20 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/10/17 11:42:16 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/10/18 11:15:55 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,24 @@ t_shell	*init_shell(char **env)
 	ft_import_env(shell, env);
 	ft_import_exp(env, shell);
 	return (shell);
+}
+
+char	*ft_exit_nbr(char *str)
+{
+	char	*nbr;
+
+	nbr = ft_itoa(g_signal_exit);
+	free(str);
+	return (nbr);
+}
+
+int	ft_chk_char(char *line)
+{
+	int	size;
+
+	size = ft_strlen(line);
+	if (check_quote_pair(line, size) || check_special(line) 
+		|| str_whitespace_only(line))
+		return (1);
+	return (0);
 }
