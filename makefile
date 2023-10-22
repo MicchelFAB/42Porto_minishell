@@ -56,7 +56,7 @@ SRC_BUILTIN	:=  echo_cmd.c \
 
 SRC_LEXER	:=	ft_lexer.c ft_split_lexer.c ft_expander.c ft_quoting.c
 
-SRC_PARSE	:=	parse.c parse_utils.c execute.c
+SRC_PARSE	:=	parse.c parse_utils.c execute.c execute_utils.c execute_utils2.c
 
 SRCS		:= $(SRCS:%=$(SRC_DIR)/%)
 SRC_BUILTIN	:= $(SRC_BUILTIN:%=$(BUILTIN_DIR)/%)

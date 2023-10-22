@@ -45,68 +45,6 @@ char	**cmd_array(t_shell *shell)
 	return (envp);
 }
 
-int	ft_check_path(char **path, t_shell *shell)
-{
-	t_env	*env_path;
-
-	// procurar o path no env
-	env_path = search_path("PATH", shell);
-	// se não houver env 
-	if (!env_path)
-	{
-		print_error("PATH", 127);
-		return (0);
-	}
-	// *path = env->value da linha PATH
-	*path = env_path->value;
-	return (1);
-}
-
-/*
- * vai juntar a path que foi separada com o cmd para se ver se é acessivel
-*/
-
-char	*compatible_path(char *split_path, char *cmd)
-{
-	char	*single_path;
-	char	*tmp;
-
-	tmp = ft_strjoin(split_path, "/");
-	single_path = ft_strjoin(tmp, cmd);
-	free(tmp);
-	return (single_path);
-}
-
-/*
- * vai retornar uma variavel com o caminho pretendido
- * caso comece por '.' ou '/' não faz nada 
-*/
-char	*get_abs_path(char *cmd, char *path)
-{
-	char	**split_paths;
-	char	*single_path;
-	int		i;
-
-	i = 0;
-	// vai pegar no PATH e dividir pelo ':'
-	split_paths = ft_split(path, ':');
-	// vai percurrer a variavel acima e procurar onde o comando seja executavel
-	while (split_paths && split_paths[i])
-	{
-		single_path = compatible_path(split_paths[i], cmd);
-		if (access(single_path, F_OK) == 0)
-		{
-			free_split(split_paths);
-			return (single_path);
-		}
-		free(single_path);
-		single_path = NULL;
-		i++;
-	}
-	free_split(split_paths);
-	return (single_path);
-}
-
 int		cmd_path(char **cmd, int *fd, t_shell *shell)
 {
 	char	*cmd_abs;
@@ -134,35 +72,6 @@ int		cmd_path(char **cmd, int *fd, t_shell *shell)
 		cmd[0] = cmd_abs;
 	}
 	return (1);
-}
-
-void	ft_ctrlc_exec(int sig)
-{
-	(void)sig;
-	printf("\n");
-	g_signal_exit = 130;
-}
-
-void	ft_ctrl_bslash(int sig)
-{
-	(void)sig;
-	printf("Quit (core dumped)\n");
-	g_signal_exit = 131;
-}
-
-void	ft_exec_signal(void)
-{
-	signal(SIGINT, ft_ctrlc_exec);
-	signal(SIGQUIT, ft_ctrl_bslash);
-}
-
-void	error_execve(char **env, char **cmd, t_shell *shell)
-{
-	free(env);
-	free(cmd);
-	clean_all(shell);
-	printf("command not found\n");
-	exit(127);
 }
 
 /*
