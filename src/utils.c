@@ -81,13 +81,12 @@ void	wait_child_proc(t_shell *shell)
 	}
 }
 
-
-char	*ft_exit_nbr(char *str)
+char	*ft_exit_nbr(void)
 {
 	char	*nbr;
 
 	nbr = ft_itoa(g_signal_exit);
-	free(str);
+	//free(str);
 	return (nbr);
 }
 
