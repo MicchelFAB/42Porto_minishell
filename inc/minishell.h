@@ -175,13 +175,20 @@ int				go_old_path(char **path, t_shell *shell);
 void			parse_execute(t_shell *shell);
 void			parse_pipe(t_tree *tree, int *std_in, t_shell *shell);
 char			**create_cmds(t_tree *tree, t_tree *tmp);
-void			execute(char **cmd, int *fd, int *std_in, t_shell *shell);
-void			exec_cmd(char **cmd, int *fd, int *std_in, t_shell *shell);
-
 
 char			*ft_remove_quotes(char *str);
 int				check_special(char *line);
 int				ft_skip_escape(char *s, int i);
 void			restore_fd(int *fd);
 
+/*------------Execute----------*/
+void			execute(char **cmd, int *fd, int *std_in, t_shell *shell);
+void			exec_cmd(char **cmd, int *fd, int *std_in, t_shell *shell);
+
+void			error_execve(char **env, char **cmd, t_shell *shell);
+void			ft_exec_signal(void);
+void			ft_ctrl_bslash(int sig);
+void			ft_ctrlc_exec(int sig);
+char			*get_abs_path(char *cmd, char *path);
+int				ft_check_path(char **path, t_shell *shell);
 #endif
