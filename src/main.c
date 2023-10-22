@@ -57,7 +57,7 @@ void	loop_shell(t_shell *shell)
 			add_history(shell->line);
 			start_cmd(shell);
 			parse_execute(shell);
-			wait(0);
+			wait_child_proc(shell);
 			free(shell->line);
 			ft_freetree(shell->tree);
 		}
