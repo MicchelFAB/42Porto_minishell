@@ -182,5 +182,6 @@ void			exec_cmd(char **cmd, int *fd, int *std_in, t_shell *shell);
 char			*ft_remove_quotes(char *str);
 int				check_special(char *line);
 int				ft_skip_escape(char *s, int i);
+void			restore_fd(int *fd);
 
 #endif

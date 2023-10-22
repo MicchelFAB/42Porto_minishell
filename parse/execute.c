@@ -15,14 +15,6 @@ char	*ft_strjoin_join(char *key, char *iqual, char *value)
 	return (final);
 }
 
-void	restore_fd(int *fd)
-{
-	dup2(fd[IN], STDIN_FILENO);
-	close(fd[IN]);
-	dup2(fd[OUT], STDOUT_FILENO);
-	close(fd[OUT]);
-}
-
 char	**cmd_array(t_shell *shell)
 {
 	char	**envp;
@@ -174,12 +166,9 @@ void	error_execve(char **env, char **cmd, t_shell *shell)
 }
 
 /*
-*	// verificar se cmd existe e se o PATH existe e fazer o split pelo :
-*	
-*	
+*	verificar se cmd existe e se o PATH existe e fazer o split pelo :
+*	se for process child (pid == 0)
 */
-
-
 void	exec_cmd(char **cmd, int *fd, int *std_in, t_shell *shell)
 {
 	char	**envp;
@@ -189,11 +178,9 @@ void	exec_cmd(char **cmd, int *fd, int *std_in, t_shell *shell)
 	if (!cmd[0] || !cmd_path(cmd, fd, shell))
 		return ;
 	pid = fork();
-	// refistar os sinais ctrl+c e ctrl+/
 	ft_exec_signal();
 	shell->pid = pid;
 	shell->child_proc++;
-	//se for process child (pid == 0)
 	if (pid == 0)
 	{
 		close(fd[IN]);
