@@ -27,10 +27,7 @@ void	parse_cmd(t_tree *tree, t_tree *tmp, int *std_in, t_shell *shell)
 		cmd = create_cmds(tree, tmp);
 		execute(cmd, fd, std_in, shell);
 		free_split(cmd);
-		dup2(fd[IN], STDIN_FILENO);
-		close(fd[IN]);
-		dup2(fd[OUT], STDOUT_FILENO);
-		close(fd[OUT]);
+	restore_fd(fd);
 }
 
 void	parse_pipe(t_tree *tree, int *std_in, t_shell *shell)
@@ -43,7 +40,7 @@ void	parse_pipe(t_tree *tree, int *std_in, t_shell *shell)
 		if (tmp->type == PIPE)
 		{
 			parse_cmd(tree, tmp, std_in, shell);
-			tree = tree->next;
+			tree = tmp->next;
 			parse_pipe(tree, std_in, shell);
 			break ;
 		}
@@ -61,4 +58,6 @@ void	parse_execute(t_shell *shell)
 		return ;
 	std_in = STDIN_FILENO;
 	parse_pipe(shell->tree, &std_in, shell);
+	if (std_in != 0)
+		close(std_in);
 }

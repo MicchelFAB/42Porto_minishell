@@ -89,7 +89,7 @@ char	*get_env_to_str(char *str, t_env *env)
 	if (env == NULL)
 		return (NULL);
 	if (str[0] == '?' && str[1] == '\0')
-		return (ft_exit_nbr(str));
+		return (ft_exit_nbr());
 	while (tmp)
 	{
 		if (ft_strcmp(str, tmp->key) == 0)

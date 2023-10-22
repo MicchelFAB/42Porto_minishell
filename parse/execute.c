@@ -1,5 +1,7 @@
 #include "../inc/minishell.h"
 
+extern int	g_signal_exit;
+
 char	*ft_strjoin_join(char *key, char *iqual, char *value)
 {
 	char	*start;
@@ -11,6 +13,14 @@ char	*ft_strjoin_join(char *key, char *iqual, char *value)
 	final = ft_strjoin(start, value);
 	free(start);
 	return (final);
+}
+
+void	restore_fd(int *fd)
+{
+	dup2(fd[IN], STDIN_FILENO);
+	close(fd[IN]);
+	dup2(fd[OUT], STDOUT_FILENO);
+	close(fd[OUT]);
 }
 
 char	**cmd_array(t_shell *shell)
@@ -93,7 +103,10 @@ char	*get_abs_path(char *cmd, char *path)
 	{
 		single_path = compatible_path(split_paths[i], cmd);
 		if (access(single_path, F_OK) == 0)
+		{
+			free_split(split_paths);
 			return (single_path);
+		}
 		free(single_path);
 		single_path = NULL;
 		i++;
@@ -117,18 +130,38 @@ int		cmd_path(char **cmd, int *fd, t_shell *shell)
 	// se não for executavel(se acesse != 0)
 	if (access(cmd[0], F_OK) != 0)
 	{
-		// colocar path absoluta no cmd cmd_abs
+		// procurar path absoluta para o cmd cmd_abs
 		cmd_abs = get_abs_path(cmd[0], path);
 		if (!cmd_abs)
 		{
-			//restore_fd
-			print_error("minishell: command not found.", 127);
+			restore_fd(fd);
+			print_error("minishell: command not found", 127);
 			return (0);
 		}
 		free(cmd[0]);
 		cmd[0] = cmd_abs;
 	}
 	return (1);
+}
+
+void	ft_ctrlc_exec(int sig)
+{
+	(void)sig;
+	printf("\n");
+	g_signal_exit = 130;
+}
+
+void	ft_ctrl_bslash(int sig)
+{
+	(void)sig;
+	printf("Quit (core dumped)\n");
+	g_signal_exit = 131;
+}
+
+void	ft_exec_signal(void)
+{
+	signal(SIGINT, ft_ctrlc_exec);
+	signal(SIGQUIT, ft_ctrl_bslash);
 }
 
 void	error_execve(char **env, char **cmd, t_shell *shell)
@@ -140,36 +173,39 @@ void	error_execve(char **env, char **cmd, t_shell *shell)
 	exit(127);
 }
 
+/*
+*	// verificar se cmd existe e se o PATH existe e fazer o split pelo :
+*	
+*	
+*/
+
+
 void	exec_cmd(char **cmd, int *fd, int *std_in, t_shell *shell)
 {
 	char	**envp;
 	int		pid;
 
-	(void)fd;
-	(void)std_in;
-	// verificar se cmd existe e se o PATH existe
+	
 	if (!cmd[0] || !cmd_path(cmd, fd, shell))
 		return ;
-	
-	// fazer fork
 	pid = fork();
 	// refistar os sinais ctrl+c e ctrl+/
-	//ft_comand_signal();
-	// registar o pid atual e contar processo++
-
+	ft_exec_signal();
+	shell->pid = pid;
+	shell->child_proc++;
 	//se for process child (pid == 0)
 	if (pid == 0)
 	{
-		//fechar os fd's
+		close(fd[IN]);
+		close(fd[OUT]);
 		//fechar std_in se for depois da 1 passagem
+ 		if (*std_in != 0)
+			close (*std_in);
 		// criar, para colocar no execve, um char ** onde tem o shell->env
 		envp = cmd_array(shell);
-		//lidar com o execve
 		if (execve(cmd[0], cmd, envp) == -1)
 			error_execve(envp, cmd, shell);
 	}
-	
-
 }
 
 void	execute(char **cmd, int *fd, int *std_in, t_shell *shell)

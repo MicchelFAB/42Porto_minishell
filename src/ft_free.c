@@ -31,6 +31,7 @@ void	ft_freeshell(t_shell *shell)
 	ft_freeexp(shell->exp);
 	free(shell->line);
 	free(shell);
+	rl_clear_history();
 }
 
 void	ft_freeexp(t_exp *exp)
