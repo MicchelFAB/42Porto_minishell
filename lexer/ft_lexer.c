@@ -6,7 +6,7 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 13:52:07 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/10/18 20:23:47 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/10/20 14:05:56 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,30 +60,34 @@ t_tree	*ft_create_tree(int type, char *str)
 	return (new_tree);
 }
 
-t_tree	*ft_lexer(t_shell *line)
+void	ft_lexer(t_shell *line)
 {
 	t_tree	*list;
 
 	if (line->line == NULL)
-		return (NULL);
+		line->tree = NULL;
+	if (ft_strchr(line->line, '~') && !ft_chk_char(line->line))
+		line->line = ft_str_replace(line->line, "~", "$HOME");
+	line->line = ft_put_redir(line);
 	line->line = ft_expand_env(line);
 	line->line = rm_whitespace(line->line);
 	ft_convert_especial(line);
 	list = ft_split_lexer(line->line);
 	if (list == NULL)
-		return (NULL);
-	return (list);
+		line->tree = NULL;
+	line->tree = list;
+	// ft_print_list(line);
 }
 
-void	start_cmd(t_shell *shell)
-{
-	if (shell->line[0] != '\0')
-	{
-		shell->tree = ft_lexer(shell);
-		if (shell->tree == NULL)
-			g_signal_exit = 0;
-	}
-}
+// void	start_cmd(t_shell *shell)
+// {
+// 	if (shell->line[0] != '\0')
+// 	{
+// 		shell->tree = ft_lexer(shell);
+// 		if (shell->tree == NULL)
+// 			g_signal_exit = 0;
+// 	}
+// }
 
 char	*ft_ignore_special(char *line)
 {
@@ -94,7 +98,8 @@ char	*ft_ignore_special(char *line)
 	{
 		if (line[i] == '\\')
 		{
-			if (!ft_chk_char(line))
+			if (!ft_chk_char(line) && !(line[i + 1] == '$' || 
+					line[i + 1] == '\\'))
 				i++;
 			else
 				line = ft_rmvchar(line, i);

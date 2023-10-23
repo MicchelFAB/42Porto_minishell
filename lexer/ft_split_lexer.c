@@ -6,11 +6,28 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 11:46:54 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/10/18 19:54:18 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/10/19 17:55:22 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+char	*ft_loop_remove(char *s, char c, int i)
+{
+	while (s[i])
+	{
+		if (s[i] == c)
+		{
+			s = ft_rmvchar(s, i);
+			while (s[i] && s[i] != c)
+				i = ft_skip_escape(s, i);
+			s = ft_rmvchar(s, i);
+		}
+		else
+			i++;
+	}
+	return (s);
+}
 
 char	*ft_remove_quotes(char *str)
 {
@@ -23,19 +40,11 @@ char	*ft_remove_quotes(char *str)
 		i++;
 	if (stash[i] == '\'')
 	{
-		stash = ft_rmvchar(stash, i);
-		while (stash[i] && stash[i] != '\'')
-			i++;
-		stash = ft_rmvchar(stash, i);
+		stash = ft_loop_remove(stash, '\'', i);
 	}
 	else if (stash[i] == '\"')
 	{
-		stash = ft_rmvchar(stash, i);
-		while (stash[i] && stash[i] != '\"')
-		{
-			i = ft_skip_escape(stash, i);
-		}
-		stash = ft_rmvchar(stash, i);
+		stash = ft_loop_remove(stash, '\"', i);
 	}
 	free(str);
 	return (stash);
@@ -90,7 +99,7 @@ t_tree	*ft_split_lexer(char *str)
 			while (str[i] != -1 && str[i] != '\0')
 				i++;
 			if (start == NULL)
-				start = make_tree(&str[stash], i - stash);
+				start 	= make_tree(&str[stash], i - stash);
 			else
 				add_next(make_tree(&str[stash], i - stash), start);
 		}
