@@ -1,5 +1,13 @@
 #include "../inc/minishell.h"
 
+void	restore_fd(int *fd)
+{
+	dup2(fd[IN], STDIN_FILENO);
+	close(fd[IN]);
+	dup2(fd[OUT], STDOUT_FILENO);
+	close(fd[OUT]);
+}
+
 int		cmds_len(t_tree *tree, t_tree *tmp)
 {
 	int		len;

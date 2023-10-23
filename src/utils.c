@@ -55,18 +55,38 @@ t_shell	*init_shell(char **env)
 		exit(EXIT_FAILURE);
 	shell->line = NULL;
 	shell->t_count = 0;
+	shell->child_proc = 0;
+	shell->pid = 0;
 	shell->tree = NULL;
 	ft_import_env(shell, env);
 	ft_import_exp(env, shell);
 	return (shell);
 }
 
-char	*ft_exit_nbr(char *str)
+void	wait_child_proc(t_shell *shell)
+{
+	int		status;
+
+	if (waitpid(shell->pid, &status, 0) != -1)
+	{
+		shell->child_proc--;
+		if (WIFEXITED(status))
+			g_signal_exit = WEXITSTATUS(status);
+		shell->pid = 0;
+	}
+	while (shell->child_proc)
+	{
+		wait(0);
+		shell->child_proc--;
+	}
+}
+
+char	*ft_exit_nbr(void)
 {
 	char	*nbr;
 
 	nbr = ft_itoa(g_signal_exit);
-	free(str);
+	//free(str);
 	return (nbr);
 }
 

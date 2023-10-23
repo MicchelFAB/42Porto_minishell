@@ -71,6 +71,8 @@ typedef struct s_shell
 	t_env	*env;
 	t_exp	*exp;
 	t_tree	*tree;
+	int		pid;
+	int		child_proc;
 	int		t_count;
 }			t_shell;
 
@@ -78,13 +80,15 @@ typedef struct s_shell
 // int				main(int ac, char **av, char **env);
 void			loop_shell(t_shell *shell);
 t_shell			*init_shell(char **env);
+void			ft_comand_signal(void);
 
 /*------------utils-----------*/
 void			print_error(char *msg, int error);
 int				check_quote_pair(char *s, int double_flag);
 char			check_next_char(char *str, int i);
 void			print_start_minishell(void);
-char			*ft_exit_nbr(char *str);
+char			*ft_exit_nbr(void);
+void			wait_child_proc(t_shell *shell);
 
 /*-----------clear------------*/
 void			clean_all(t_shell *shell);
@@ -171,12 +175,20 @@ int				go_old_path(char **path, t_shell *shell);
 void			parse_execute(t_shell *shell);
 void			parse_pipe(t_tree *tree, int *std_in, t_shell *shell);
 char			**create_cmds(t_tree *tree, t_tree *tmp);
-void			execute(char **cmd, int *fd, int *std_in, t_shell *shell);
-void			exec_cmd(char **cmd, int *fd, int *std_in, t_shell *shell);
-
 
 char			*ft_remove_quotes(char *str);
 int				check_special(char *line);
 int				ft_skip_escape(char *s, int i);
+void			restore_fd(int *fd);
 
+/*------------Execute----------*/
+void			execute(char **cmd, int *fd, int *std_in, t_shell *shell);
+void			exec_cmd(char **cmd, int *fd, int *std_in, t_shell *shell);
+
+void			error_execve(char **env, char **cmd, t_shell *shell);
+void			ft_exec_signal(void);
+void			ft_ctrl_bslash(int sig);
+void			ft_ctrlc_exec(int sig);
+char			*get_abs_path(char *cmd, char *path);
+int				ft_check_path(char **path, t_shell *shell);
 #endif
