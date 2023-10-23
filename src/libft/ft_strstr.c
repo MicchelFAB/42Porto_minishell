@@ -6,17 +6,17 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 17:37:45 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/10/12 17:38:43 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/10/19 11:05:26 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_strstr_end(char *str, char *to_find)
+int	ft_strstr_end(char *str, char *to_find)
 {
-	int i;
-	int j;
-	
+	int	i;
+	int	j;
+
 	i = 0;
 	j = 0;
 	while (str[i])
@@ -32,11 +32,11 @@ int ft_strstr_end(char *str, char *to_find)
 	return (0);
 }
 
-int ft_strstr_init(char *str, char *to_find)
+int	ft_strstr_init(char *str, char *to_find)
 {
-	int i;
-	int j;
-	
+	int	i;
+	int	j;
+
 	i = 0;
 	j = 0;
 	while (str[i])

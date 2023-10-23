@@ -44,7 +44,7 @@ SRC_LIB		:= src/libft
 
 SRCS		:=	main.c \
 				clean.c ft_free.c\
-				ft_env.c ft_env_utils.c utils.c ft_exp.c
+				ft_env.c ft_env_utils.c utils.c ft_exp.c 
 
 SRC_BUILTIN	:=  echo_cmd.c \
 				pwd_cmd.c \
@@ -54,7 +54,7 @@ SRC_BUILTIN	:=  echo_cmd.c \
 				unset_cmd.c \
 				builtin.c builtin_utils.c
 
-SRC_LEXER	:=	ft_lexer.c ft_split_lexer.c ft_expander.c ft_quoting.c
+SRC_LEXER	:=	ft_lexer.c ft_split_lexer.c ft_expander.c ft_quoting.c ft_redirects.c
 
 SRC_PARSE	:=	parse.c parse_utils.c execute.c execute_utils.c execute_utils2.c
 

@@ -6,7 +6,7 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:28:36 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/10/17 15:39:32 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/10/19 11:44:18 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char	*ft_expand_env(t_shell *line)
 			j = ft_verify_quote(&line->line[i], j);
 		if (line->line[i] == '\'' && j == 0)
 			i += skip_quotes(&line->line[i]);
-		if (line->line[i] == '$')
+		if (i && line->line[i] == '$' && line->line[i - 1] != '\\')
 		{
 			{
 				line->line = get_merged_str(line, &i);
@@ -38,25 +38,6 @@ char	*ft_expand_env(t_shell *line)
 	}
 	line->line[i] = '\0';
 	return (line->line);
-}
-
-int	ft_verify_quote(char *s, int i)
-{
-	if (i == 1)
-		i = 0;
-	else if (skip_quotes(s) != 0 && i == 0)
-		i = 1;
-	return (i);
-}
-
-char	check_next_char(char *str, int i)
-{
-	if (str[i + 1] == '?')
-		return(-2);
-	else if (!(ft_isalnum(str[i + 1]) || str[i + 1] == '_'))
-		return(-3);
-	else
-		return(-2);
 }
 
 void	*get_merged_str(t_shell *line, int *i)
@@ -95,7 +76,7 @@ char	*get_env_to_str(char *str, t_env *env)
 		if (ft_strcmp(str, tmp->key) == 0)
 		{
 			name = ft_strdup(tmp->value);
-			return(name);
+			return (name);
 		}
 		tmp = tmp->next;
 	}
@@ -123,7 +104,6 @@ char	*get_env_name(char *s)
 		i--;
 	}
 	name[j] = '\0';
-	// free(s);
 	return (name);
 }
 
@@ -141,42 +121,4 @@ int	env_key_size(char *s)
 		i++;
 	}
 	return (i);
-}
-
-char * find_next_occurence(char *line)
-{
-	char * dolar_sign;
-	
-	while(1)
-	{
-		dolar_sign = ft_strchr(line, '$');
-		
-		if (!dolar_sign)
-			return NULL;
-		
-		if (ft_isalpha(*(dolar_sign + 1)) && *(dolar_sign + 1) == '_')
-			return dolar_sign;
-
-		line = dolar_sign;
-	}
-}
-
-int ft_strstr(char *str, char *to_find)
-{
-	int i;
-	int j;
-	
-	i = 0;
-	j = 0;
-	while (str[i])
-	{
-		while (str[i + j] == to_find[j])
-		{
-			if (to_find[j + 1] == '\0')
-				return (i + j);
-			j++;
-		}
-		i++;
-	}
-	return (0);
 }

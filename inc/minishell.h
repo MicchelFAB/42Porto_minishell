@@ -6,7 +6,11 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 16:08:31 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/10/18 19:54:53 by mamaral-         ###   ########.fr       */
+<<<<<<< Updated upstream
+/*   Updated: 2023/10/23 10:15:38 by mamaral-         ###   ########.fr       */
+=======
+/*   Updated: 2023/10/19 18:33:32 by mamaral-         ###   ########.fr       */
+>>>>>>> Stashed changes
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +40,7 @@
 
 # define IN		0
 # define OUT	1
+# define ERR	2
 
 typedef struct s_lexer
 {
@@ -96,7 +101,7 @@ void			free_split(char **ptr);
 
 /*-----------lexer------------*/
 void			start_cmd(t_shell *shell);
-t_tree			*ft_lexer(t_shell *line);
+void			ft_lexer(t_shell *line);
 t_tree			*ft_create_tree(int type, char *str);
 int				str_whitespace_only(char *str);
 int				ft_chk_char(char *line);
@@ -180,6 +185,7 @@ char			*ft_remove_quotes(char *str);
 int				check_special(char *line);
 int				ft_skip_escape(char *s, int i);
 void			restore_fd(int *fd);
+char 			*ft_put_redir(t_shell *line);
 
 /*------------Execute----------*/
 void			execute(char **cmd, int *fd, int *std_in, t_shell *shell);
