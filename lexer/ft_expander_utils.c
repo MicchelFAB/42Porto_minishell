@@ -6,7 +6,7 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 13:01:01 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/10/19 18:31:45 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/10/24 11:31:33 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,11 +73,3 @@ char *ft_put_redir(t_shell *line)
 	free(line->line);
 	return (tmp);
 }
-
-// //funcao para redirecionamento de input
-// int ft_redirect_in(char *str, int flags)
-// int input_file = open("input.txt", flags);
-
-// //funcao para redirecionamento de output
-// int output_file = open("output.txt", O_WRONLY | O_CREAT | O_TRUNC, 0666);
-

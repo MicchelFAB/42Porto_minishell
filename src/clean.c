@@ -1,5 +1,7 @@
 #include "minishell.h"
 
+extern int		g_signal_exit;
+
 void	clean_all(t_shell *shell)
 {
 	//free tokens!!!!
@@ -13,6 +15,7 @@ void	clean_all(t_shell *shell)
 		ft_freetree(shell->tree);
 	if (shell)
 		free(shell);
+	g_signal_exit = 0;
 	rl_clear_history();
 }
 
