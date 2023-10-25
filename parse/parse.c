@@ -19,12 +19,12 @@ static void	create_pipe(t_tree *tmp, int *std_in)
 	*std_in = new_fd[IN];
 }
 
-int ft_redir_type(char *name, char *str, int fd[])
+int ft_redir_type(char *name, char *str)
 {
 	if(ft_strcmp("<", str) == 0)
 			return(ft_input_redirect(name));
 	else if(ft_strcmp("<<", str) == 0)
-			return(ft_heredoc(name, fd));
+			return(ft_heredoc(name));
 	else if(ft_strcmp(">", str) == 0)
 			return(ft_output_redirect(name));
 	else if(ft_strcmp(">>", str) == 0)
@@ -33,7 +33,7 @@ int ft_redir_type(char *name, char *str, int fd[])
 		return (0);
 }
 
-int	ft_redir(t_tree *tree, int fd[])
+int	ft_redir(t_tree *tree)
 {
 	t_tree *tmp;
 	char *str;
@@ -46,7 +46,7 @@ int	ft_redir(t_tree *tree, int fd[])
 		if(tmp->type == REDIR)
 		{
 			str = catch_name(tmp);
-			i = ft_redir_type(str, tmp->str1, fd);
+			i = ft_redir_type(str, tmp->str1);
 			free(str);
 		}
 		tmp = tmp->next;
@@ -73,7 +73,7 @@ void	parse_cmd(t_tree *tree, t_tree *tmp, int *std_in, t_shell *shell)
 	fd[OUT] = dup(STDOUT_FILENO);
 	create_pipe(tmp, std_in);
 	//falta verificar se existe redirects ft_redir(int *fd, t_tree *tree)
-	if(ft_redir(tree, fd))
+	if(ft_redir(tree))
 		return ;
 	cmd = create_cmds(tree, tmp);
 	execute(cmd, fd, std_in, shell);
