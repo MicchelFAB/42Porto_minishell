@@ -6,11 +6,7 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 16:08:31 by mamaral-          #+#    #+#             */
-<<<<<<< Updated upstream
-/*   Updated: 2023/10/23 10:15:38 by mamaral-         ###   ########.fr       */
-=======
-/*   Updated: 2023/10/19 18:33:32 by mamaral-         ###   ########.fr       */
->>>>>>> Stashed changes
+/*   Updated: 2023/10/25 16:07:46 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +29,7 @@
 # define WORD		1
 # define REDIR		2
 # define PIPE		3
-# define CMD		4
+# define FILE		4
 # define SIMP_CMD	5
 # define AND		6
 # define OR			7
@@ -76,13 +72,15 @@ typedef struct s_shell
 	t_env	*env;
 	t_exp	*exp;
 	t_tree	*tree;
+	char	*redirect_filename;
 	int		pid;
 	int		child_proc;
 	int		t_count;
+	int		redir_flag;
 }			t_shell;
 
 /*------------main------------*/
-// int				main(int ac, char **av, char **env);
+int				main(int ac, char **av, char **env);
 void			loop_shell(t_shell *shell);
 t_shell			*init_shell(char **env);
 void			ft_comand_signal(void);
@@ -197,4 +195,11 @@ void			ft_ctrl_bslash(int sig);
 void			ft_ctrlc_exec(int sig);
 char			*get_abs_path(char *cmd, char *path);
 int				ft_check_path(char **path, t_shell *shell);
+
+
+int			ft_output_redirect(char *file);
+int 			ft_output_append(char *file);
+int			ft_input_redirect(char *file);
+int			ft_heredoc(char *name, int fd[]);
+
 #endif

@@ -54,9 +54,9 @@ SRC_BUILTIN	:=  echo_cmd.c \
 				unset_cmd.c \
 				builtin.c builtin_utils.c
 
-SRC_LEXER	:=	ft_lexer.c ft_split_lexer.c ft_expander.c ft_quoting.c ft_redirects.c
+SRC_LEXER	:=	ft_lexer.c ft_split_lexer.c ft_expander.c ft_quoting.c ft_expander_utils.c
 
-SRC_PARSE	:=	parse.c parse_utils.c execute.c execute_utils.c execute_utils2.c
+SRC_PARSE	:=	parse.c parse_utils.c execute.c execute_utils.c execute_utils2.c ft_redirects.c
 
 SRCS		:= $(SRCS:%=$(SRC_DIR)/%)
 SRC_BUILTIN	:= $(SRC_BUILTIN:%=$(BUILTIN_DIR)/%)

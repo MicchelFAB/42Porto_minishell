@@ -13,7 +13,7 @@ int		cmds_len(t_tree *tree, t_tree *tmp)
 	int		len;
 
 	len = 0;
-	while (tree != tmp)
+	while (tree != tmp && tree->type != REDIR)
 	{
 		if (tree->type == WORD)
 			len ++;
@@ -27,7 +27,7 @@ char	**cmds_array(t_tree *tree, t_tree *tmp, char **cmd)
 	int		len;
 
 	len = 0;
-	while (tree != tmp)
+	while (tree != tmp && tree->type != REDIR)
 	{
 		if (tree->type == WORD)
 		{
