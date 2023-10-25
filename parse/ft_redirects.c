@@ -2,29 +2,29 @@
 
 extern int g_signal_exit;
 
-int	ft_heredoc(char *name, int fd[])
+int	ft_heredoc(char *name)
 {
 	char	*prompt;
-	int		i;
+	int		fd_in;
+	int 	fd_out;
 
-	fd[1] = open(".heredoc", O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	fd_in = open(".heredoc", O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	while (1)
 	{
-		i = open(".heredoc", O_RDONLY);
 		prompt = readline("> ");
 		while (ft_strcmp(prompt, name))
 		{
-			ft_putendl_fd(prompt, fd[1]);
+			ft_putendl_fd(prompt, fd_in);
 			free(prompt);
 			prompt = readline("> ");
 		}
 		if (prompt)
 			free(prompt);
-		close(i);
-		close(fd[1]);
-		dup2(fd[0], IN);
-		close(fd[0]);
-		pipe(fd);
+		fd_out = open(".heredoc", O_RDONLY);
+		close(fd_in);
+		dup2(fd_out, STDIN_FILENO);
+		close(fd_out);
+		unlink(".heredoc");
 		break;
 	}
 	return (0);
