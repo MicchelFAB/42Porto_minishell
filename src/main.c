@@ -6,7 +6,7 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 11:40:49 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/10/18 10:38:29 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/10/25 15:00:57 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	loop_shell(t_shell *shell)
 		else
 		{
 			add_history(shell->line);
-			start_cmd(shell);
+			ft_lexer(shell);
 			parse_execute(shell);
 			wait_child_proc(shell);
 			free(shell->line);

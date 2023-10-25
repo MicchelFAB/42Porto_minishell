@@ -6,7 +6,7 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 13:52:07 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/10/18 19:37:43 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/10/19 12:09:06 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_skip_escape(char *s, int i)
 	while (s[i] != '\"' && s[i])
 	{
 		if (s[i] == '\\')
-			i += 2;
+			i++;
 		i++;
 	}
 	return (i);
@@ -110,4 +110,13 @@ int	check_special(char *line)
 	if (i != 1 && line[i - 1] == '|' && !flag)
 		return (1);
 	return (0);
+}
+
+int	ft_verify_quote(char *s, int i)
+{
+	if (i == 1)
+		i = 0;
+	else if (skip_quotes(s) != 0 && i == 0)
+		i = 1;
+	return (i);
 }
