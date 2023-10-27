@@ -48,3 +48,17 @@ char	*ft_get_path(char *key, t_shell *shell)
 	}
 	return (NULL);
 }
+
+int		contains_pipe(t_shell *shell)
+{
+	t_tree	*tmp;
+
+	tmp = shell->tree;
+	while (tmp)
+	{
+		if (tmp->type == PIPE)
+			return (1);
+		tmp = tmp->next;
+	}
+	return (0);
+}

@@ -175,6 +175,7 @@ char			*ft_get_path(char *key, t_shell *shell);
 int				ft_set_path(char *key, char *new_val, t_shell *shell);
 t_env			*search_path(char *key, t_shell *shell);
 int				go_old_path(char **path, t_shell *shell);
+int				contains_pipe(t_shell *shell);
 
 /*-----------Parse-------------*/
 void			parse_execute(t_shell *shell);

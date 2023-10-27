@@ -4,7 +4,6 @@ extern int		g_signal_exit;
 
 void	clean_all(t_shell *shell)
 {
-	//free tokens!!!!
 	if (shell->env)
 		ft_freeenv(shell->env);
 	if (shell->exp)

@@ -9,15 +9,14 @@ void	ft_exit_two_args(char **cmd, t_shell *shell)
 	if (ft_is_number(cmd[1]))
 	{
 		clean_all(shell);
-		code_num = (char)ft_atoi(cmd[1]);
+		code_num = (char)ft_atol(cmd[1]);
 		free_split(cmd);
 		exit(code_num);
 	}
 	else
 	{
-		print_error("numeric argument required", 2);
 		clean_all(shell);
-		g_signal_exit = 2;
+		print_error("numeric argument required", 2);
 	}
 }
 
@@ -26,7 +25,8 @@ void	exit_cmd(char **cmd, t_shell *shell)
 	int		len;
 
 	len = 0;
-	//verificar se é pipe!!!!
+	if (contains_pipe(shell))
+		return ;
 	while (cmd[len])
 		len++;
 	printf("exit\n");
@@ -36,7 +36,9 @@ void	exit_cmd(char **cmd, t_shell *shell)
 		return ;
 	}
 	if (len == 1)
+	{
 		clean_all(shell);
+	}
 	if (len == 2)
 		ft_exit_two_args(cmd, shell);
 	free_split(cmd);
