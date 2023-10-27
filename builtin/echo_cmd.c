@@ -33,5 +33,4 @@ void	echo_cmd(char **cmd)
 		i++;
 	}
 	print_echo(cmd, i, flag);
-	//g_signal_exit = 0;
 }
