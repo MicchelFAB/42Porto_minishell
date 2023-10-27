@@ -6,7 +6,7 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 15:44:45 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/08/08 13:50:58 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/10/26 15:38:10 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	ft_printf(const char *str, ...)
 		}
 		else
 			result += write(1, &str[i], 1);
-	i++;
+		i++;
 	}
 	va_end(args);
 	return (result);

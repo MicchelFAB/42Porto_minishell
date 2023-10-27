@@ -6,7 +6,7 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 10:38:06 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/08/21 16:05:04 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/10/26 15:42:13 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,44 +106,3 @@ char	*get_next_line(int fd)
 	save[fd] = save_rest(save[fd]);
 	return (line);
 }
-
-/* 
-int	main(void)
-{
-	int		fd;
-	char	*line;
-
-	fd = open("test.txt", O_RDONLY);
-	while (1)
-	{
-		line = get_next_line(fd);
-		if (line == NULL)
-			break ;
-		printf("%s", line);
-		free(line);
-	}
-	return (0);
-}
-
-// create main function
-int	main(void)
-{
-	int		fd;
-	char	*str;
-	int		i;
-	ssize_t	len_read = BUFFER_SIZE;
-
-	i = 1;
-	fd = open("tst1.txt", O_RDONLY | O_CREAT);
-	if (fd < 0)
-	{
-		perror("r1");
-		exit(1);
-	}
-	printf("BUFFER SIZE is:%lu\n", len_read);
-	while ((str = get_next_line(fd)))
-		printf("LINE - %3d || lengh - %3zu: %s", i++, ft_strlen(str), str);
-	free(str);
-	return (0);
-}
- */

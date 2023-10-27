@@ -44,3 +44,12 @@ void	exit_cmd(char **cmd, t_shell *shell)
 	free_split(cmd);
 	exit(g_signal_exit);
 }
+
+char	*ft_exit_nbr(void)
+{
+	char	*nbr;
+
+	nbr = ft_itoa(g_signal_exit);
+	//free(str);
+	return (nbr);
+}

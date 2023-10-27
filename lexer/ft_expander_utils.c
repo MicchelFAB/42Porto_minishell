@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_redirects.c                                     :+:      :+:    :+:   */
+/*   ft_expander_utils.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 13:01:01 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/10/24 11:31:33 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/10/26 15:31:58 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,11 @@ char	*malloc_rd(char *s)
 	return (rest);
 }
 
-char *ft_put_redir(t_shell *line)
+char	*ft_put_redir(t_shell *line)
 {
-	char *tmp;
-	int i;
-	int j;
+	char	*tmp;
+	int		i;
+	int		j;
 
 	j = 0;
 	i = 0;
@@ -72,4 +72,13 @@ char *ft_put_redir(t_shell *line)
 	tmp[j] = 0;
 	free(line->line);
 	return (tmp);
+}
+
+int	is_dollar_sign(char *s, int *i)
+{
+	if (s[0] == '$' && s[1] != '\0')
+		return (1);
+	else if (s[0] == '\\' && s[1] == '$')
+		*i += 1;
+	return (0);
 }

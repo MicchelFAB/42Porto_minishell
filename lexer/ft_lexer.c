@@ -6,7 +6,7 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 13:52:07 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/10/20 14:05:56 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/10/26 15:35:56 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*rm_whitespace(char *s)
 	{
 		if (s[i] == '\"' || s[i] == '\'')
 			i += skip_quotes(&s[i]);
-		else if (s[i] == '\\')
+		else if (s[i] == '\\' && s[i + 1])
 		{
 			s = ft_rmvchar(s, i);
 			i += 2;
@@ -71,23 +71,12 @@ void	ft_lexer(t_shell *line)
 	line->line = ft_put_redir(line);
 	line->line = ft_expand_env(line);
 	line->line = rm_whitespace(line->line);
-	ft_convert_especial(line);
 	list = ft_split_lexer(line->line);
+	ft_convert_especial(list);
 	if (list == NULL)
 		line->tree = NULL;
 	line->tree = list;
-	// ft_print_list(line);
 }
-
-// void	start_cmd(t_shell *shell)
-// {
-// 	if (shell->line[0] != '\0')
-// 	{
-// 		shell->tree = ft_lexer(shell);
-// 		if (shell->tree == NULL)
-// 			g_signal_exit = 0;
-// 	}
-// }
 
 char	*ft_ignore_special(char *line)
 {
@@ -96,10 +85,10 @@ char	*ft_ignore_special(char *line)
 	i = 0;
 	while (line[i])
 	{
-		if (line[i] == '\\')
+		if (line[i] == '\\' && line[i + 1])
 		{
-			if (!ft_chk_char(line) && !(line[i + 1] == '$' || 
-					line[i + 1] == '\\'))
+			if (!ft_chk_char(line) && !(line[i + 1] == '$'
+					|| line[i + 1] == '\\'))
 				i++;
 			else
 				line = ft_rmvchar(line, i);
@@ -111,14 +100,4 @@ char	*ft_ignore_special(char *line)
 		i++;
 	}
 	return (line);
-}
-
-void	ft_convert_especial(t_shell *shell)
-{
-	if (ft_strchr(shell->line, '~') && !ft_chk_char(shell->line))
-		shell->line = ft_str_replace(shell->line, "~", "$HOME");
-	if (ft_strchr(shell->line, '\'') || ft_strchr(shell->line, '\"'))
-		shell->line = ft_remove_quotes(shell->line);
-	if (ft_strchr(shell->line, '\\'))
-		shell->line = ft_ignore_special(shell->line);
 }

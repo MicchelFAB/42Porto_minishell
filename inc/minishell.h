@@ -6,7 +6,7 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 16:08:31 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/10/25 18:19:10 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/10/26 18:14:16 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ int				skip_quotes(char *s);
 int				check_special(char *line);
 t_tree			*ft_split_lexer(char *str);
 t_tree			*make_tree(char *str, int size);
-void			ft_convert_especial(t_shell *shell);
+void			ft_convert_especial(t_tree *tree);
 
 /*------------ft_env----------*/
 void			ft_addenv_back(t_env **lst, t_env *new);
@@ -125,6 +125,8 @@ char			*ft_join_str_env(char *s, char *env);
 char			*get_env_name(char *s);
 int				env_key_size(char *s);
 int				ft_verify_quote(char *s, int i);
+int				is_dollar_sign(char *s, int *i);
+char			*ft_ignore_special(char *line);
 
 /*-----------ft_env_utils------*/
 int				ft_set_env(char *key, char *new_val, t_shell *shell);
@@ -182,9 +184,9 @@ char			**create_cmds(t_tree *tree, t_tree *tmp);
 
 char			*ft_remove_quotes(char *str);
 int				check_special(char *line);
-int				ft_skip_escape(char *s, int i);
+void			ft_skip_escape(char *s, int *i);
 void			restore_fd(int *fd);
-char 			*ft_put_redir(t_shell *line);
+char			*ft_put_redir(t_shell *line);
 
 /*------------Execute----------*/
 void			execute(char **cmd, int *fd, int *std_in, t_shell *shell);
@@ -197,10 +199,9 @@ void			ft_ctrlc_exec(int sig);
 char			*get_abs_path(char *cmd, char *path);
 int				ft_check_path(char **path, t_shell *shell);
 
-
-int			ft_output_redirect(char *file);
-int 			ft_output_append(char *file);
-int			ft_input_redirect(char *file);
-int			ft_heredoc(char *name);
+int				ft_output_redirect(char *file);
+int				ft_output_append(char *file);
+int				ft_input_redirect(char *file);
+int				ft_heredoc(char *name, int fd[]);
 
 #endif
