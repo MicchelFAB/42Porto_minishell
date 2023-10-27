@@ -76,7 +76,8 @@ void	unset_cmd(char **cmd, t_shell *shell)
 	int		i;
 	int		j;
 
-	//verificar se é pipe!!!
+	if (contains_pipe(shell))
+		return ;
 	i = 0;
 	while (cmd[i])
 	{
