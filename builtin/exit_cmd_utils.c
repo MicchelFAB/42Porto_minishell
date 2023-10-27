@@ -14,7 +14,6 @@ int	ft_is_all_digit(char *num)
 	return (1);
 }
 
-
 int	ft_is_number(char *num)
 {
 	int		sign;
@@ -35,9 +34,11 @@ int	ft_is_number(char *num)
 		return (0);
 	if (ft_strlen(num) < 19)
 		return (1);
-	if (ft_strlen(num) > 19 || (!sign && ft_strcmp("9223372036854775807", num) < 0))
+	if (ft_strlen(num) > 19 || (!sign && ft_strcmp("9223372036854775807", num)
+			< 0))
 		return (0);
-	if (ft_strlen(num) > 19 || (sign && ft_strcmp("9223372036854775808", num) < 0))
+	if (ft_strlen(num) > 19 || (sign && ft_strcmp("9223372036854775808", num)
+			< 0))
 		return (0);
 	return (1);
 }
