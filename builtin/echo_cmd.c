@@ -1,5 +1,7 @@
 #include "../inc/minishell.h"
 
+extern int		g_signal_exit;
+
 void	print_echo(char **cmd, int i, int flag)
 {
 	while (cmd[i])
@@ -31,4 +33,5 @@ void	echo_cmd(char **cmd)
 		i++;
 	}
 	print_echo(cmd, i, flag);
+	//g_signal_exit = 0;
 }

@@ -62,7 +62,8 @@ void	export_cmd(char **cmd, t_shell *shell)
 	int		i;
 
 	i = -1;
-	// falta verificar se é pipe!!!!
+	if (contains_pipe(shell))
+		return ;
 	while (cmd[++i])
 	{
 		make_export(cmd[i], shell);
