@@ -6,7 +6,7 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 10:48:20 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/10/18 11:15:55 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/10/26 15:46:31 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,14 @@ void	print_start_minishell(void)
 	ssize_t	read_bytes;
 
 	fd = open("./.ascii", O_RDONLY);
-	if (fd == -1) 
+	if (fd == -1)
 	{
 		perror("open");
 		exit(EXIT_FAILURE);
 	}
 	result = read(fd, &ascii, 2860);
 	read_bytes = write(1, ascii, result);
-	if (read_bytes == -1) 
+	if (read_bytes == -1)
 	{
 		perror("write");
 		close(fd);
@@ -81,21 +81,12 @@ void	wait_child_proc(t_shell *shell)
 	}
 }
 
-char	*ft_exit_nbr(void)
-{
-	char	*nbr;
-
-	nbr = ft_itoa(g_signal_exit);
-	//free(str);
-	return (nbr);
-}
-
 int	ft_chk_char(char *line)
 {
 	int	size;
 
 	size = ft_strlen(line);
-	if (check_quote_pair(line, size) || check_special(line) 
+	if (check_quote_pair(line, size) || check_special(line)
 		|| str_whitespace_only(line))
 		return (1);
 	return (0);

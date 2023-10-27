@@ -6,7 +6,7 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:28:36 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/10/19 11:44:18 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/10/26 15:31:24 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char	*ft_expand_env(t_shell *line)
 			j = ft_verify_quote(&line->line[i], j);
 		if (line->line[i] == '\'' && j == 0)
 			i += skip_quotes(&line->line[i]);
-		if (i && line->line[i] == '$' && line->line[i - 1] != '\\')
+		if (is_dollar_sign(&line->line[i], &i))
 		{
 			{
 				line->line = get_merged_str(line, &i);

@@ -54,9 +54,11 @@ SRC_BUILTIN	:=  echo_cmd.c \
 				unset_cmd.c \
 				builtin.c builtin_utils.c
 
-SRC_LEXER	:=	ft_lexer.c ft_split_lexer.c ft_expander.c ft_quoting.c ft_expander_utils.c
+SRC_LEXER	:=	ft_lexer.c ft_split_lexer.c ft_expander.c ft_quoting.c \
+				ft_expander_utils.c ft_especial.c
 
-SRC_PARSE	:=	parse.c parse_utils.c execute.c execute_utils.c execute_utils2.c ft_redirects.c
+SRC_PARSE	:=	parse.c parse_utils.c execute.c execute_utils.c \
+				execute_utils2.c ft_redirects.c
 
 SRCS		:= $(SRCS:%=$(SRC_DIR)/%)
 SRC_BUILTIN	:= $(SRC_BUILTIN:%=$(BUILTIN_DIR)/%)
@@ -125,10 +127,12 @@ re:
 
 # ------- TEST LEAKS ------- #
 leak: all
-	@valgrind -q --leak-check=full --show-leak-kinds=all --suppressions=readline_supression ./$(NAME)
+	@valgrind -q --leak-check=full --show-leak-kinds=all \
+		--suppressions=readline_supression ./$(NAME)
 
 # ------- RECORD LOG ------- #
 log: all
-	@valgrind --track-origins=yes --leak-check=full --show-leak-kinds=all --suppressions=readline_supression --log-file=log%p.txt ./$(NAME)
+	@valgrind --track-origins=yes --leak-check=full --show-leak-kinds=all \
+		--suppressions=readline_supression --log-file=log%p.txt ./$(NAME)
 
 .PHONY: clean fclean re all bonus leak log

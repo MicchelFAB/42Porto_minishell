@@ -17,6 +17,7 @@ void	ft_exit_two_args(char **cmd, t_shell *shell)
 	{
 		print_error("numeric argument required", 2);
 		clean_all(shell);
+		g_signal_exit = 2;
 	}
 }
 
@@ -40,4 +41,13 @@ void	exit_cmd(char **cmd, t_shell *shell)
 		ft_exit_two_args(cmd, shell);
 	free_split(cmd);
 	exit(g_signal_exit);
+}
+
+char	*ft_exit_nbr(void)
+{
+	char	*nbr;
+
+	nbr = ft_itoa(g_signal_exit);
+	//free(str);
+	return (nbr);
 }

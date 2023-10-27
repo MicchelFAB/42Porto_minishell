@@ -6,6 +6,7 @@
   "C_Cpp_Runner.cppStandard": "",
   "C_Cpp_Runner.msvcBatchPath": "",
   "C_Cpp_Runner.useMsvc": false,
+  "editor.rulers": [80], 
   "C_Cpp_Runner.warnings": [
     "-Wall",
     "-Wextra",

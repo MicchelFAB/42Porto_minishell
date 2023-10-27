@@ -32,7 +32,7 @@ void	unset_env(char *key, t_shell *shell)
 	if (tmp == NULL)
 		return ;
 	prev->next = tmp->next;
-	ft_env_del(tmp); 
+	ft_env_del(tmp);
 }
 
 extern int		g_signal_exit;
@@ -67,7 +67,7 @@ void	unset_exp(char *key, t_shell *shell)
 	if (tmp == NULL)
 		return ;
 	prev->next = tmp->next;
-	ft_exp_del(tmp); 
+	ft_exp_del(tmp);
 }
 
 void	unset_cmd(char **cmd, t_shell *shell)

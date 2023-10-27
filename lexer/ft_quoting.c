@@ -6,24 +6,13 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 13:52:07 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/10/19 12:09:06 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/10/26 15:35:14 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 extern int	g_signal_exit;
-
-int	ft_skip_escape(char *s, int i)
-{
-	while (s[i] != '\"' && s[i])
-	{
-		if (s[i] == '\\')
-			i++;
-		i++;
-	}
-	return (i);
-}
 
 int	skip_quotes(char *s)
 {
@@ -35,7 +24,8 @@ int	skip_quotes(char *s)
 		i++;
 		if (!s[i])
 			return (0);
-		i = ft_skip_escape(s, i);
+		ft_skip_escape(s, &i);
+		i--;
 	}
 	else if (s[i] == '\'')
 	{
@@ -94,8 +84,8 @@ int	check_special(char *line)
 	flag = 0;
 	while (line[i])
 	{
-		if (line[i] == ';' || line[i] == '&' || line[i] == '*' || line[i] == 
-			(line[i] == '|' && line[i + 1] && line[i + 1] == '|'))
+		if (line[i] == ';' || line[i] == '&' || line[i] == '*' || line[i]
+			== (line[i] == '|' && line[i + 1] && line[i + 1] == '|'))
 		{
 			if (check_quote_pair(line, i) == 0)
 			{

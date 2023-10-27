@@ -6,7 +6,7 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 11:16:15 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/10/18 11:20:38 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/10/26 15:39:06 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,14 @@ char	*ft_rmvchar(char *str, int pos)
 	char	*tmp;
 	int		i;
 	int		j;
+	int		size;
 
 	i = 0;
 	j = 0;
-	tmp = malloc(sizeof(char) * ft_strlen(str));
+	size = ft_strlen(str);
+	if (pos < 0 || pos > size)
+		return (str);
+	tmp = malloc(sizeof(char) * size);
 	while (i < pos)
 		tmp[j++] = str[i++];
 	i++;
