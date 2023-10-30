@@ -58,9 +58,9 @@ void	ft_import_exp(char **env, t_shell *shell)
 	int		i;
 	int		size;
 
-	i = 0;
+	i = -1;
 	shell->exp = NULL;
-	while (env[i] != NULL)
+	while (env[++i] != NULL)
 	{
 		if (ft_strchr(env[i], '=') != NULL)
 		{
@@ -75,6 +75,5 @@ void	ft_import_exp(char **env, t_shell *shell)
 			free(key);
 			free(value);
 		}
-		i++;
 	}
 }

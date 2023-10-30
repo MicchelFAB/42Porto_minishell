@@ -18,17 +18,19 @@ void	ft_addenv_back(t_env **lst, t_env *new)
 {
 	t_env	*last;
 
-	last = *lst;
-	if (lst == NULL || new == NULL)
-		return ;
-	if (*lst == NULL)
+	if (*lst == NULL || ft_strcmp((*lst)->key, new->key) >= 0)
 	{
+		new->next = *lst;
 		*lst = new;
-		return ;
 	}
-	while (last->next != NULL)
-		last = last->next;
-	last->next = new;
+	else
+	{
+		last = *lst;
+		while (last->next)
+			last = last->next;
+		new->next = last->next;
+		last->next = new;
+	}
 }
 
 t_env	*ft_envnew(char *key, char *value)
@@ -38,7 +40,7 @@ t_env	*ft_envnew(char *key, char *value)
 	new_env = (t_env *)malloc(sizeof(t_env));
 	if (!new_env)
 	{
-		return (NULL);
+		return (0);
 	}
 	new_env->key = ft_strdup(key);
 	new_env->value = ft_strdup(value);
@@ -50,13 +52,13 @@ void	ft_import_env(t_shell *shell, char **env)
 {
 	t_env	*new;
 	int		i;
-	size_t	size;
+	int		size;
 	char	*key;
 	char	*value;
 
-	i = 0;
+	i = -1;
 	shell->env = NULL;
-	while (env[i])
+	while (env[++i])
 	{
 		if (strchr(env[i], '='))
 		{
@@ -71,6 +73,5 @@ void	ft_import_env(t_shell *shell, char **env)
 			free(key);
 			free(value);
 		}
-		i++;
 	}
 }

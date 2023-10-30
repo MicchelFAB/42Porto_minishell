@@ -6,15 +6,12 @@ int	ft_check_path(char **path, t_shell *shell)
 {
 	t_env	*env_path;
 
-	// procurar o path no env
 	env_path = search_path("PATH", shell);
-	// se não houver env 
 	if (!env_path)
 	{
 		print_error("PATH", 127);
 		return (0);
 	}
-	// *path = env->value da linha PATH
 	*path = env_path->value;
 	return (1);
 }
@@ -45,9 +42,7 @@ char	*get_abs_path(char *cmd, char *path)
 	int		i;
 
 	i = 0;
-	// vai pegar no PATH e dividir pelo ':'
 	split_paths = ft_split(path, ':');
-	// vai percurrer a variavel acima e procurar onde o comando seja executavel
 	while (split_paths && split_paths[i])
 	{
 		single_path = compatible_path(split_paths[i], cmd);

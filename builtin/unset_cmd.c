@@ -18,7 +18,7 @@ void	unset_env(char *key, t_shell *shell)
 
 	tmp = shell->env;
 	prev = NULL;
-	if (tmp && tmp->key == key)
+	if (tmp && ft_strcmp(tmp->key, key) == 0)
 	{
 		shell->env = tmp->next;
 		ft_env_del(tmp);
@@ -53,7 +53,7 @@ void	unset_exp(char *key, t_shell *shell)
 
 	tmp = shell->exp;
 	prev = NULL;
-	if (tmp && tmp->key == key)
+	if (tmp && ft_strcmp(tmp->key, key) == 0)
 	{
 		shell->exp = tmp->next;
 		ft_exp_del(tmp);

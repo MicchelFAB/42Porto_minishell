@@ -1,5 +1,15 @@
 #include "../inc/minishell.h"
 
+char *catch_name(t_tree *tree)
+{
+	char *name;
+
+	while(tree->type != REDIR)
+		tree = tree->next;
+	name = ft_strdup(tree->next->str1);
+	return (name);
+}
+
 void	restore_fd(int *fd)
 {
 	dup2(fd[IN], STDIN_FILENO);

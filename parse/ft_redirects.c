@@ -50,7 +50,6 @@ int	ft_input_redirect(char *file)
 int	ft_output_redirect(char *file)
 {
 	int	fd;
-	// char name;
 	
 	fd = open(file,	O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	dup2(fd, OUT);
@@ -66,4 +65,18 @@ int ft_output_append(char *file)
 	dup2(fd, OUT);
 	close(fd);
 	return (0);
+}
+
+int ft_redir_type(char *name, char *str)
+{
+	if(ft_strcmp("<", str) == 0)
+			return(ft_input_redirect(name));
+	else if(ft_strcmp("<<", str) == 0)
+			return(ft_heredoc(name));
+	else if(ft_strcmp(">", str) == 0)
+			return(ft_output_redirect(name));
+	else if(ft_strcmp(">>", str) == 0)
+			return(ft_output_append(name));
+	else
+		return (0);
 }
