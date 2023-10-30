@@ -6,7 +6,7 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 11:40:49 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/10/25 18:20:00 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/10/30 14:18:38 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	loop_shell(t_shell *shell)
 	while (true)
 	{
 		ft_comand_signal();
-		shell->line = readline("minishell -> ");
+			shell->line = readline("minishell -> ");
 		if (!shell->line)
 			ctrl_d(shell);
 		else if (!ft_strlen(shell->line) || ft_chk_char(shell->line))

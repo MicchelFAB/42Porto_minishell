@@ -6,7 +6,7 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 16:08:31 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/10/30 09:16:03 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/10/30 09:33:07 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -203,5 +203,7 @@ int				ft_output_redirect(char *file);
 int				ft_output_append(char *file);
 int				ft_input_redirect(char *file);
 int				ft_heredoc(char *name);
+int				ft_redir_type(char *name, char *str);
+char			*catch_name(t_tree *tree);
 
 #endif

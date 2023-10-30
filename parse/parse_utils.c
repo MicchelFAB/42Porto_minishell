@@ -1,10 +1,10 @@
-#include "../inc/minishell.h"
+#include "minishell.h"
 
-char *catch_name(t_tree *tree)
+char	*catch_name(t_tree *tree)
 {
-	char *name;
+	char	*name;
 
-	while(tree->type != REDIR)
+	while (tree->type != REDIR)
 		tree = tree->next;
 	name = ft_strdup(tree->next->str1);
 	return (name);
@@ -18,7 +18,7 @@ void	restore_fd(int *fd)
 	close(fd[OUT]);
 }
 
-int		cmds_len(t_tree *tree, t_tree *tmp)
+int	cmds_len(t_tree *tree, t_tree *tmp)
 {
 	int		len;
 

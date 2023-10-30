@@ -1,6 +1,6 @@
 
 
-#include "../inc/minishell.h"
+#include "minishell.h"
 
 int		g_signal_exit;
 

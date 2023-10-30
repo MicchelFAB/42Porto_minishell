@@ -1,4 +1,4 @@
-#include "../inc/minishell.h"
+#include "minishell.h"
 
 extern int		g_signal_exit;
 
@@ -22,7 +22,7 @@ void	echo_cmd(char **cmd)
 
 	i = 0;
 	flag = 1;
-	if(!cmd || !*cmd)
+	if (!cmd || !*cmd)
 	{
 		printf("\n");
 		return ;

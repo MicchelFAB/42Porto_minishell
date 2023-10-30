@@ -1,31 +1,31 @@
 #include "minishell.h"
 
-extern int g_signal_exit;
+extern int	g_signal_exit;
 
 int	ft_heredoc(char *name)
 {
 	char	*prompt;
 	int		fd_in;
-	int 	fd_out;
+	int		fd_out;
 
-	fd_in = open(".heredoc", O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	fd_out = open(".heredoc", O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	while (1)
 	{
 		prompt = readline("> ");
-		while (ft_strcmp(prompt, name))
+		if (ft_strcmp(prompt, name))
 		{
-			ft_putendl_fd(prompt, fd_in);
+			ft_putendl_fd(prompt, fd_out);
 			free(prompt);
-			prompt = readline("> ");
+			continue ;
 		}
 		if (prompt)
 			free(prompt);
-		fd_out = open(".heredoc", O_RDONLY);
-		close(fd_in);
-		dup2(fd_out, STDIN_FILENO);
+		fd_in = open(".heredoc", O_RDONLY);
 		close(fd_out);
+		dup2(fd_in, STDIN_FILENO);
+		close(fd_in);
 		unlink(".heredoc");
-		break;
+		break ;
 	}
 	return (0);
 }
@@ -50,33 +50,33 @@ int	ft_input_redirect(char *file)
 int	ft_output_redirect(char *file)
 {
 	int	fd;
-	
-	fd = open(file,	O_WRONLY | O_CREAT | O_TRUNC, 0644);
+
+	fd = open(file, O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	dup2(fd, OUT);
 	close(fd);
 	return (0);
 }
 
-int ft_output_append(char *file)
+int	ft_output_append(char *file)
 {
-	int fd;
+	int	fd;
 
-	fd = open(file,	O_WRONLY | O_CREAT | O_APPEND, 0644);
+	fd = open(file, O_WRONLY | O_CREAT | O_APPEND, 0644);
 	dup2(fd, OUT);
 	close(fd);
 	return (0);
 }
 
-int ft_redir_type(char *name, char *str)
+int	ft_redir_type(char *name, char *str)
 {
-	if(ft_strcmp("<", str) == 0)
-			return(ft_input_redirect(name));
-	else if(ft_strcmp("<<", str) == 0)
-			return(ft_heredoc(name));
-	else if(ft_strcmp(">", str) == 0)
-			return(ft_output_redirect(name));
-	else if(ft_strcmp(">>", str) == 0)
-			return(ft_output_append(name));
+	if (ft_strcmp("<", str) == 0)
+		return (ft_input_redirect(name));
+	else if (ft_strcmp("<<", str) == 0)
+		return (ft_heredoc(name));
+	else if (ft_strcmp(">", str) == 0)
+		return (ft_output_redirect(name));
+	else if (ft_strcmp(">>", str) == 0)
+		return (ft_output_append(name));
 	else
 		return (0);
 }

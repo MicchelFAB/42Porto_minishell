@@ -1,4 +1,4 @@
-#include "../inc/minishell.h"
+#include "minishell.h"
 
 extern int	g_signal_exit;
 
@@ -21,7 +21,7 @@ char	**cmd_array(t_shell *shell)
 	t_env	*tmp;
 	int		i;
 
-	i = 0;	
+	i = 0;
 	tmp = shell->env;
 	while (tmp)
 	{
@@ -45,7 +45,7 @@ char	**cmd_array(t_shell *shell)
 // se não for executavel(se acesse != 0)
 // procurar path absoluta para o cmd cmd_abs
 
-int		cmd_path(char **cmd, int *fd, t_shell *shell)
+int	cmd_path(char **cmd, int *fd, t_shell *shell)
 {
 	char	*cmd_abs;
 	char	*path;
@@ -53,7 +53,7 @@ int		cmd_path(char **cmd, int *fd, t_shell *shell)
 	(void)fd;
 	if (cmd[0] && (cmd[0][0] == '.' || cmd[0][0] == '/'))
 		return (1);
-	if (!cmd[0] || !ft_check_path(&path, shell))
+	if (!cmd[0] || !ft_check_path(&path, shell))  // --> Imprimir comand not found.
 		return (0);
 	if (access(cmd[0], F_OK) != 0)
 	{
@@ -79,7 +79,6 @@ void	exec_cmd(char **cmd, int *fd, int *std_in, t_shell *shell)
 	char	**envp;
 	int		pid;
 
-	
 	if (!cmd[0] || !cmd_path(cmd, fd, shell))
 		return ;
 	pid = fork();
@@ -90,7 +89,7 @@ void	exec_cmd(char **cmd, int *fd, int *std_in, t_shell *shell)
 	{
 		close(fd[IN]);
 		close(fd[OUT]);
- 		if (*std_in != 0)
+		if (*std_in != 0)
 			close (*std_in);
 		envp = cmd_array(shell);
 		if (execve(cmd[0], cmd, envp) == -1)

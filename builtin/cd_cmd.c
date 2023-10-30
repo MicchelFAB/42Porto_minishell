@@ -1,4 +1,4 @@
-#include "../inc/minishell.h"
+#include "minishell.h"
 
 extern int		g_signal_exit;
 
@@ -12,7 +12,7 @@ void	update_pwd(t_shell *shell)
 {
 	char	new_pwd[256];
 
-	if(getcwd(new_pwd, sizeof(new_pwd)))
+	if (getcwd(new_pwd, sizeof(new_pwd)))
 	{
 		ft_set_path("OLDPWD", ft_get_path("PWD", shell), shell);
 		ft_set_path("PWD", new_pwd, shell);
@@ -23,7 +23,7 @@ void	update_pwd(t_shell *shell)
  *take the new path, and update the path
 */
 
-int		make_cd(char *path, t_shell *shell)
+int	make_cd(char *path, t_shell *shell)
 {
 	g_signal_exit = chdir(path);
 	if (g_signal_exit < 0)
@@ -38,7 +38,7 @@ int		make_cd(char *path, t_shell *shell)
  * 
 */
 
-int		go_old_path(char **path, t_shell *shell)
+int	go_old_path(char **path, t_shell *shell)
 {
 	*path = ft_get_path("OLDPWD", shell);
 	if (!*path)
@@ -61,7 +61,7 @@ void	cd_cmd(char **cmd, t_shell *shell)
 		printf("Too many arguments!");
 		return ;
 	}
-	if ((path == NULL || *path == '\0') || (*path == '-' && *(path + 1) == '-' 
+	if ((path == NULL || *path == '\0') || (*path == '-' && *(path + 1) == '-'
 			&& *(path + 2) == '\0'))
 		path = ft_get_path("HOME", shell);
 	else if (*path == '-' && *(path + 1) == '\0')

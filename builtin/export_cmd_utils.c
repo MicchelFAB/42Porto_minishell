@@ -1,4 +1,4 @@
-#include "../inc/minishell.h"
+#include "minishell.h"
 
 extern int		g_signal_exit;
 
@@ -57,6 +57,7 @@ int	ft_set_exp(char *key, char *new_val, t_shell *shell)
 char	*ft_get_exp(char *key, t_shell *shell)
 {
 	t_exp	*search;
+
 	search = shell->exp;
 	while (search != NULL)
 	{

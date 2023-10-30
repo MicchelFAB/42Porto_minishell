@@ -1,4 +1,4 @@
-#include "../inc/minishell.h"
+#include "minishell.h"
 
 /*
 getcwd() — Get path name of the working directory

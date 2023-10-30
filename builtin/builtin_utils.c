@@ -1,4 +1,4 @@
-#include "../inc/minishell.h"
+#include "minishell.h"
 
 t_env	*search_path(char *key, t_shell *shell)
 {
@@ -14,7 +14,7 @@ t_env	*search_path(char *key, t_shell *shell)
 	return (NULL);
 }
 
-int		ft_set_path(char *key, char *new_val, t_shell *shell)
+int	ft_set_path(char *key, char *new_val, t_shell *shell)
 {
 	t_env	*newenv;
 	t_env	*search;
@@ -49,7 +49,7 @@ char	*ft_get_path(char *key, t_shell *shell)
 	return (NULL);
 }
 
-int		contains_pipe(t_shell *shell)
+int	contains_pipe(t_shell *shell)
 {
 	t_tree	*tmp;
 

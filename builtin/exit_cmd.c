@@ -50,6 +50,5 @@ char	*ft_exit_nbr(void)
 	char	*nbr;
 
 	nbr = ft_itoa(g_signal_exit);
-	//free(str);
 	return (nbr);
 }

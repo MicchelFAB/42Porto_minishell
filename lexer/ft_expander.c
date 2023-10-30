@@ -6,7 +6,7 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:28:36 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/10/26 15:31:24 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/10/30 12:03:22 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ char	*get_env_to_str(char *str, t_env *env)
 
 	tmp = env;
 	if (env == NULL)
-		return (NULL);
+		return ("");
 	if (str[0] == '?' && str[1] == '\0')
 		return (ft_exit_nbr());
 	while (tmp)

@@ -1,8 +1,6 @@
-#include "../inc/minishell.h"
+#include "minishell.h"
 
-extern int g_signal_exit;
-
-char *catch_name(t_tree *tree);
+extern int	g_signal_exit;
 
 static void	create_pipe(t_tree *tmp, int *std_in)
 {
@@ -21,15 +19,15 @@ static void	create_pipe(t_tree *tmp, int *std_in)
 
 int	ft_redir(t_tree *tree)
 {
-	t_tree *tmp;
-	char *str;
-	int i;
+	t_tree	*tmp;
+	char	*str;
+	int		i;
 
 	i = 0;
 	tmp = tree;
 	while (tmp && tmp->type != PIPE)
 	{
-		if(tmp->type == REDIR)
+		if (tmp->type == REDIR)
 		{
 			str = catch_name(tmp);
 			i = ft_redir_type(str, tmp->str1);
@@ -47,10 +45,10 @@ void	parse_cmd(t_tree *tree, t_tree *tmp, int *std_in, t_shell *shell)
 
 	fd[IN] = dup(STDIN_FILENO);
 	fd[OUT] = dup(STDOUT_FILENO);
-	create_pipe(tmp, std_in);
-	if(ft_redir(tree))
+	if (ft_redir(tree))
 		return ;
 	cmd = create_cmds(tree, tmp);
+	create_pipe(tmp, std_in);
 	execute(cmd, fd, std_in, shell);
 	free_split(cmd);
 	restore_fd(fd);

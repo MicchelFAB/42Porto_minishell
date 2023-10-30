@@ -1,7 +1,6 @@
-#include "../inc/minishell.h"
+#include "minishell.h"
 
 extern int	g_signal_exit;
-
 
 void	ft_ctrlc_exec(int sig)
 {

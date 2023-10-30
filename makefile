@@ -128,7 +128,7 @@ re:
 # ------- TEST LEAKS ------- #
 leak: all
 	@valgrind -q --leak-check=full --show-leak-kinds=all \
-		--suppressions=readline_supression ./$(NAME)
+		--suppressions=readline_supression --track-fds=yes ./$(NAME)
 
 # ------- RECORD LOG ------- #
 log: all

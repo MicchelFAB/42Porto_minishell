@@ -1,4 +1,4 @@
-#include "../inc/minishell.h"
+#include "minishell.h"
 
 void	exec_builtin(char **cmd, t_shell *shell)
 {
@@ -26,7 +26,7 @@ void	exec_builtin(char **cmd, t_shell *shell)
 	}
 }
 
-int		is_builtin(char **cmd)
+int	is_builtin(char **cmd)
 {
 	if (!cmd || !*cmd)
 		return (0);

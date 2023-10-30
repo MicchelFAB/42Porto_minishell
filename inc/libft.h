@@ -6,7 +6,7 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 13:53:51 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/10/18 11:21:44 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/10/30 09:31:07 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,11 +70,10 @@ int				ft_atoi(const char *nptr);
 size_t			ft_intlen(int *s);
 int				ft_arrlen(int *a);
 void			ft_swap(int *a, int *b);
-
 void			*ft_calloc(size_t nmemb, size_t size);
 
 char			*ft_itoa(int n);
-
+long long int	ft_atol(const char *nptr);
 void			ft_putchar_fd(char c, int fd);
 void			ft_putstr_fd(char *s, int fd);
 void			ft_putendl_fd(char *s, int fd);
@@ -90,15 +89,5 @@ void			ft_lstdelone(t_list *lst, void (*del)(void*));
 void			ft_lstclear(t_list **lst, void (*del)(void*));
 void			ft_lstiter(t_list *lst, void (*f)(void*));
 t_list			*ft_lstmap(t_list *lst, void *(*f)(void*), void (*del)(void*));
-
-// printf
-int				ft_printf(const char *fmt, ...);
-int				ft_putcharpf(char c);
-int				ft_putstrpf(char *s);
-int				ft_puthexpf(unsigned long n, char format);
-int				ft_putnbrpf(int n);
-int				ft_putunbrpf(unsigned int n);
-int				ft_putptrpf(unsigned long n);
-long long int	ft_atol(const char *nptr);
 
 #endif
