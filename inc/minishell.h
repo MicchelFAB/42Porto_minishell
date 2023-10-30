@@ -6,7 +6,7 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 16:08:31 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/10/30 09:33:07 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/10/30 17:21 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,7 +148,7 @@ void			ft_freetree(t_tree *tree);
 void			ft_freeshell(t_shell *shell);
 
 /*------------builtin---------*/
-void			exit_cmd(char **cmd, t_shell *shell);
+void			exit_cmd(char **cmd, int *fd, t_shell *shell);
 void			ft_exit_two_args(char **cmd, t_shell *shell);
 int				ft_is_all_digit(char *num);
 int				ft_is_number(char *num);
@@ -161,7 +161,7 @@ void			echo_cmd(char **cmd);
 
 void			export_cmd(char **cmd, t_shell *shell);
 
-void			exec_builtin(char **cmd, t_shell *shell);
+void			exec_builtin(char **cmd, int *fd, t_shell *shell);
 int				is_builtin(char **cmd);
 
 void			unset_cmd(char **cmd, t_shell *shell);

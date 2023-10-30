@@ -25,6 +25,8 @@ char	*compatible_path(char *split_path, char *cmd)
 	char	*single_path;
 	char	*tmp;
 
+	if (!*cmd)
+		return (NULL);
 	tmp = ft_strjoin(split_path, "/");
 	single_path = ft_strjoin(tmp, cmd);
 	free(tmp);
@@ -46,6 +48,8 @@ char	*get_abs_path(char *cmd, char *path)
 	while (split_paths && split_paths[i])
 	{
 		single_path = compatible_path(split_paths[i], cmd);
+		if (!single_path)
+			break ;
 		if (access(single_path, F_OK) == 0)
 		{
 			free_split(split_paths);

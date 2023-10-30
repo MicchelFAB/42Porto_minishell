@@ -24,8 +24,8 @@ void	ft_exec_signal(void)
 
 void	error_execve(char **env, char **cmd, t_shell *shell)
 {
-	free(env);
-	free(cmd);
+	free_split(env);
+	free_split(cmd);
 	clean_all(shell);
 	printf("command not found\n");
 	exit(127);

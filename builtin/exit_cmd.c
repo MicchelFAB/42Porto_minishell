@@ -20,10 +20,12 @@ void	ft_exit_two_args(char **cmd, t_shell *shell)
 	}
 }
 
-void	exit_cmd(char **cmd, t_shell *shell)
+void	exit_cmd(char **cmd, int *fd, t_shell *shell)
 {
 	int		len;
 
+	close(fd[IN]);
+	close(fd[OUT]);
 	len = 0;
 	if (contains_pipe(shell))
 		return ;

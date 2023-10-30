@@ -7,6 +7,7 @@ char	*catch_name(t_tree *tree)
 	while (tree->type != REDIR)
 		tree = tree->next;
 	name = ft_strdup(tree->next->str1);
+	tree->next->type = FILE;
 	return (name);
 }
 
@@ -23,7 +24,7 @@ int	cmds_len(t_tree *tree, t_tree *tmp)
 	int		len;
 
 	len = 0;
-	while (tree != tmp && tree->type != REDIR)
+	while (tree != tmp)
 	{
 		if (tree->type == WORD)
 			len ++;
@@ -37,7 +38,7 @@ char	**cmds_array(t_tree *tree, t_tree *tmp, char **cmd)
 	int		len;
 
 	len = 0;
-	while (tree != tmp && tree->type != REDIR)
+	while (tree != tmp)
 	{
 		if (tree->type == WORD)
 		{

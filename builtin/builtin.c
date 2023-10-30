@@ -1,6 +1,6 @@
 #include "minishell.h"
 
-void	exec_builtin(char **cmd, t_shell *shell)
+void	exec_builtin(char **cmd, int *fd, t_shell *shell)
 {
 	if (!ft_strcmp(cmd[0], "pwd"))
 		pwd_cmd();
@@ -16,7 +16,7 @@ void	exec_builtin(char **cmd, t_shell *shell)
 			export_cmd(cmd + 1, shell);
 	}
 	else if (!ft_strcmp(cmd[0], "exit"))
-		exit_cmd(cmd, shell);
+		exit_cmd(cmd, fd, shell);
 	else if (!ft_strcmp(cmd[0], "unset"))
 		unset_cmd(cmd + 1, shell);
 	else if (!ft_strcmp(cmd[0], "env"))
