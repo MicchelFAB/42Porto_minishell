@@ -45,12 +45,13 @@ void	parse_cmd(t_tree *tree, t_tree *tmp, int *std_in, t_shell *shell)
 
 	fd[IN] = dup(STDIN_FILENO);
 	fd[OUT] = dup(STDOUT_FILENO);
-	if (ft_redir(tree))
-		return ;
-	cmd = create_cmds(tree, tmp);
 	create_pipe(tmp, std_in);
-	execute(cmd, fd, std_in, shell);
-	free_split(cmd);
+	if (!ft_redir(tree))
+	{
+		cmd = create_cmds(tree, tmp);
+		execute(cmd, fd, std_in, shell);
+		free_split(cmd);
+	}
 	restore_fd(fd);
 }
 

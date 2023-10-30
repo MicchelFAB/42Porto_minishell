@@ -75,8 +75,8 @@ typedef struct s_shell
 	char	*redirect_filename;
 	int		pid;
 	int		child_proc;
-	int		t_count;
-	int		redir_flag;
+	//int		t_count;
+	//int		redir_flag;
 }			t_shell;
 
 /*------------main------------*/

@@ -102,7 +102,11 @@ void	execute(char **cmd, int *fd, int *std_in, t_shell *shell)
 	(void)fd;
 	(void)std_in;
 	if (is_builtin(cmd))
+	{
+		close(fd[IN]);
+		close(fd[OUT]);
 		exec_builtin(&cmd[0], shell);
+	}
 	else
 		exec_cmd(&cmd[0], fd, std_in, shell);
 }

@@ -9,7 +9,7 @@ int	ft_check_path(char **path, t_shell *shell)
 	env_path = search_path("PATH", shell);
 	if (!env_path)
 	{
-		print_error("PATH", 127);
+		print_error("PATH, Command not found", 127);
 		return (0);
 	}
 	*path = env_path->value;

@@ -54,7 +54,7 @@ t_shell	*init_shell(char **env)
 	if (!shell)
 		exit(EXIT_FAILURE);
 	shell->line = NULL;
-	shell->t_count = 0;
+	// shell->t_count = 0;
 	shell->child_proc = 0;
 	shell->pid = 0;
 	shell->tree = NULL;
