@@ -5,25 +5,25 @@ extern int	g_signal_exit;
 int	ft_heredoc(char *name)
 {
 	char	*prompt;
-	int		fd_in;
-	int		fd_out;
+	int		fd[2];
 
-	fd_out = open(".heredoc", O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	fd[1] = open(".heredoc", O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	// signal(SIGINT, ft_heredoc_ctrlc);
 	while (1)
 	{
 		prompt = readline("> ");
-		if (ft_strcmp(prompt, name))
+		if (prompt && ft_strcmp(prompt, name))
 		{
-			ft_putendl_fd(prompt, fd_out);
+			ft_putendl_fd(prompt, fd[1]);
 			free(prompt);
 			continue ;
 		}
 		if (prompt)
 			free(prompt);
-		fd_in = open(".heredoc", O_RDONLY);
-		close(fd_out);
-		dup2(fd_in, STDIN_FILENO);
-		close(fd_in);
+		fd[0] = open(".heredoc", O_RDONLY);
+		close(fd[1]);
+		dup2(fd[0], STDIN_FILENO);
+		close(fd[0]);
 		unlink(".heredoc");
 		break ;
 	}

@@ -53,7 +53,7 @@ int	cmd_path(char **cmd, int *fd, t_shell *shell)
 	(void)fd;
 	if (cmd[0] && (cmd[0][0] == '.' || cmd[0][0] == '/'))
 		return (1);
-	if (!cmd[0] || !ft_check_path(&path, shell))  // --> Imprimir comand not found.
+	if (!cmd[0] || !ft_check_path(&path, shell))
 		return (0);
 	if (access(cmd[0], F_OK) != 0)
 	{
@@ -102,9 +102,7 @@ void	execute(char **cmd, int *fd, int *std_in, t_shell *shell)
 	(void)fd;
 	(void)std_in;
 	if (is_builtin(cmd))
-	{
 		exec_builtin(&cmd[0], fd, shell);
-	}
 	else
 		exec_cmd(&cmd[0], fd, std_in, shell);
 }

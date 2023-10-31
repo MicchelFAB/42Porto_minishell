@@ -6,7 +6,7 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 16:08:31 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/10/30 17:21 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/10/31 12:57:48 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,6 @@ typedef struct s_shell
 	char	*redirect_filename;
 	int		pid;
 	int		child_proc;
-	//int		t_count;
-	//int		redir_flag;
 }			t_shell;
 
 /*------------main------------*/
@@ -205,5 +203,10 @@ int				ft_input_redirect(char *file);
 int				ft_heredoc(char *name);
 int				ft_redir_type(char *name, char *str);
 char			*catch_name(t_tree *tree);
+
+void			ft_ctrlc(int sig);
+void			ft_heredoc_ctrlc(int sig);
+void			ctrl_d(t_shell *shell);
+void			ft_comand_signal(void);
 
 #endif

@@ -35,7 +35,7 @@ INCLUDE		=	-I ./inc/\
 NAME		:= minishell
 
 # ------- SOURCES ------- #
-SRC_DIR		:= src/
+SRC_DIR		:= src
 
 BUILTIN_DIR	:= builtin
 LEXER_DIR	:= lexer
@@ -43,7 +43,7 @@ PARSE_DIR	:= parse
 SRC_LIB		:= src/libft
 
 SRCS		:=	main.c \
-				clean.c ft_free.c\
+				clean.c ft_free.c ft_signals.c\
 				ft_env.c ft_env_utils.c utils.c ft_exp.c 
 
 SRC_BUILTIN	:=  echo_cmd.c \

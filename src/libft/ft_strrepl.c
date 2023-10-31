@@ -6,7 +6,7 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 17:32:25 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/10/26 15:41:00 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/10/31 14:55:21 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ char	*ft_str_replace(char *str, char *old, char *new)
 		{
 			str = ft_str_join(str, old, new, i);
 			i += ft_strlen(new);
+			return (str);
 		}
 		else
 			i++;

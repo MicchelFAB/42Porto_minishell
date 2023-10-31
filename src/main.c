@@ -6,7 +6,7 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 11:40:49 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/10/30 14:18:38 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/10/31 12:51:09 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,40 +14,12 @@
 
 int	g_signal_exit;
 
-void	ft_ctrlc(int sig)
-{
-	(void)sig;
-	ft_putstr_fd("\n", 2);
-	rl_on_new_line();
-	rl_replace_line("", 0);
-	rl_redisplay();
-	g_signal_exit = 130;
-}
-
-/**
- * @brief This function is used to ignore the signal SIGQUIT and to handle the
- * signal SIGINT.
- * 
-*/
-void	ft_comand_signal(void)
-{
-	signal(SIGINT, ft_ctrlc);
-	signal(SIGQUIT, SIG_IGN);
-}
-
-void	ctrl_d(t_shell *shell)
-{
-	ft_freeshell(shell);
-	ft_printf("exit\n");
-	exit(0);
-}
-
 void	loop_shell(t_shell *shell)
 {
 	while (true)
 	{
 		ft_comand_signal();
-			shell->line = readline("minishell -> ");
+		shell->line = readline("minishell -> ");
 		if (!shell->line)
 			ctrl_d(shell);
 		else if (!ft_strlen(shell->line) || ft_chk_char(shell->line))
