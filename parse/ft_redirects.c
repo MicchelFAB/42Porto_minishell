@@ -2,16 +2,17 @@
 
 extern int	g_signal_exit;
 
-int	ft_heredoc(char *name)
+void	ft_heredoc_child(char *name, int *fd)
 {
 	char	*prompt;
-	int		fd[2];
 
-	fd[1] = open(".heredoc", O_WRONLY | O_CREAT | O_TRUNC, 0644);
-	// signal(SIGINT, ft_heredoc_ctrlc);
+	close(fd[0]);
 	while (1)
 	{
+		signal(SIGINT, ft_heredoc_ctrlc);
 		prompt = readline("> ");
+		if (ft_strcmp(prompt, "\n") == 0)
+			printf("oi\n");
 		if (prompt && ft_strcmp(prompt, name))
 		{
 			ft_putendl_fd(prompt, fd[1]);
@@ -27,6 +28,14 @@ int	ft_heredoc(char *name)
 		unlink(".heredoc");
 		break ;
 	}
+}
+
+int	ft_heredoc(char *name)
+{
+	int		fd[2];
+
+	fd[1] = open(".heredoc", O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	ft_heredoc_child(name, fd);
 	return (0);
 }
 

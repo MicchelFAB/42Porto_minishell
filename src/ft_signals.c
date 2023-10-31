@@ -6,7 +6,7 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 12:50:33 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/10/31 13:40:27 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/10/31 17:56:08 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ft_heredoc_ctrlc(int sig)
 	(void)sig;
 	g_signal_exit = 130;
 	ft_putstr_fd("\n", 2);
-	exit(130);
+	// exit(130);
 }
 
 /**
@@ -48,4 +48,12 @@ void	ctrl_d(t_shell *shell)
 	ft_freeshell(shell);
 	ft_printf("exit\n");
 	exit(0);
+}
+
+void	update_signal(int pid, int *status)
+{
+	signal(SIGINT, SIG_IGN);
+	signal(SIGQUIT, SIG_IGN);
+	waitpid(pid, status, 0);
+	ft_comand_signal();
 }
