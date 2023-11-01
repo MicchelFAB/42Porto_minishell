@@ -48,6 +48,7 @@ char			*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char			**ft_split(char const *s, char c);
 void			ft_striteri(char *s, void (*f)(unsigned int, char *));
 char			*ft_str_replace(char *str, char *old, char *new);
+char			*ft_str_join(char *str, char *old, char *new, int i);
 char			*ft_strcpy(char *dest, char *src);
 int				ft_strstr_init(char *str, char *to_find);
 int				ft_strstr_end(char *str, char *to_find);

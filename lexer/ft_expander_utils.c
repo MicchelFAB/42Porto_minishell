@@ -82,3 +82,32 @@ int	is_dollar_sign(char *s, int *i)
 		*i += 1;
 	return (0);
 }
+
+char	*ft_expan_replace(char *str, char *old, char *new)
+{
+	int	i;
+	int	j;
+	int	k;
+
+	i = 0;
+	k = 0;
+	while (str[i])
+	{
+		j = 0;
+		if (str[i] == '\"')
+			k = ft_verify_quote(&str[i], k);
+		if (str[i] == '\'' && k == 0)
+			i += skip_quotes(&str[i]);
+		while (str[i + j] && str[i + j] == old[j])
+			j++;
+		if (!old[j])
+		{
+			str = ft_str_join(str, old, new, i);
+			i += ft_strlen(new);
+			return (str);
+		}
+		else
+			i++;
+	}
+	return (str);
+}

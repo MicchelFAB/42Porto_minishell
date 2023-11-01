@@ -125,6 +125,7 @@ int				env_key_size(char *s);
 int				ft_verify_quote(char *s, int i);
 int				is_dollar_sign(char *s, int *i);
 char			*ft_ignore_special(char *line);
+char			*ft_expan_replace(char *str, char *old, char *new);
 
 /*-----------ft_env_utils------*/
 int				ft_set_env(char *key, char *new_val, t_shell *shell);
