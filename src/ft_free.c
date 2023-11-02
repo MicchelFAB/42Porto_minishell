@@ -6,7 +6,7 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 09:41:40 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/10/17 09:43:17 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/11/02 11:42:49 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,14 @@ void	ft_freeenv(t_env *env)
 		free(env);
 		env = tmp;
 	}
+}
+
+void	ft_free_heredoc(t_shell *shell)
+{
+	ft_freetree(shell->tree);
+	ft_freeenv(shell->env);
+	ft_freeexp(shell->exp);
+	free(shell->line);
+	free(shell);
+	rl_clear_history();
 }

@@ -6,7 +6,7 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 12:50:33 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/10/31 17:56:08 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/11/02 15:29:18 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ft_heredoc_ctrlc(int sig)
 	(void)sig;
 	g_signal_exit = 130;
 	ft_putstr_fd("\n", 2);
-	// exit(130);
+	exit(g_signal_exit);
 }
 
 /**

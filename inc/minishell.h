@@ -6,7 +6,7 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 16:08:31 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/10/31 16:57:18 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/11/02 15:29:28 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ int				skip_quotes(char *s);
 int				check_special(char *line);
 t_tree			*ft_split_lexer(char *str);
 t_tree			*make_tree(char *str, int size);
-void			ft_convert_especial(t_tree *tree);
+void			ft_convert_especial(t_shell *tree);
 
 /*------------ft_env----------*/
 void			ft_addenv_back(t_env **lst, t_env *new);
@@ -209,5 +209,9 @@ void			ft_heredoc_ctrlc(int sig);
 void			ctrl_d(t_shell *shell);
 void			ft_comand_signal(void);
 void			update_signal(int pid, int *status);
+void			ft_start_heredoc(t_shell *shell, char *tmp);
+int				ft_heredoc_child(char *name, t_shell *shell);
+void			ft_free_heredoc(t_shell *shell);
+void			ft_heredoc_open(t_shell *shell, t_tree *tmp);
 
 #endif
