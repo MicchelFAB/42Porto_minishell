@@ -21,9 +21,9 @@ CC			:= cc
 RM			:= rm -rf
 
 # ------- FLAGS ------- #
-CFLAGS		:= -Wall -Wextra -Werror -g #-fsanitize=address
-CPPFLAGS	:= -MMD -MP 
-RDLINE		:= -lreadline -lXext -lX11 -lm
+CFLAGS		:= -Wall -Wextra -Werror -g
+CPPFLAGS	:= -MMD -MP
+RDLINE		:= -lreadline
 MAKEFLAGS	+= --no-print-directory
 MKDIR_P		:= mkdir -p
 
@@ -58,7 +58,7 @@ SRC_LEXER	:=	ft_lexer.c ft_split_lexer.c ft_expander.c ft_quoting.c \
 				ft_expander_utils.c ft_especial.c
 
 SRC_PARSE	:=	parse.c parse_utils.c execute.c execute_utils.c \
-				execute_utils2.c ft_redirects.c
+				execute_utils2.c ft_redirects.c ft_heredoc.c
 
 SRCS		:= $(SRCS:%=$(SRC_DIR)/%)
 SRC_BUILTIN	:= $(SRC_BUILTIN:%=$(BUILTIN_DIR)/%)

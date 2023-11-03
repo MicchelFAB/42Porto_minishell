@@ -6,7 +6,7 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 16:08:31 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/11/02 15:29:28 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/11/02 17:02:12 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -214,5 +214,6 @@ void			ft_start_heredoc(t_shell *shell, char *tmp);
 int				ft_heredoc_child(char *name, t_shell *shell);
 void			ft_free_heredoc(t_shell *shell);
 void			ft_heredoc_open(t_shell *shell, t_tree *tmp);
+int				ft_heredoc_read(char *name);
 
 #endif
