@@ -6,7 +6,7 @@
 #    By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/24 12:11:35 by mamaral-          #+#    #+#              #
-#    Updated: 2023/10/26 17:54:28 by mamaral-         ###   ########.fr        #
+#    Updated: 2023/11/03 12:42:52 by mamaral-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,8 +45,8 @@ SRCS		= get_next_line_utils.c get_next_line_arg.c ft_puthexpf.c ft_swap.c\
 				ft_putnbrpf.c ft_putptrpf.c ft_strcmp.c ft_substr.c ft_strstr.c\
 				ft_striteri.c ft_strrchr.c ft_strtrim.c ft_memchr.c ft_memset.c\
 				ft_strnstr.c ft_strlcpy.c ft_strmapi.c ft_strncmp.c ft_memcmp.c\
-				ft_toupper.c ft_joinstr.c ft_putstrpf.c ft_putunbrpf.c \
-				ft_strlcat.c ft_strcpy.c
+				ft_repetition_break.c ft_toupper.c ft_joinstr.c ft_putstrpf.c\
+				ft_strlcat.c ft_strcpy.c ft_putunbrpf.c \
 				
 B_SRCS		= ft_lstadd_front.c ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c\
 				ft_lstlast.c ft_lstsize.c ft_lstiter.c ft_lstmap.c ft_lstnew.c

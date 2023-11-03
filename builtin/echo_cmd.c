@@ -30,7 +30,8 @@ void	echo_cmd(char **cmd)
 	if (cmd[i] && ft_strcmp(cmd[i], "-n") == 0)
 	{
 		flag = 0;
-		i++;
+		while (cmd[i] && !ft_strcmp(cmd[i], "-n"))
+			i++;
 	}
 	print_echo(cmd, i, flag);
 }

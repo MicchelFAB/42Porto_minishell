@@ -67,7 +67,8 @@
 	"string_view": "c",
 	"initializer_list": "c",
 	"functional": "c",
-	"typeinfo": "c"
+	"typeinfo": "c",
+	"stddef.h": "c"
 },
   "C_Cpp_Runner.msvcSecureNoWarnings": false
 }

@@ -6,7 +6,7 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 13:53:51 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/10/30 09:31:07 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/11/03 12:41:57 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void			ft_striteri(char *s, void (*f)(unsigned int, char *));
 char			*ft_str_replace(char *str, char *old, char *new);
 char			*ft_str_join(char *str, char *old, char *new, int i);
 char			*ft_strcpy(char *dest, char *src);
+size_t			ft_repetition_break(const char *str);
 int				ft_strstr_init(char *str, char *to_find);
 int				ft_strstr_end(char *str, char *to_find);
 char			*ft_rmvchar(char *str, int pos);

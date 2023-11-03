@@ -25,8 +25,7 @@
 // 				"-Wextra",
 // 				"-Werror",
 // 				"-g",
-// 				"test.c",
-// 				"./.build/libs/libft.a"
+// 				"./src/libft/ft_isrepeated.c",
 // 			],
 //             "group": {
 //                 "kind": "build",
