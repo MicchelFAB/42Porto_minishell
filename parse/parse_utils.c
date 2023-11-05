@@ -6,6 +6,11 @@ char	*catch_name(t_tree *tree)
 
 	while (tree->type != REDIR)
 		tree = tree->next;
+	if (!tree->next)
+	{
+		printf("minishell: syntax error near unexpected token `newline'\n");
+		return (NULL);
+	}
 	name = ft_strdup(tree->next->str1);
 	tree->next->type = FILE;
 	return (name);

@@ -58,7 +58,7 @@ void	cd_cmd(char **cmd, t_shell *shell)
 	path = cmd[0];
 	if (cmd[0] && cmd[1])
 	{
-		printf("Too many arguments!");
+		printf("Too many arguments!\n");
 		return ;
 	}
 	if ((path == NULL || *path == '\0') || (*path == '-' && *(path + 1) == '-'

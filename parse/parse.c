@@ -30,8 +30,11 @@ int	ft_redir(t_tree *tree)
 		if (tmp->type == REDIR)
 		{
 			str = catch_name(tmp);
+			if (!str)
+				return (1);
 			i = ft_redir_type(str, tmp->str1);
-			free(str);
+			if (str)
+				free(str);
 		}
 		tmp = tmp->next;
 	}

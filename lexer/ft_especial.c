@@ -49,6 +49,8 @@ void	ft_heredoc_open(t_shell *shell, t_tree *tmp)
 {
 	char	*name;
 
+	if (!tmp->next)
+		return ;
 	name = ft_strdup(tmp->next->str1);
 	ft_start_heredoc(shell, name);
 	free(tmp->next->str1);
