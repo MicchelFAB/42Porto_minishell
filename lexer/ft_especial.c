@@ -58,3 +58,21 @@ void	ft_heredoc_open(t_shell *shell, t_tree *tmp)
 	tmp->next->str1 = ft_strdup(".heredoc");
 	tmp->next->type = FILE;
 }
+
+int		ft_check_tilde(char *line)
+{
+	int		i;
+
+	i = 0;
+	while (line[i])
+	{
+		if (line[i] == '~')
+		{
+			if ((line [i - 1] && line [i - 1] == ' ') && \
+		((line [i  + 1] == ' ' || line [i + 1] == '/') || line[i + 1] == '\0'))
+				return (1);
+		}
+		i++;
+	}
+	return (0);
+}

@@ -107,6 +107,7 @@ int				check_special(char *line);
 t_tree			*ft_split_lexer(char *str);
 t_tree			*make_tree(char *str, int size);
 void			ft_convert_especial(t_shell *tree);
+int				ft_check_tilde(char *line);
 
 /*------------ft_env----------*/
 void			ft_addenv_back(t_env **lst, t_env *new);

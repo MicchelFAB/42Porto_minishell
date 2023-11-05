@@ -67,7 +67,10 @@ void	ft_lexer(t_shell *line)
 	if (line->line == NULL)
 		line->tree = NULL;
 	if (ft_strchr(line->line, '~') && !ft_chk_char(line->line))
-		line->line = ft_str_replace(line->line, "~", "$HOME");
+	{
+		if (ft_check_tilde(line->line))
+			line->line = ft_str_replace(line->line, "~", "$HOME");
+	}		
 	line->line = ft_put_redir(line);
 	line->line = ft_expand_env(line);
 	line->line = rm_whitespace(line->line);
