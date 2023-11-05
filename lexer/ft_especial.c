@@ -33,8 +33,6 @@ void	ft_convert_especial(t_shell *shell)
 	tmp = shell->tree;
 	while (tmp)
 	{
-		if (ft_strchr(tmp->str1, '~') && !ft_chk_char(tmp->str1))
-			tmp->str1 = ft_str_replace(tmp->str1, "~", "$HOME");
 		if (ft_strchr(tmp->str1, '\'') || ft_strchr(tmp->str1, '\"'))
 			tmp->str1 = ft_remove_quotes(tmp->str1);
 		if (ft_strchr(tmp->str1, '\\'))
