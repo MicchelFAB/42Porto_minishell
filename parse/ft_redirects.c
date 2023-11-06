@@ -23,7 +23,7 @@ int	ft_output_redirect(char *file)
 {
 	int	fd;
 
-	fd = open(file, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	fd = open(file, O_CREAT | O_WRONLY | O_TRUNC, 0644);
 	if (fd < 0)
 	{
 		ft_putstr_fd("minishell: ", STDERR_FILENO);
@@ -40,7 +40,7 @@ int	ft_output_append(char *file)
 {
 	int	fd;
 
-	fd = open(file, O_WRONLY | O_CREAT | O_APPEND, 0644);
+	fd = open(file, O_CREAT | O_WRONLY | O_APPEND, 0644);
 	if (fd < 0)
 	{
 		ft_putstr_fd("minishell: ", STDERR_FILENO);

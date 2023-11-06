@@ -14,6 +14,7 @@ void	clean_all(t_shell *shell)
 		ft_freetree(shell->tree);
 	if (shell)
 		free(shell);
+	close_fd();
 	g_signal_exit = 0;
 	rl_clear_history();
 }
@@ -28,4 +29,14 @@ void	free_split(char **ptr)
 	while (--i >= 0)
 		free(ptr[i]);
 	free(ptr);
+}
+
+void	close_fd(void)
+{
+	dup2(STDIN_FILENO, 0);
+	dup2(STDOUT_FILENO, 1);
+	dup2(STDERR_FILENO, 2);
+	close(STDERR_FILENO);
+	close(STDIN_FILENO);
+	close(STDOUT_FILENO);
 }

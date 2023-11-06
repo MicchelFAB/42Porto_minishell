@@ -82,24 +82,24 @@ $(NAME): $(OBJS)
 	@make -C $(SRC_LIB)
 	@cp $(SRC_LIB)/libft.a $(LIBFT)
 	@printf "\e[2K\r$(GREEN)Generated $(NAME)$(END)\n"
-	@$(CC) $(CFLAGS) $(CPPFLAGS) $(OBJS) $(LIBFT) $(RDLINE) -o $(NAME)
+	@$(CC) $(CFLAGS) $(CPPFLAGS) $(RDLINE) $(OBJS) $(LIBFT) -o $(NAME)
 
 # ------- OBJECTS ------- #
 $(BUILD_DIR)/obj/%.o: $(SRC_DIR)/%.c | $(BUILD_DIR)
 	@printf "\e[2K\r$(YELLOW)Compiling $<$(END)"
-	@$(CC) $(CFLAGS) $(CPPFLAGS) $(RDLINE) -c $< -o $@ $(INCLUDE)
+	@$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@ $(INCLUDE)
 
 $(BUILD_DIR)/obj/%.o: $(BUILTIN_DIR)/%.c | $(BUILD_DIR)
 	@printf "\e[2K\r$(YELLOW)Compiling $<$(END)"
-	@$(CC) $(CFLAGS) $(CPPFLAGS) $(RDLINE) -c -O3 $< -o $@ $(INCLUDE)
+	@$(CC) $(CFLAGS) $(CPPFLAGS) -c -O3 $< -o $@ $(INCLUDE)
 
 $(BUILD_DIR)/obj/%.o: $(LEXER_DIR)/%.c | $(BUILD_DIR)
 	@printf "\e[2K\r$(YELLOW)Compiling $<$(END)"
-	@$(CC) $(CFLAGS) $(CPPFLAGS) $(RDLINE) -c $< -o $@ $(INCLUDE)
+	@$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@ $(INCLUDE)
 
 $(BUILD_DIR)/obj/%.o: $(PARSE_DIR)/%.c | $(BUILD_DIR)
 	@printf "\e[2K\r$(YELLOW)Compiling $<$(END)"
-	@$(CC) $(CFLAGS) $(CPPFLAGS) $(RDLINE) -c $< -o $@ $(INCLUDE)
+	@$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@ $(INCLUDE)
 
 # ------- DEPS ------- #
 -include $(DEPS)

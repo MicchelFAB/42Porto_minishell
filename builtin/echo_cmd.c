@@ -21,8 +21,8 @@ int		ft_check_n_line(char **cmd, int *k)
 			i++;
 			continue ;
 		}
-		else if (cmd[i][j] != 'n')	
-		 	break ;
+		else if (cmd[i][j] != 'n')
+			break ;
 	}
 	*k = i;
 	return (flag);
@@ -55,4 +55,5 @@ void	echo_cmd(char **cmd)
 	}
 	flag = ft_check_n_line(cmd, &i);
 	print_echo(cmd, i, flag);
+	g_signal_exit = 0;
 }

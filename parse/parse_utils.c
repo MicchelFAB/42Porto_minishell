@@ -1,5 +1,7 @@
 #include "minishell.h"
 
+extern int	g_signal_exit;
+
 char	*catch_name(t_tree *tree)
 {
 	char	*name;
@@ -9,6 +11,7 @@ char	*catch_name(t_tree *tree)
 	if (!tree->next)
 	{
 		printf("minishell: syntax error near unexpected token `newline'\n");
+		g_signal_exit = 2;
 		return (NULL);
 	}
 	name = ft_strdup(tree->next->str1);

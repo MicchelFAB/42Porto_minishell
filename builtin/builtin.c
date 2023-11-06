@@ -23,6 +23,8 @@ void	exec_builtin(char **cmd, int *fd, t_shell *shell)
 	{
 		if (cmd[1] == NULL)
 			print_cmdenv(shell);
+		else
+			print_error("env: too many arguments", 1, "minishell");
 	}
 }
 

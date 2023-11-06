@@ -15,8 +15,9 @@ void	ft_exit_two_args(char **cmd, t_shell *shell)
 	}
 	else
 	{
+		print_error("numeric argument required", 2, "minishell: exit");
 		clean_all(shell);
-		print_error("numeric argument required", 2);
+		g_signal_exit = 2;
 	}
 }
 
@@ -31,10 +32,9 @@ void	exit_cmd(char **cmd, int *fd, t_shell *shell)
 		return ;
 	while (cmd[len])
 		len++;
-	printf("exit\n");
 	if (len > 2)
 	{
-		print_error("too many arguments", 1);
+		print_error("too many arguments", 1, "minishell: exit");
 		return ;
 	}
 	if (len == 1)
@@ -43,6 +43,7 @@ void	exit_cmd(char **cmd, int *fd, t_shell *shell)
 	}
 	if (len == 2)
 		ft_exit_two_args(cmd, shell);
+	printf("exit\n");
 	free_split(cmd);
 	exit(g_signal_exit);
 }

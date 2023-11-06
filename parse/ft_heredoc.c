@@ -6,7 +6,7 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 17:02:28 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/11/02 17:02:29 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/11/06 14:07:51 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static int	ft_heredoc_loop(char *name)
 		signal(SIGINT, ft_heredoc_ctrlc);
 		prompt = readline("> ");
 		if (!prompt)
-			print_error("warning: here-document delimited by end-of-file", 0);
+			print_error("here-document delimited by end-of-file", 0, "warning");
 		else if (ft_strcmp(prompt, str))
 		{
 			i = ft_heredoc_loop2(prompt);
@@ -63,12 +63,13 @@ int	ft_heredoc_child(char *name, t_shell *shell)
 	ft_free_heredoc(shell);
 	if (ft_strlen(name) > 9999)
 	{
-		print_error("error: EOF too long", 1);
+		print_error("EOF too long", 1, "error");
 		free(name);
 		return (1);
 	}
 	signal(SIGQUIT, SIG_IGN);
 	i = ft_heredoc_loop(name);
+	close_fd();
 	return (i);
 }
 

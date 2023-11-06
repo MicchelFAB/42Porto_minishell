@@ -6,7 +6,7 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 10:48:20 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/10/30 15:51:55 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/11/06 11:56:01 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 extern int		g_signal_exit;
 
-void	print_error(char *msg, int error)
+void	print_error(char *msg, int error, char *line)
 {
 	g_signal_exit = error;
-	printf("%s\n", msg);
+	printf("%s: %s\n", line, msg);
 }
 
 void	print_start_minishell(void)
@@ -54,7 +54,6 @@ t_shell	*init_shell(char **env)
 	if (!shell)
 		exit(EXIT_FAILURE);
 	shell->line = NULL;
-	// shell->t_count = 0;
 	shell->child_proc = 0;
 	shell->pid = 0;
 	shell->tree = NULL;

@@ -6,13 +6,29 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 11:40:49 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/10/31 12:51:09 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/11/06 14:32:38 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 int	g_signal_exit;
+
+int	ft_chk_line(char *line)
+{
+	int	size;
+
+	size = ft_strlen(line);
+	if (check_special(line) || str_whitespace_only(line))
+		return (1);
+	if (check_quote_pair(line, size))
+	{
+		print_error("syntax error, all quotes need to be closed!", 2, 
+			"minishell");
+		return (1);
+	}
+	return (0);
+}
 
 void	loop_shell(t_shell *shell)
 {
@@ -22,8 +38,11 @@ void	loop_shell(t_shell *shell)
 		shell->line = readline("minishell -> ");
 		if (!shell->line)
 			ctrl_d(shell);
-		else if (!ft_strlen(shell->line) || ft_chk_char(shell->line))
+		else if (!ft_strlen(shell->line) || ft_chk_line(shell->line))
+		{
+			add_history(shell->line);
 			free(shell->line);
+		}
 		else
 		{
 			add_history(shell->line);
