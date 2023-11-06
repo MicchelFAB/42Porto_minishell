@@ -6,13 +6,22 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 11:40:49 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/11/06 14:32:38 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/11/06 16:06:51 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 int	g_signal_exit;
+
+int	is_dollar_sign(char *s, int *i)
+{
+	if (s[0] == '$' && s[1] != '\0')
+		return (1);
+	else if (s[0] == '\\' && s[1] == '$')
+		*i += 1;
+	return (0);
+}
 
 int	ft_chk_line(char *line)
 {

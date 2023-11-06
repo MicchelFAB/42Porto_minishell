@@ -6,7 +6,7 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 13:52:07 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/11/06 14:31:07 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/11/06 16:05:56 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,14 +87,11 @@ int	check_special(char *line)
 		if (line[i] == ';' || line[i] == '&' || line[i] == '*' || line[i]
 			== (line[i] == '|' && line[i + 1] && line[i + 1] == '|'))
 		{
-			if (check_quote_pair(line, i) == 0)
+			if (check_quote_pair(line, i) == 0 && i && line[i - 1] != '\\')
 			{
-				if (i && line[i - 1] != '\\')
-				{
-					ft_printf("minishell: no support for operator `%c'\n",
-						line[i]);
-					return (1);
-				}
+				ft_printf("minishell: no support for operator `%c'\n",
+					line[i]);
+				return (1);
 			}
 		}
 		if (line[i] == '<' || line[i] == '>')

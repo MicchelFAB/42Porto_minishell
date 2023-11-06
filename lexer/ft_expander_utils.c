@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_expander_utils.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmonteir <bmonteir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 13:01:01 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/11/06 16:04:37 by bmonteir         ###   ########.fr       */
+/*   Updated: 2023/11/06 16:08:49 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,15 +72,6 @@ char	*ft_put_redir(t_shell *line)
 	tmp[j] = 0;
 	free(line->line);
 	return (tmp);
-}
-
-int	is_dollar_sign(char *s, int *i)
-{
-	if (s[0] == '$' && s[1] != '\0')
-		return (1);
-	else if (s[0] == '\\' && s[1] == '$')
-		*i += 1;
-	return (0);
 }
 
 char	*ft_expan_replace(char *str, char *old, char *new)
