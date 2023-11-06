@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_quoting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
+/*   By: bmonteir <bmonteir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 13:52:07 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/11/06 16:05:56 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/11/06 17:38:24 by bmonteir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,11 +94,7 @@ int	check_special(char *line)
 				return (1);
 			}
 		}
-		if (line[i] == '<' || line[i] == '>')
-			flag = 1;
 	}
-	if (i != 1 && line[i - 1] == '|' && !flag)
-		return (1);
 	return (0);
 }
 

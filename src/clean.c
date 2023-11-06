@@ -6,7 +6,7 @@
 /*   By: bmonteir <bmonteir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 15:58:58 by bmonteir          #+#    #+#             */
-/*   Updated: 2023/11/06 15:58:59 by bmonteir         ###   ########.fr       */
+/*   Updated: 2023/11/06 17:26:34 by bmonteir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ void	clean_all(t_shell *shell)
 	if (shell)
 		free(shell);
 	close_fd();
-	g_signal_exit = 0;
 	rl_clear_history();
 }
 

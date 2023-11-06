@@ -6,7 +6,7 @@
 /*   By: bmonteir <bmonteir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 16:01:14 by bmonteir          #+#    #+#             */
-/*   Updated: 2023/11/06 16:01:15 by bmonteir         ###   ########.fr       */
+/*   Updated: 2023/11/06 16:31:14 by bmonteir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ void	parse_cmd(t_tree *tree, t_tree *tmp, int *std_in, t_shell *shell)
 	restore_fd(fd);
 }
 
-// verrificar tmp!!!
 void	parse_pipe(t_tree *tree, int *std_in, t_shell *shell)
 {
 	t_tree	*tmp;

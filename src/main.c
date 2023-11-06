@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
+/*   By: bmonteir <bmonteir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 11:40:49 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/11/06 16:06:51 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/11/06 16:11:20 by bmonteir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	ft_chk_line(char *line)
 		return (1);
 	if (check_quote_pair(line, size))
 	{
-		print_error("syntax error, all quotes need to be closed!", 2, 
+		print_error("syntax error, all quotes need to be closed!", 2,
 			"minishell");
 		return (1);
 	}

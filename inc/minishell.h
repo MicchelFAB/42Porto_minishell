@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
+/*   By: bmonteir <bmonteir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 16:08:31 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/11/06 11:01:29 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/11/06 17:02:04 by bmonteir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@
 # define REDIR		2
 # define PIPE		3
 # define FILE		4
-# define SIMP_CMD	5
+/* # define SIMP_CMD	5
 # define AND		6
-# define OR			7
+# define OR			7 */
 
 # define IN		0
 # define OUT	1

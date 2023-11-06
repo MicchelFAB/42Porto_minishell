@@ -37,9 +37,9 @@ NAME		:= minishell
 # ------- SOURCES ------- #
 SRC_DIR		:= src
 
-BUILTIN_DIR	:= builtin
-LEXER_DIR	:= lexer
-PARSE_DIR	:= parse
+BUILTIN_DIR	:= src/builtin
+LEXER_DIR	:= src/lexer
+PARSE_DIR	:= src/parse
 SRC_LIB		:= src/libft
 
 SRCS		:=	main.c \
