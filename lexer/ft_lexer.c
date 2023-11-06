@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lexer.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
+/*   By: bmonteir <bmonteir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 13:52:07 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/11/02 11:22:45 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/11/06 16:02:16 by bmonteir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	ft_lexer(t_shell *line)
 	{
 		if (ft_check_tilde(line->line))
 			line->line = ft_str_replace(line->line, "~", "$HOME");
-	}		
+	}
 	line->line = ft_put_redir(line);
 	line->line = ft_expand_env(line);
 	line->line = rm_whitespace(line->line);

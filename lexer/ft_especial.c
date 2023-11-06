@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_especial.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
+/*   By: bmonteir <bmonteir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:35:17 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/11/02 16:54:45 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/11/06 16:03:05 by bmonteir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	ft_heredoc_open(t_shell *shell, t_tree *tmp)
 	tmp->next->type = FILE;
 }
 
-int		ft_check_tilde(char *line)
+int	ft_check_tilde(char *line)
 {
 	int		i;
 
@@ -69,7 +69,7 @@ int		ft_check_tilde(char *line)
 		if (line[i] == '~')
 		{
 			if ((line [i - 1] && line [i - 1] == ' ') && \
-		((line [i  + 1] == ' ' || line [i + 1] == '/') || line[i + 1] == '\0'))
+		((line [i + 1] == ' ' || line [i + 1] == '/') || line[i + 1] == '\0'))
 				return (1);
 		}
 		i++;

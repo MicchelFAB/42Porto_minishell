@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   echo_cmd.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bmonteir <bmonteir@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/06 15:51:25 by bmonteir          #+#    #+#             */
+/*   Updated: 2023/11/06 16:00:25 by bmonteir         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
 extern int		g_signal_exit;
 
-int		ft_check_n_line(char **cmd, int *k)
+int	ft_check_n_line(char **cmd, int *k)
 {
 	int		j;
 	int		i;

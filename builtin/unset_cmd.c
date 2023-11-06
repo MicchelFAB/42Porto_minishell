@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   unset_cmd.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bmonteir <bmonteir@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/06 15:55:28 by bmonteir          #+#    #+#             */
+/*   Updated: 2023/11/06 15:58:27 by bmonteir         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minishell.h"
 
 extern int		g_signal_exit;
@@ -34,8 +46,6 @@ void	unset_env(char *key, t_shell *shell)
 	prev->next = tmp->next;
 	ft_env_del(tmp);
 }
-
-extern int		g_signal_exit;
 
 void	ft_exp_del(t_exp *exp)
 {
@@ -81,7 +91,6 @@ void	unset_cmd(char **cmd, t_shell *shell)
 	i = 0;
 	while (cmd[i])
 	{
-		//isvalid_key_unset???
 		j = 0;
 		while (cmd[i][j] != 0)
 			j++;
