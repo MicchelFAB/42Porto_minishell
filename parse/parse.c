@@ -47,6 +47,8 @@ int	ft_redir(t_tree *tree)
 			i = ft_redir_type(str, tmp->str1);
 			if (str)
 				free(str);
+			if (i == 1)
+				break ;
 		}
 		tmp = tmp->next;
 	}
