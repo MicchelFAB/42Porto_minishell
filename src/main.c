@@ -6,7 +6,7 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 11:40:49 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/11/06 16:06:51 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/11/07 19:06:28 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,14 @@ int	g_signal_exit;
 
 int	is_dollar_sign(char *s, int *i)
 {
-	if (s[0] == '$' && s[1] != '\0')
-		return (1);
-	else if (s[0] == '\\' && s[1] == '$')
+	if (s[0] == '\\' && s[1] == '$')
 		*i += 1;
+	else if (s[0] == '$' && ft_isspace(s[1]))
+		return (0);
+	else if (s[0] == '"' && s[1] == '$' && s[2] == '"')
+		*i += 2;
+	else if (s[0] == '$' && s[1] != '\0')
+		return (1);
 	return (0);
 }
 
@@ -32,7 +36,7 @@ int	ft_chk_line(char *line)
 		return (1);
 	if (check_quote_pair(line, size))
 	{
-		print_error("syntax error, all quotes need to be closed!", 2, 
+		print_error("syntax error, all quotes need to be closed!", 2,
 			"minishell");
 		return (1);
 	}
@@ -73,7 +77,7 @@ int	main(int ac, char **av, char **env)
 	(void)ac;
 	(void)av;
 	shell = init_shell(env);
-	print_start_minishell();
+	// print_start_minishell();
 	loop_shell(shell);
 	return (0);
 }

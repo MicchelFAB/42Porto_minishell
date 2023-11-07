@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd_cmd.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmonteir <bmonteir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 15:51:20 by bmonteir          #+#    #+#             */
-/*   Updated: 2023/11/06 15:51:21 by bmonteir         ###   ########.fr       */
+/*   Updated: 2023/11/07 19:23:36 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	cd_cmd(char **cmd, t_shell *shell)
 	path = cmd[0];
 	if (cmd[0] && cmd[1])
 	{
-		printf("Too many arguments!\n");
+		print_error("Too many arguments!\n", 1, "");
 		return ;
 	}
 	if ((path == NULL || *path == '\0') || (*path == '-' && *(path + 1) == '-'

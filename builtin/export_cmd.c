@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export_cmd.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmonteir <bmonteir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 15:55:20 by bmonteir          #+#    #+#             */
-/*   Updated: 2023/11/06 15:55:21 by bmonteir         ###   ########.fr       */
+/*   Updated: 2023/11/07 20:06:59 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int	valid_key(char *key, char *cmd, char *type)
 	if (!(ft_isalpha(cmd[i]) || cmd[i] == '_'))
 	{
 		printf("minishell: %s: %s: not a valid identifier\n", type, cmd);
+		g_signal_exit = 1;
 		return (0);
 	}
 	i++;
@@ -34,6 +35,7 @@ int	valid_key(char *key, char *cmd, char *type)
 		if (!(ft_isalnum(key[i]) || key[i] == '_'))
 		{
 			printf("minishell: %s: %s: not a valid identifier\n", type, key);
+			g_signal_exit = 1;
 			return (0);
 		}
 		i++;
@@ -67,6 +69,7 @@ void	make_export(char *cmd, t_shell *shell)
 	ft_set_exp(key, value, shell);
 	free(value);
 	free(key);
+	g_signal_exit = 0;
 }
 
 void	export_cmd(char **cmd, t_shell *shell)
@@ -80,5 +83,4 @@ void	export_cmd(char **cmd, t_shell *shell)
 	{
 		make_export(cmd[i], shell);
 	}
-	g_signal_exit = 0;
 }
