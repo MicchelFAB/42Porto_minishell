@@ -6,7 +6,7 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 17:02:28 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/11/06 15:42:20 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/11/08 09:04:35 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,13 @@ int	ft_heredoc_read(char *name)
 
 	tmp = open(name, O_RDONLY);
 	if (tmp < 0)
+	{
+		ft_putstr_fd("minishell: ", STDERR_FILENO);
+		ft_putstr_fd(name, STDERR_FILENO);
+		ft_putstr_fd(": No such file or directory\n", STDERR_FILENO);
+		g_signal_exit = 1;
 		return (1);
+	}
 	unlink(name);
 	dup2(tmp, STDIN_FILENO);
 	close(tmp);

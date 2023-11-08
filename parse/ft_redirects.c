@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_redirects.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmonteir <bmonteir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 16:01:37 by bmonteir          #+#    #+#             */
-/*   Updated: 2023/11/06 16:01:38 by bmonteir         ###   ########.fr       */
+/*   Updated: 2023/11/08 09:03:12 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int	ft_input_redirect(char *file)
 		ft_putstr_fd("minishell: ", STDERR_FILENO);
 		ft_putstr_fd(file, STDERR_FILENO);
 		ft_putstr_fd(": No such file or directory\n", STDERR_FILENO);
+		g_signal_exit = 1;
 		return (1);
 	}
 	dup2(fd, IN);
@@ -41,6 +42,7 @@ int	ft_output_redirect(char *file)
 		ft_putstr_fd("minishell: ", STDERR_FILENO);
 		ft_putstr_fd(file, STDERR_FILENO);
 		ft_putstr_fd(": No such file or directory\n", STDERR_FILENO);
+		g_signal_exit = 1;
 		return (1);
 	}
 	dup2(fd, OUT);
@@ -58,6 +60,7 @@ int	ft_output_append(char *file)
 		ft_putstr_fd("minishell: ", STDERR_FILENO);
 		ft_putstr_fd(file, STDERR_FILENO);
 		ft_putstr_fd(": No such file or directory\n", STDERR_FILENO);
+		g_signal_exit = 1;
 		return (1);
 	}
 	dup2(fd, OUT);

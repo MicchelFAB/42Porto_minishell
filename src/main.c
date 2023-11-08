@@ -6,7 +6,7 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 11:40:49 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/11/07 19:06:28 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/11/08 09:21:50 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int	main(int ac, char **av, char **env)
 	(void)ac;
 	(void)av;
 	shell = init_shell(env);
-	// print_start_minishell();
+	print_start_minishell();
 	loop_shell(shell);
 	return (0);
 }
