@@ -6,7 +6,7 @@
 /*   By: bmonteir <bmonteir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:35:17 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/11/08 16:26:58 by bmonteir         ###   ########.fr       */
+/*   Updated: 2023/11/08 16:56:46 by bmonteir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,8 @@ void	ft_convert_especial(t_shell *shell)
 			tmp->str1 = ft_remove_quotes(tmp->str1);
 		if (ft_strchr(tmp->str1, '\\'))
 			tmp->str1 = ft_ignore_special(tmp->str1);
-		if (tmp->type == REDIR && !ft_strcmp(tmp->str1, "<<"))
+		if (tmp->type == REDIR && !ft_strcmp(tmp->str1, "<<") && tmp->type
+			== WORD)
 		{
 			ft_heredoc_open(shell, tmp);
 		}
