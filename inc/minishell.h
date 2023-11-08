@@ -107,7 +107,7 @@ int				skip_quotes(char *s);
 int				check_special(char *line);
 t_tree			*ft_split_lexer(char *str);
 t_tree			*make_tree(char *str, int size);
-void			ft_convert_especial(t_shell *tree);
+int				ft_convert_especial(t_shell *tree);
 int				ft_check_pipe(t_shell *shell);
 int				ft_check_tilde(char *line);
 

@@ -78,10 +78,10 @@ int	check_quote_pair(char *s, int size)
 int	check_special(char *line)
 {
 	int	i;
-	int	flag;
+	//int	flag;
 
 	i = -1;
-	flag = 0;
+	//flag = 0;
 	while (line[++i])
 	{
 		if (line[i] == ';' || line[i] == '&' || line[i] == '*' || line[i]

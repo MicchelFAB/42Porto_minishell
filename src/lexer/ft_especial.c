@@ -55,7 +55,7 @@ int	ft_check_pipe(t_shell *shell)
 	return(0);
 }
 
-void	ft_convert_especial(t_shell *shell)
+int	ft_convert_especial(t_shell *shell)
 {
 	t_tree	*tmp;
 
@@ -66,13 +66,18 @@ void	ft_convert_especial(t_shell *shell)
 			tmp->str1 = ft_remove_quotes(tmp->str1);
 		if (ft_strchr(tmp->str1, '\\'))
 			tmp->str1 = ft_ignore_special(tmp->str1);
-		if (tmp->type == REDIR && !ft_strcmp(tmp->str1, "<<") && tmp->type
-			== WORD)
+		if (tmp->type == REDIR && !ft_strcmp(tmp->str1, "<<"))
 		{
+			if (tmp->next->type != WORD)
+			{
+				print_error("syntax error near token `<<'", 2, "minishel");
+			}
+				return (1);
 			ft_heredoc_open(shell, tmp);
 		}
 		tmp = tmp->next;
 	}
+	return (0);
 }
 
 void	ft_heredoc_open(t_shell *shell, t_tree *tmp)

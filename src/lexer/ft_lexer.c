@@ -78,7 +78,8 @@ int	ft_lexer(t_shell *line)
 	if (list == NULL)
 		line->tree = NULL;
 	line->tree = list;
-	ft_convert_especial(line);
+	if (ft_convert_especial(line))
+		return (0);
 	if(ft_check_pipe(line))
 		return(0);
 	return(1);
