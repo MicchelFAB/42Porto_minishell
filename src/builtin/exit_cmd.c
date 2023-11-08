@@ -6,7 +6,7 @@
 /*   By: bmonteir <bmonteir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 15:51:37 by bmonteir          #+#    #+#             */
-/*   Updated: 2023/11/08 11:49:45 by bmonteir         ###   ########.fr       */
+/*   Updated: 2023/11/08 12:08:50 by bmonteir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	ft_exit_two_args(char **cmd, int *fd, t_shell *shell)
 		print_error("numeric argument required", 2, "minishell: exit");
 		g_signal_exit = 2;
 		clean_all(shell);
+		close_fd_exit(fd);
 	}
 }
 

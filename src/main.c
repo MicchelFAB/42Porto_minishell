@@ -6,7 +6,7 @@
 /*   By: bmonteir <bmonteir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 11:40:49 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/11/08 10:44:51 by bmonteir         ###   ########.fr       */
+/*   Updated: 2023/11/08 16:31:27 by bmonteir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,11 +55,14 @@ void	loop_shell(t_shell *shell)
 		else
 		{
 			add_history(shell->line);
-			ft_lexer(shell);
-			parse_execute(shell);
-			wait_child_proc(shell);
+			if(ft_lexer(shell))
+			{
+				parse_execute(shell);
+				wait_child_proc(shell);
+			}
 			free(shell->line);
 			ft_freetree(shell->tree);
+			
 		}
 	}
 	ft_freeshell(shell);

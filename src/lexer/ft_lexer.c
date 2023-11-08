@@ -6,7 +6,7 @@
 /*   By: bmonteir <bmonteir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 13:52:07 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/11/06 16:02:16 by bmonteir         ###   ########.fr       */
+/*   Updated: 2023/11/08 13:04:19 by bmonteir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ t_tree	*ft_create_tree(int type, char *str)
 	return (new_tree);
 }
 
-void	ft_lexer(t_shell *line)
+int	ft_lexer(t_shell *line)
 {
 	t_tree	*list;
 
@@ -79,6 +79,9 @@ void	ft_lexer(t_shell *line)
 		line->tree = NULL;
 	line->tree = list;
 	ft_convert_especial(line);
+	if(ft_check_pipe(line))
+		return(0);
+	return(1);
 }
 
 char	*ft_ignore_special(char *line)

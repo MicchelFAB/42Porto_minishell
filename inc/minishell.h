@@ -6,7 +6,7 @@
 /*   By: bmonteir <bmonteir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 16:08:31 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/11/08 11:41:57 by bmonteir         ###   ########.fr       */
+/*   Updated: 2023/11/08 13:07:35 by bmonteir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ void			close_fd(void);
 
 /*-----------lexer------------*/
 void			start_cmd(t_shell *shell);
-void			ft_lexer(t_shell *line);
+int				ft_lexer(t_shell *line);
 t_tree			*ft_create_tree(int type, char *str);
 int				str_whitespace_only(char *str);
 int				ft_chk_char(char *line);
@@ -108,6 +108,7 @@ int				check_special(char *line);
 t_tree			*ft_split_lexer(char *str);
 t_tree			*make_tree(char *str, int size);
 void			ft_convert_especial(t_shell *tree);
+int				ft_check_pipe(t_shell *shell);
 int				ft_check_tilde(char *line);
 
 /*------------ft_env----------*/
@@ -154,7 +155,7 @@ void			ft_exit_two_args(char **cmd, int *fd, t_shell *shell);
 int				ft_is_all_digit(char *num);
 int				ft_is_number(char *num);
 
-void			pwd_cmd(void);
+void			pwd_cmd(char **cmd);
 
 void			cd_cmd(char **cmd, t_shell *shell);
 

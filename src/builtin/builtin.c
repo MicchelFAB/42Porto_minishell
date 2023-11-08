@@ -6,7 +6,7 @@
 /*   By: bmonteir <bmonteir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 15:51:14 by bmonteir          #+#    #+#             */
-/*   Updated: 2023/11/06 15:51:16 by bmonteir         ###   ########.fr       */
+/*   Updated: 2023/11/08 12:39:00 by bmonteir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	exec_builtin(char **cmd, int *fd, t_shell *shell)
 {
 	if (!ft_strcmp(cmd[0], "pwd"))
-		pwd_cmd();
+		pwd_cmd(cmd);
 	else if (!ft_strcmp(cmd[0], "echo"))
 		echo_cmd(cmd + 1);
 	else if (!ft_strcmp(cmd[0], "cd"))
