@@ -6,7 +6,7 @@
 /*   By: bmonteir <bmonteir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 16:08:31 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/11/06 17:02:04 by bmonteir         ###   ########.fr       */
+/*   Updated: 2023/11/08 11:41:57 by bmonteir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,7 +150,7 @@ void			ft_freeshell(t_shell *shell);
 
 /*------------builtin---------*/
 void			exit_cmd(char **cmd, int *fd, t_shell *shell);
-void			ft_exit_two_args(char **cmd, t_shell *shell);
+void			ft_exit_two_args(char **cmd, int *fd, t_shell *shell);
 int				ft_is_all_digit(char *num);
 int				ft_is_number(char *num);
 

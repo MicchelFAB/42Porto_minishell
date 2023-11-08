@@ -6,7 +6,7 @@
 /*   By: bmonteir <bmonteir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 16:01:14 by bmonteir          #+#    #+#             */
-/*   Updated: 2023/11/06 16:31:14 by bmonteir         ###   ########.fr       */
+/*   Updated: 2023/11/08 10:53:28 by bmonteir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,5 +99,8 @@ void	parse_execute(t_shell *shell)
 	std_in = STDIN_FILENO;
 	parse_pipe(shell->tree, &std_in, shell);
 	if (std_in != 0)
+	{
+		dup2(std_in, 0);
 		close(std_in);
+	}
 }

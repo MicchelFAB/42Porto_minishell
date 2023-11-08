@@ -6,7 +6,7 @@
 /*   By: bmonteir <bmonteir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 16:01:22 by bmonteir          #+#    #+#             */
-/*   Updated: 2023/11/06 16:01:23 by bmonteir         ###   ########.fr       */
+/*   Updated: 2023/11/08 11:24:16 by bmonteir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,8 +111,6 @@ void	exec_cmd(char **cmd, int *fd, int *std_in, t_shell *shell)
 
 void	execute(char **cmd, int *fd, int *std_in, t_shell *shell)
 {
-	(void)fd;
-	(void)std_in;
 	if (is_builtin(cmd))
 		exec_builtin(&cmd[0], fd, shell);
 	else

@@ -6,7 +6,7 @@
 /*   By: bmonteir <bmonteir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:35:17 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/11/06 18:01:31 by bmonteir         ###   ########.fr       */
+/*   Updated: 2023/11/08 11:57:45 by bmonteir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	ft_check_pipe(t_shell *shell)
 	{
 		if (tmp->type == PIPE && (!tmp->next || tmp->next->type == PIPE))
 		{
-			print_error("syntax error near unexpected token `|'", 2, 
+			print_error("syntax error near unexpected token `|'", 2,
 				"minishell:");
 			clean_all(shell);
 			exit(g_signal_exit);

@@ -45,7 +45,7 @@ SRC_LIB		:= src/libft
 SRCS		:=	main.c clean.c ft_free.c ft_signals.c ft_env.c ft_env_utils.c\
 					utils.c ft_exp.c 
 
-SRC_BUILTIN	:=  echo_cmd.c pwd_cmd.c builtin.c exit_cmd.c exit_cmd_utils.c\ 
+SRC_BUILTIN	:=  echo_cmd.c pwd_cmd.c builtin.c exit_cmd.c exit_cmd_utils.c\
 				export_cmd.c export_cmd_utils.c unset_cmd.c builtin_utils.c\
 				cd_cmd.c 
 

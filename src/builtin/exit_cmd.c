@@ -6,7 +6,7 @@
 /*   By: bmonteir <bmonteir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 15:51:37 by bmonteir          #+#    #+#             */
-/*   Updated: 2023/11/06 17:26:14 by bmonteir         ###   ########.fr       */
+/*   Updated: 2023/11/08 11:49:45 by bmonteir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,13 @@
 
 extern int		g_signal_exit;
 
-void	ft_exit_two_args(char **cmd, t_shell *shell)
+void	close_fd_exit(int *fd)
+{
+	close(fd[IN]);
+	close(fd[OUT]);
+}
+
+void	ft_exit_two_args(char **cmd, int *fd, t_shell *shell)
 {
 	long long	code_num;
 
@@ -23,6 +29,7 @@ void	ft_exit_two_args(char **cmd, t_shell *shell)
 		clean_all(shell);
 		code_num = (char)ft_atol(cmd[1]);
 		free_split(cmd);
+		close_fd_exit(fd);
 		exit(code_num);
 	}
 	else
@@ -37,8 +44,6 @@ void	exit_cmd(char **cmd, int *fd, t_shell *shell)
 {
 	int		len;
 
-	close(fd[IN]);
-	close(fd[OUT]);
 	len = 0;
 	if (contains_pipe(shell))
 		return ;
@@ -51,11 +56,12 @@ void	exit_cmd(char **cmd, int *fd, t_shell *shell)
 	}
 	if (len == 1)
 	{
+		close_fd_exit(fd);
 		g_signal_exit = 0;
 		clean_all(shell);
 	}
 	if (len == 2)
-		ft_exit_two_args(cmd, shell);
+		ft_exit_two_args(cmd, fd, shell);
 	printf("exit\n");
 	free_split(cmd);
 	exit(g_signal_exit);
