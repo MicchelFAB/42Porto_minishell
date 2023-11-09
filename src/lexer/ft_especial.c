@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_especial.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmonteir <bmonteir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:35:17 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/11/09 11:08:24 by bmonteir         ###   ########.fr       */
+/*   Updated: 2023/11/09 18:10:47 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,14 +77,22 @@ int	ft_convert_especial(t_shell *shell)
 	return (0);
 }
 
+void	ft_signals_heredoc(t_heredoc *ptr)
+{
+	signal(SIGINT, (void *)ft_heredoc_ctrlc);
+	ft_heredoc_ctrlc(-1, ptr);
+}
+
 void	ft_heredoc_open(t_shell *shell, t_tree *tmp)
 {
-	char	*name;
+	char		*name;
+	t_heredoc	heredoc;
 
 	if (!tmp->next)
 		return ;
-	name = ft_strdup(tmp->next->str1);
-	ft_start_heredoc(shell, name);
+	heredoc.name = ft_strdup(tmp->next->str1);
+	ft_signals_heredoc(&heredoc);
+	ft_start_heredoc(shell, &heredoc);
 	free(tmp->next->str1);
 	free(name);
 	tmp->next->str1 = ft_strdup(".heredoc");

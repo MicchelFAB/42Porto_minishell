@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmonteir <bmonteir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 09:41:40 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/11/08 15:51:00 by bmonteir         ###   ########.fr       */
+/*   Updated: 2023/11/09 13:54:46 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	ft_freeenv(t_env *env)
 	}
 }
 
-void	ft_free_heredoc(t_shell *shell)
+void	ft_free_heredoc(t_heredoc *heredoc)
 {
 	ft_freetree(shell->tree);
 	ft_freeenv(shell->env);

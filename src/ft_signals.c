@@ -6,7 +6,7 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 12:50:33 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/11/06 15:43:13 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/11/09 13:54:58 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,29 @@ void	ft_ctrlc(int sig)
 	g_signal_exit = 130;
 }
 
-void	ft_heredoc_ctrlc(int sig)
+void	ft_heredoc_ctrlc(int sig, t_shell *shell)
 {
-	(void)sig;
-	g_signal_exit = 130;
-	ft_putstr_fd("\n", 2);
-	close_fd();
-	exit(g_signal_exit);
+	static t_shell	*tmp;
+
+	tmp = shell;
+	if (sig == SIGINT)
+	{
+		ft_putstr_fd("\n", 2);
+		rl_on_new_line();
+		rl_replace_line("", 0);
+		rl_redisplay();
+		ft_free_heredoc(tmp);
+		close_fd();
+		exit(g_signal_exit);
+	}
 }
+// {
+// 	(void)sig;
+// 	g_signal_exit = 130;
+// 	ft_putstr_fd("\n", 2);
+// 	close_fd();
+// 	exit(g_signal_exit);
+// }
 
 /**
  * @brief This function is used to ignore the signal SIGQUIT and to handle the
