@@ -6,7 +6,7 @@
 /*   By: bmonteir <bmonteir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:35:17 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/11/09 11:08:24 by bmonteir         ###   ########.fr       */
+/*   Updated: 2023/11/09 17:34:59 by bmonteir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int	ft_convert_especial(t_shell *shell)
 			tmp->str1 = ft_ignore_special(tmp->str1);
 		if (tmp->type == REDIR && !ft_strcmp(tmp->str1, "<<"))
 		{
-			if (tmp->next->type != WORD)
+			if (tmp->next && tmp->next->type != WORD)
 			{
 				print_error("syntax error near token `<<'", 2, "minishel");
 				return (1);
