@@ -6,7 +6,7 @@
 /*   By: bmonteir <bmonteir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:35:17 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/11/08 16:56:46 by bmonteir         ###   ########.fr       */
+/*   Updated: 2023/11/09 11:08:24 by bmonteir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,28 +31,25 @@ int	ft_check_pipe(t_shell *shell)
 	t_tree	*tmp;
 
 	if (!shell->tree)
-		return(0);
+		return (0);
 	tmp = shell->tree;
 	if (tmp->type == PIPE)
 	{
 		print_error("syntax error near unexpected token `|'", 2, "minishell:");
-		//clean_all(shell);
-		return(g_signal_exit);
+		return (g_signal_exit);
 	}
 	while (tmp)
 	{
 		if (tmp->type == PIPE && (!tmp->next || tmp->next->type == PIPE
-			|| !ft_strcmp(tmp->str1, "||")))
+				|| !ft_strcmp(tmp->str1, "||")))
 		{
 			print_error("syntax error near unexpected token `|'", 2,
 				"minishell:");
-			//clean_all(shell);
-			return(g_signal_exit);
+			return (g_signal_exit);
 		}
-		
 		tmp = tmp->next;
 	}
-	return(0);
+	return (0);
 }
 
 int	ft_convert_especial(t_shell *shell)
@@ -71,8 +68,8 @@ int	ft_convert_especial(t_shell *shell)
 			if (tmp->next->type != WORD)
 			{
 				print_error("syntax error near token `<<'", 2, "minishel");
-			}
 				return (1);
+			}
 			ft_heredoc_open(shell, tmp);
 		}
 		tmp = tmp->next;

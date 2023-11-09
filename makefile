@@ -122,7 +122,7 @@ re:
 
 # ------- TEST LEAKS ------- #
 leak: all
-	@valgrind -q --leak-check=full --show-leak-kinds=all \
+	@valgrind --leak-check=full --show-leak-kinds=all \
 		--suppressions=readline_supression --track-fds=yes ./$(NAME)
 
 # ------- RECORD LOG ------- #

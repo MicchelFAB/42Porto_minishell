@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split_lexer.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
+/*   By: bmonteir <bmonteir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 11:46:54 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/10/26 15:36:22 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/11/09 12:32:26 by bmonteir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char	*ft_loop_remove(char *s, char c, int i)
 				if (s[i] == c)
 				{
 					s = ft_rmvchar(s, i);
-					break ;
+					break;
 				}
 				else if (s[i] == '\\' && s[i + 1] == c)
 					ft_skip_escape(s, &i);
@@ -35,6 +35,7 @@ char	*ft_loop_remove(char *s, char c, int i)
 		}
 		else
 			i++;
+			
 	}
 	return (s);
 }

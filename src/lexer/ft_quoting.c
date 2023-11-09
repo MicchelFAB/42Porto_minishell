@@ -6,7 +6,7 @@
 /*   By: bmonteir <bmonteir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 13:52:07 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/11/06 17:38:24 by bmonteir         ###   ########.fr       */
+/*   Updated: 2023/11/09 11:08:51 by bmonteir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,10 +78,8 @@ int	check_quote_pair(char *s, int size)
 int	check_special(char *line)
 {
 	int	i;
-	//int	flag;
 
 	i = -1;
-	//flag = 0;
 	while (line[++i])
 	{
 		if (line[i] == ';' || line[i] == '&' || line[i] == '*' || line[i]
