@@ -3,39 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split_lexer.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmonteir <bmonteir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 11:46:54 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/11/09 12:32:26 by bmonteir         ###   ########.fr       */
+/*   Updated: 2023/11/09 15:04:23 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char	*ft_loop_remove(char *s, char c, int i)
+char	*ft_loop_remove(char *s, char c, int *i)
 {
-	while (s[i])
+	while (s[*i])
 	{
-		if (s[i] == c)
+		if (s[*i] == c)
 		{
-			if (s[i + 1] != '\0')
-				s = ft_rmvchar(s, i);
-			while (s[i])
+			if (s[(*i) + 1] != '\0')
+				s = ft_rmvchar(s, *i);
+			while (s[*i])
 			{
-				if (s[i] == c)
+				if (s[*i] == c)
 				{
-					s = ft_rmvchar(s, i);
-					break;
+					s = ft_rmvchar(s, *i);
+					return (s);
 				}
-				else if (s[i] == '\\' && s[i + 1] == c)
-					ft_skip_escape(s, &i);
+				else if (s[*i] == '\\' && s[*i + 1] == c)
+					ft_skip_escape(s, i);
 				else
-					i++;
+					(*i)++;
 			}
 		}
 		else
-			i++;
-			
+			(*i)++;
 	}
 	return (s);
 }
@@ -44,18 +43,23 @@ char	*ft_remove_quotes(char *str)
 {
 	char	*stash;
 	int		i;
+	int		size;
 
 	i = 0;
 	stash = ft_strdup(str);
-	while (stash[i] && !(stash[i] == '\'' || stash[i] == '\"'))
-		i++;
-	if (stash[i] == '\'')
+	size = ft_strlen(stash);
+	while (stash[i])
 	{
-		stash = ft_loop_remove(stash, '\'', i);
-	}
-	else if (stash[i] == '\"')
-	{
-		stash = ft_loop_remove(stash, '\"', i);
+		if (stash[i] == '\'' && !check_quote_pair(&stash[i], size))
+		{
+			stash = ft_loop_remove(stash, '\'', &i);
+		}
+		else if (stash[i] == '\"' && !check_quote_pair(&stash[i], size))
+		{
+			stash = ft_loop_remove(stash, '\"', &i);
+		}
+		else
+			i++;
 	}
 	free(str);
 	return (stash);
