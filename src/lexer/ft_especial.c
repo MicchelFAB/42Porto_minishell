@@ -6,7 +6,7 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 15:35:17 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/11/09 18:10:47 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/11/10 10:56:25 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int	ft_convert_especial(t_shell *shell)
 			tmp->str1 = ft_ignore_special(tmp->str1);
 		if (tmp->type == REDIR && !ft_strcmp(tmp->str1, "<<"))
 		{
-			if (tmp->next->type != WORD)
+			if (tmp->next && tmp->next->type != WORD)
 			{
 				print_error("syntax error near token `<<'", 2, "minishel");
 				return (1);
@@ -85,16 +85,16 @@ void	ft_signals_heredoc(t_heredoc *ptr)
 
 void	ft_heredoc_open(t_shell *shell, t_tree *tmp)
 {
-	char		*name;
 	t_heredoc	heredoc;
 
 	if (!tmp->next)
 		return ;
 	heredoc.name = ft_strdup(tmp->next->str1);
+	heredoc.shell = shell;
 	ft_signals_heredoc(&heredoc);
-	ft_start_heredoc(shell, &heredoc);
+	ft_start_heredoc(&heredoc);
 	free(tmp->next->str1);
-	free(name);
+	free(heredoc.name);
 	tmp->next->str1 = ft_strdup(".heredoc");
 	tmp->next->type = FILE;
 }

@@ -6,7 +6,7 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 12:50:33 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/11/09 13:54:58 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/11/10 12:26:08 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,18 +24,18 @@ void	ft_ctrlc(int sig)
 	g_signal_exit = 130;
 }
 
-void	ft_heredoc_ctrlc(int sig, t_shell *shell)
+void	ft_heredoc_ctrlc(int sig, t_heredoc *shell)
 {
-	static t_shell	*tmp;
+	static t_heredoc	*tmp;
 
-	tmp = shell;
-	if (sig == SIGINT)
+	if (sig == -1)
+		tmp = shell;
+	else if (sig == SIGINT)
 	{
 		ft_putstr_fd("\n", 2);
-		rl_on_new_line();
-		rl_replace_line("", 0);
-		rl_redisplay();
-		ft_free_heredoc(tmp);
+		g_signal_exit = 130;
+		ft_free_heredoc(tmp->shell);
+		free(tmp->name);
 		close_fd();
 		exit(g_signal_exit);
 	}
