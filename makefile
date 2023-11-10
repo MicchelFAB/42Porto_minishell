@@ -77,7 +77,7 @@ $(NAME): $(OBJS)
 	@make -C $(SRC_LIB)
 	@cp $(SRC_LIB)/libft.a $(LIBFT)
 	@printf "\e[2K\r$(GREEN)Generated $(NAME)$(END)\n"
-	@$(CC) $(CFLAGS) $(CPPFLAGS) $(RDLINE) $(OBJS) $(LIBFT) -o $(NAME)
+	@$(CC) $(CFLAGS) $(CPPFLAGS) $(OBJS) $(LIBFT) $(RDLINE) -o  $(NAME)
 
 # ------- OBJECTS ------- #
 $(BUILD_DIR)/obj/%.o: $(SRC_DIR)/%.c | $(BUILD_DIR)
@@ -122,7 +122,7 @@ re:
 
 # ------- TEST LEAKS ------- #
 leak: all
-	@valgrind --leak-check=full --show-leak-kinds=all \
+	@valgrind -q --leak-check=full --show-leak-kinds=all \
 		--suppressions=readline_supression --track-fds=yes ./$(NAME)
 
 # ------- RECORD LOG ------- #

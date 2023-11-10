@@ -6,7 +6,7 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 17:02:28 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/11/06 15:42:20 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/11/10 12:21:52 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,48 +27,40 @@ static int	ft_heredoc_loop2(char *s1)
 	return (0);
 }
 
-static int	ft_heredoc_loop(char *name)
+static int	ft_heredoc_loop(t_heredoc *name)
 {
-	char	*prompt;
-	char	str[1000000];
 	int		i;
 
 	i = 0;
-	ft_memset(str, 0, 1000000);
-	ft_memcpy(str, name, strlen(name));
-	free(name);
+	if (name->shell->line)
+		free(name->shell->line);
 	while (1)
 	{
-		signal(SIGINT, ft_heredoc_ctrlc);
-		prompt = readline("> ");
-		if (!prompt)
+		name->shell->line = readline("> ");
+		if (!name->shell->line)
 			print_error("here-document delimited by end-of-file", 0, "warning");
-		else if (ft_strcmp(prompt, str))
+		else if (ft_strcmp(name->shell->line, name->name))
 		{
-			i = ft_heredoc_loop2(prompt);
+			name->shell->line = ft_expand_env(name->shell);
+			i = ft_heredoc_loop2(name->shell->line);
 			continue ;
 		}
-		if (prompt)
-			free(prompt);
+		if (name->shell->line)
+			free(name->shell->line);
 		break ;
 	}
 	return (i);
 }
 
-int	ft_heredoc_child(char *name, t_shell *shell)
+int	ft_heredoc_child(t_heredoc *tmp)
 {
 	int					i;
 
 	i = 0;
-	ft_free_heredoc(shell);
-	if (ft_strlen(name) > 9999)
-	{
-		print_error("EOF too long", 1, "error");
-		free(name);
-		return (1);
-	}
 	signal(SIGQUIT, SIG_IGN);
-	i = ft_heredoc_loop(name);
+	i = ft_heredoc_loop(tmp);
+	free(tmp->name);
+	ft_free_heredoc(tmp->shell);
 	close_fd();
 	return (i);
 }
@@ -86,17 +78,23 @@ int	ft_heredoc_read(char *name)
 	return (0);
 }
 
-void	ft_start_heredoc(t_shell *shell, char *tmp)
+// void	ft_copy_shell(t_shell *shell, t_heredoc *tmp)
+// {
+// 	tmp->shell = &*shell;
+// }
+
+void	ft_start_heredoc(t_heredoc *tmp)
 {
 	int		pid;
 	int		status;
 	int		fd;
 
-	(void)shell;
 	pid = fork();
 	fd = 0;
 	if (pid == 0)
-		exit(ft_heredoc_child(tmp, shell));
+	{
+		exit(ft_heredoc_child(tmp));
+	}
 	else
 	{
 		update_signal(pid, &status);
