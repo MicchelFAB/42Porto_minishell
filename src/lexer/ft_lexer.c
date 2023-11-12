@@ -26,7 +26,6 @@ char	*rm_whitespace(char *s)
 		else if (s[i] == '\\' && s[i + 1])
 		{
 			s = ft_rmvchar(s, i);
-			i += 2;
 		}
 		else if (ft_isspace(s[i]))
 			s[i] = -1;

@@ -62,7 +62,6 @@ int	cmd_path(char **cmd, int *fd, t_shell *shell)
 	char	*cmd_abs;
 	char	*path;
 
-	(void)fd;
 	if (cmd[0] && (cmd[0][0] == '.' || cmd[0][0] == '/'))
 		return (1);
 	if (!cmd[0] || !ft_check_path(&path, shell))

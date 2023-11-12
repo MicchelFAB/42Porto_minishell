@@ -217,7 +217,6 @@ char			*catch_name(t_tree *tree);
 void			ft_ctrlc(int sig);
 void			ft_heredoc_ctrlc(int sig, t_heredoc *shell);
 void			ctrl_d(t_shell *shell);
-void			ft_comand_signal(void);
 void			update_signal(int pid, int *status);
 void			ft_start_heredoc(t_heredoc *tmp);
 int				ft_heredoc_child(t_heredoc *tmp);
