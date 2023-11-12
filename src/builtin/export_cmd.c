@@ -25,7 +25,9 @@ int	valid_key(char *key, char *cmd, char *type)
 	i = 0;
 	if (!(ft_isalpha(cmd[i]) || cmd[i] == '_'))
 	{
-		printf("minishell: %s: %s: not a valid identifier\n", type, cmd);
+		printf("minishell: %s: %s:", type, cmd);
+		ft_putstr_fd(" not a valid identifier\n", 2);
+		g_signal_exit = 1;
 		return (0);
 	}
 	i++;
@@ -33,11 +35,14 @@ int	valid_key(char *key, char *cmd, char *type)
 	{
 		if (!(ft_isalnum(key[i]) || key[i] == '_'))
 		{
-			printf("minishell: %s: %s: not a valid identifier\n", type, key);
+			printf("minishell: %s: %s:", type, key);
+			ft_putstr_fd(" not a valid identifier\n", 2);
+			g_signal_exit = 1;
 			return (0);
 		}
 		i++;
 	}
+	g_signal_exit = 0;
 	return (1);
 }
 
@@ -80,5 +85,4 @@ void	export_cmd(char **cmd, t_shell *shell)
 	{
 		make_export(cmd[i], shell);
 	}
-	g_signal_exit = 0;
 }

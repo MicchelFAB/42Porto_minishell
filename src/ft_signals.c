@@ -55,7 +55,7 @@ void	ft_comand_signal(void)
 void	ctrl_d(t_shell *shell)
 {
 	g_signal_exit = 0;
-	ft_printf("exit\n");
+	ft_putstr_fd("exit\n", 1);
 	ft_freeshell(shell);
 	close_fd();
 	exit(g_signal_exit);

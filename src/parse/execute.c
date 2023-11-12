@@ -73,7 +73,7 @@ int	cmd_path(char **cmd, int *fd, t_shell *shell)
 		if (!cmd_abs)
 		{
 			restore_fd(fd);
-			print_error("command not found", 127, cmd[0]);
+			print_error(" command not found", 127, cmd[0]);
 			return (0);
 		}
 		free(cmd[0]);

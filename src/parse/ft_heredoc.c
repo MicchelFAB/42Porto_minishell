@@ -38,7 +38,7 @@ static int	ft_heredoc_loop(t_heredoc *name)
 	{
 		name->shell->line = readline("> ");
 		if (!name->shell->line)
-			print_error("here-document delimited by end-of-file", 0, "warning");
+			print_error(" here-document delimited by end-of-file", 0, "warning");
 		else if (ft_strcmp(name->shell->line, name->name))
 		{
 			name->shell->line = ft_expand_env(name->shell);

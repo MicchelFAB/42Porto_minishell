@@ -34,7 +34,7 @@ void	ft_exit_two_args(char **cmd, int *fd, t_shell *shell)
 	}
 	else
 	{
-		print_error("numeric argument required", 2, "minishell: exit");
+		print_error(" numeric argument required", 2, "minishell: exit");
 		g_signal_exit = 2;
 		clean_all(shell);
 		close_fd_exit(fd);
