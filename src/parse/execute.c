@@ -101,6 +101,7 @@ void	exec_cmd(char **cmd, int *fd, int *std_in, t_shell *shell)
 	{
 		close(fd[IN]);
 		close(fd[OUT]);
+		close(STDERR_FILENO);
 		if (*std_in != 0)
 			close (*std_in);
 		envp = cmd_array(shell);
