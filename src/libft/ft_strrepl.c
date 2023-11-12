@@ -27,12 +27,10 @@ char	*ft_str_join(char *str, char *old, char *new, int i)
 	return (end);
 }
 
-char	*ft_str_replace(char *str, char *old, char *new)
+char	*ft_str_replace(char *str, char *old, char *new, int i)
 {
-	int	i;
 	int	j;
 
-	i = 0;
 	while (str[i])
 	{
 		j = 0;

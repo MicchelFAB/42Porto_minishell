@@ -65,6 +65,19 @@ int	ft_output_append(char *file)
 	return (0);
 }
 
+int	ft_heredoc_read(char *name)
+{
+	int		tmp;
+
+	tmp = open(name, O_RDONLY);
+	if (tmp < 0)
+		return (1);
+	unlink(name);
+	dup2(tmp, STDIN_FILENO);
+	close(tmp);
+	return (0);
+}
+
 int	ft_redir_type(char *name, char *str)
 {
 	if (ft_strcmp("<", str) == 0)

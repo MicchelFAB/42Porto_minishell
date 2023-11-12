@@ -40,13 +40,6 @@ void	ft_heredoc_ctrlc(int sig, t_heredoc *shell)
 		exit(g_signal_exit);
 	}
 }
-// {
-// 	(void)sig;
-// 	g_signal_exit = 130;
-// 	ft_putstr_fd("\n", 2);
-// 	close_fd();
-// 	exit(g_signal_exit);
-// }
 
 /**
  * @brief This function is used to ignore the signal SIGQUIT and to handle the

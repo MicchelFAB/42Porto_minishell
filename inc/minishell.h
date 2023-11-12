@@ -224,5 +224,6 @@ int				ft_heredoc_child(t_heredoc *tmp);
 void			ft_free_heredoc(t_shell *shell);
 void			ft_heredoc_open(t_shell *shell, t_tree *tmp);
 int				ft_heredoc_read(char *name);
+void			ft_signals_heredoc(t_heredoc *ptr);
 
 #endif

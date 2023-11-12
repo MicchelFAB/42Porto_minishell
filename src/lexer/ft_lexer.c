@@ -63,13 +63,16 @@ t_tree	*ft_create_tree(int type, char *str)
 int	ft_lexer(t_shell *line)
 {
 	t_tree	*list;
+	int		i;
 
+	i = -1;
 	if (line->line == NULL)
 		line->tree = NULL;
 	if (ft_strchr(line->line, '~') && !ft_chk_char(line->line))
 	{
-		if (ft_check_tilde(line->line))
-			line->line = ft_str_replace(line->line, "~", "$HOME");
+		while (line->line[++i])
+			if (ft_check_tilde(&line->line[i]))
+				line->line = ft_str_replace(line->line, "~", "$HOME", i);
 	}
 	line->line = ft_put_redir(line);
 	line->line = ft_expand_env(line);

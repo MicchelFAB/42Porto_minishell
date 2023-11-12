@@ -65,23 +65,21 @@ int	ft_heredoc_child(t_heredoc *tmp)
 	return (i);
 }
 
-int	ft_heredoc_read(char *name)
+void	ft_heredoc_open(t_shell *shell, t_tree *tmp)
 {
-	int		tmp;
+	t_heredoc	heredoc;
 
-	tmp = open(name, O_RDONLY);
-	if (tmp < 0)
-		return (1);
-	unlink(name);
-	dup2(tmp, STDIN_FILENO);
-	close(tmp);
-	return (0);
+	if (!tmp->next)
+		return ;
+	heredoc.name = ft_strdup(tmp->next->str1);
+	heredoc.shell = shell;
+	ft_signals_heredoc(&heredoc);
+	ft_start_heredoc(&heredoc);
+	free(tmp->next->str1);
+	free(heredoc.name);
+	tmp->next->str1 = ft_strdup(".heredoc");
+	tmp->next->type = FILE;
 }
-
-// void	ft_copy_shell(t_shell *shell, t_heredoc *tmp)
-// {
-// 	tmp->shell = &*shell;
-// }
 
 void	ft_start_heredoc(t_heredoc *tmp)
 {

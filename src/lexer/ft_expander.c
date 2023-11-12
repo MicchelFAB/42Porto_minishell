@@ -58,8 +58,8 @@ void	*get_merged_str(t_shell *line, int *i)
 	free(str);
 	str = ft_strjoin("$", key);
 	value = get_env_to_str(key, line->env);
+	result = ft_str_replace(line->line, str, value, *i);
 	*i += ft_strlen(value);
-	result = ft_str_replace(line->line, str, value);
 	if (*value)
 		free(value);
 	free(str);
