@@ -6,7 +6,7 @@
 /*   By: bmonteir <bmonteir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 16:01:14 by bmonteir          #+#    #+#             */
-/*   Updated: 2023/11/13 15:17:53 by bmonteir         ###   ########.fr       */
+/*   Updated: 2023/11/13 15:29:39 by bmonteir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,10 @@ int	ft_redir(t_tree *tree)
 			if (!str)
 				return (1);
 			i = ft_redir_type(str, tmp->str1);
-			if (i == 1)
-				return (i);
 			if (str)
 				free(str);
+			if (i == 1)
+				return (i);
 		}
 		tmp = tmp->next;
 	}
