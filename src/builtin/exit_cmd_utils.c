@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit_cmd_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmonteir <bmonteir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 15:51:33 by bmonteir          #+#    #+#             */
-/*   Updated: 2023/11/06 15:51:34 by bmonteir         ###   ########.fr       */
+/*   Updated: 2023/11/13 13:39:08 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int	ft_is_number(char *num)
 		if(*num == '-')
 			sign = 1;
 		num++;
+		size--;
 	}
 	if (!*num || !ft_is_all_digit(num))
 		return (0);
