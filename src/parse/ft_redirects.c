@@ -24,6 +24,7 @@ int	ft_input_redirect(char *file)
 		ft_putstr_fd("minishell: ", STDERR_FILENO);
 		ft_putstr_fd(file, STDERR_FILENO);
 		ft_putstr_fd(": No such file or directory\n", STDERR_FILENO);
+		g_signal_exit = 1;
 		return (1);
 	}
 	dup2(fd, IN);
@@ -41,6 +42,7 @@ int	ft_output_redirect(char *file)
 		ft_putstr_fd("minishell: ", STDERR_FILENO);
 		ft_putstr_fd(file, STDERR_FILENO);
 		ft_putstr_fd(": No such file or directory\n", STDERR_FILENO);
+		g_signal_exit = 1;
 		return (1);
 	}
 	dup2(fd, OUT);
@@ -58,10 +60,24 @@ int	ft_output_append(char *file)
 		ft_putstr_fd("minishell: ", STDERR_FILENO);
 		ft_putstr_fd(file, STDERR_FILENO);
 		ft_putstr_fd(": No such file or directory\n", STDERR_FILENO);
+		g_signal_exit = 1;
 		return (1);
 	}
 	dup2(fd, OUT);
 	close(fd);
+	return (0);
+}
+
+int	ft_heredoc_read(char *name)
+{
+	int		tmp;
+
+	tmp = open(name, O_RDONLY);
+	if (tmp < 0)
+		return (1);
+	unlink(name);
+	dup2(tmp, STDIN_FILENO);
+	close(tmp);
 	return (0);
 }
 

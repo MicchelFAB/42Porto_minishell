@@ -6,7 +6,7 @@
 /*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 18:28:36 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/10/30 12:03:22 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/11/10 11:47:57 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,19 @@ void	*get_merged_str(t_shell *line, int *i)
 	char	*str;
 	char	*result;
 
+	if (line->line[*i] == '$' && ((line->line[*i + 1] == ' ') \
+		|| line->line[*i + 1] == '\"' || line->line[*i + 1] == '\''))
+	{
+		(*i)++;
+		return (line->line);
+	}
 	str = ft_strdup(&line->line[*i]);
 	key = get_env_name(str + 1);
 	free(str);
 	str = ft_strjoin("$", key);
 	value = get_env_to_str(key, line->env);
+	result = ft_str_replace(line->line, str, value, *i);
 	*i += ft_strlen(value);
-	result = ft_str_replace(line->line, str, value);
 	if (*value)
 		free(value);
 	free(str);

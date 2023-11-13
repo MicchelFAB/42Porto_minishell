@@ -17,7 +17,7 @@ extern int	g_signal_exit;
 void	ft_ctrlc_exec(int sig)
 {
 	(void)sig;
-	printf("\n");
+	ft_putstr_fd("\n", 2);
 	g_signal_exit = 130;
 }
 

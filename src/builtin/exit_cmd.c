@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit_cmd.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmonteir <bmonteir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 15:51:37 by bmonteir          #+#    #+#             */
-/*   Updated: 2023/11/08 12:08:50 by bmonteir         ###   ########.fr       */
+/*   Updated: 2023/11/13 12:14:24 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	ft_exit_two_args(char **cmd, int *fd, t_shell *shell)
 	}
 	else
 	{
-		print_error("numeric argument required", 2, "minishell: exit");
+		print_error(" numeric argument required", 2, "minishell: exit");
 		g_signal_exit = 2;
 		clean_all(shell);
 		close_fd_exit(fd);
@@ -52,7 +52,7 @@ void	exit_cmd(char **cmd, int *fd, t_shell *shell)
 		len++;
 	if (len > 2)
 	{
-		print_error("too many arguments", 1, "minishell: exit");
+		print_error(" too many arguments", 1, "minishell: exit");
 		return ;
 	}
 	if (len == 1)

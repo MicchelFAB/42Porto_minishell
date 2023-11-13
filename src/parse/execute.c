@@ -62,7 +62,6 @@ int	cmd_path(char **cmd, int *fd, t_shell *shell)
 	char	*cmd_abs;
 	char	*path;
 
-	(void)fd;
 	if (cmd[0] && (cmd[0][0] == '.' || cmd[0][0] == '/'))
 		return (1);
 	if (!cmd[0] || !ft_check_path(&path, shell))
@@ -73,7 +72,7 @@ int	cmd_path(char **cmd, int *fd, t_shell *shell)
 		if (!cmd_abs)
 		{
 			restore_fd(fd);
-			print_error("command not found", 127, cmd[0]);
+			print_error(" command not found", 127, cmd[0]);
 			return (0);
 		}
 		free(cmd[0]);

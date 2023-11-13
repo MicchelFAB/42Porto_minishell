@@ -32,7 +32,7 @@ int	ft_chk_line(char *line)
 		return (1);
 	if (check_quote_pair(line, size))
 	{
-		print_error("syntax error, all quotes need to be closed!", 2,
+		print_error(" syntax error, all quotes need to be closed!", 2,
 			"minishell");
 		return (1);
 	}

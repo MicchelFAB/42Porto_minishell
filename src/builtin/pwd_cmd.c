@@ -21,7 +21,7 @@ void	pwd_cmd(char **cmd)
 	char	pwd[256];
 
 	if (cmd[1])
-		print_error("pwd: options aren't supported", 1, "minishell");
+		print_error(" pwd: options aren't supported", 1, "minishell");
 	else if (getcwd(pwd, sizeof(pwd)))
 		printf("%s\n", pwd);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmonteir <bmonteir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 16:08:31 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/11/08 13:07:35 by bmonteir         ###   ########.fr       */
+/*   Updated: 2023/11/10 10:56:52 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,12 @@ typedef struct s_shell
 	int		pid;
 	int		child_proc;
 }			t_shell;
+
+typedef struct s_heredoc
+{
+	t_shell			*shell;
+	char			*name;
+}			t_heredoc;
 
 /*------------main------------*/
 int				main(int ac, char **av, char **env);
@@ -209,14 +215,14 @@ int				ft_redir_type(char *name, char *str);
 char			*catch_name(t_tree *tree);
 
 void			ft_ctrlc(int sig);
-void			ft_heredoc_ctrlc(int sig);
+void			ft_heredoc_ctrlc(int sig, t_heredoc *shell);
 void			ctrl_d(t_shell *shell);
-void			ft_comand_signal(void);
 void			update_signal(int pid, int *status);
-void			ft_start_heredoc(t_shell *shell, char *tmp);
-int				ft_heredoc_child(char *name, t_shell *shell);
+void			ft_start_heredoc(t_heredoc *tmp);
+int				ft_heredoc_child(t_heredoc *tmp);
 void			ft_free_heredoc(t_shell *shell);
 void			ft_heredoc_open(t_shell *shell, t_tree *tmp);
 int				ft_heredoc_read(char *name);
+void			ft_signals_heredoc(t_heredoc *ptr);
 
 #endif

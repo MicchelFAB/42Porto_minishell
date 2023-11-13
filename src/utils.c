@@ -17,7 +17,8 @@ extern int		g_signal_exit;
 void	print_error(char *msg, int error, char *line)
 {
 	g_signal_exit = error;
-	printf("%s: %s\n", line, msg);
+	printf("%s: ", line);
+	ft_putendl_fd(msg, 2);
 }
 
 void	print_start_minishell(void)

@@ -55,7 +55,7 @@ int	go_old_path(char **path, t_shell *shell)
 	*path = ft_get_path("OLDPWD", shell);
 	if (!*path)
 	{
-		printf("OLDPWD error\n");
+		ft_putstr_fd("OLDPWD error\n", 2);
 		g_signal_exit = 1;
 		return (1);
 	}
@@ -70,7 +70,8 @@ void	cd_cmd(char **cmd, t_shell *shell)
 	path = cmd[0];
 	if (cmd[0] && cmd[1])
 	{
-		printf("Too many arguments!\n");
+		ft_putstr_fd(" too many arguments\n", 2);
+		g_signal_exit = 1;
 		return ;
 	}
 	if ((path == NULL || *path == '\0') || (*path == '-' && *(path + 1) == '-'

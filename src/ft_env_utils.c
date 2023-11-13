@@ -65,7 +65,7 @@ void	print_cmdenv(t_shell *shell)
 	free(tmp);
 	if (flag == false)
 	{
-		print_error("env: PATH not set", 1, "minishell");
+		print_error(" PATH not set", 1, "minishell: env");
 		return ;
 	}
 	tmp = shell->env;
