@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
+/*   By: bmonteir <bmonteir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 16:08:31 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/11/10 10:56:52 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/11/13 18:18:20 by bmonteir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -177,6 +177,7 @@ void			unset_exp(char *key, t_shell *shell);
 void			ft_exp_del(t_exp *exp);
 void			unset_env(char *key, t_shell *shell);
 void			ft_env_del(t_env *env);
+int				check_unset(char **cmd);
 
 /*-----------builtin_utils-----*/
 char			*ft_get_path(char *key, t_shell *shell);

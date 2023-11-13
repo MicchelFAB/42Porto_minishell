@@ -6,7 +6,7 @@
 /*   By: bmonteir <bmonteir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/18 10:48:20 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/11/08 10:41:48 by bmonteir         ###   ########.fr       */
+/*   Updated: 2023/11/13 18:10:48 by bmonteir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ extern int		g_signal_exit;
 void	print_error(char *msg, int error, char *line)
 {
 	g_signal_exit = error;
-	printf("%s: ", line);
+	ft_putstr_fd(line, 2);
+	ft_putstr_fd(": ", 2);
 	ft_putendl_fd(msg, 2);
 }
 

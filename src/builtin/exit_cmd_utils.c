@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit_cmd_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
+/*   By: bmonteir <bmonteir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 15:51:33 by bmonteir          #+#    #+#             */
-/*   Updated: 2023/11/13 13:39:08 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/11/13 18:21:46 by bmonteir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	ft_is_all_digit(char *num)
 int	ft_is_number(char *num)
 {
 	int		sign;
-	int 	size;
+	int		size;
 
 	size = ft_strlen(num);
 	sign = 0;
@@ -37,7 +37,7 @@ int	ft_is_number(char *num)
 		return (0);
 	if (*num == '+' || *num == '-')
 	{
-		if(*num == '-')
+		if (*num == '-')
 			sign = 1;
 		num++;
 		size--;
@@ -50,7 +50,7 @@ int	ft_is_number(char *num)
 		return (1);
 	if (size > 19 || (!sign && ft_strcmp("9223372036854775807", num) < 0))
 		return (0);
-	if (size > 19 || (sign && ft_strcmp("9223372036854775808", num)	< 0))
+	if (size > 19 || (sign && ft_strcmp("9223372036854775808", num) < 0))
 		return (0);
 	return (1);
 }

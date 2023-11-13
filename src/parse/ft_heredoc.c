@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_heredoc.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
+/*   By: bmonteir <bmonteir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 17:02:28 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/11/10 12:21:52 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/11/13 18:22:28 by bmonteir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static int	ft_heredoc_loop(t_heredoc *name)
 	{
 		name->shell->line = readline("> ");
 		if (!name->shell->line)
-			print_error(" here-document delimited by end-of-file", 0, "warning");
+			print_error("here-document delimited by end-of-file", 0, "warning");
 		else if (ft_strcmp(name->shell->line, name->name))
 		{
 			name->shell->line = ft_expand_env(name->shell);
