@@ -6,7 +6,7 @@
 /*   By: bmonteir <bmonteir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 15:51:03 by bmonteir          #+#    #+#             */
-/*   Updated: 2023/11/06 15:51:06 by bmonteir         ###   ########.fr       */
+/*   Updated: 2023/11/13 18:20:16 by bmonteir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,4 +73,32 @@ int	contains_pipe(t_shell *shell)
 		tmp = tmp->next;
 	}
 	return (0);
+}
+
+int	check_unset(char **cmd)
+{
+	int		i;
+	int		j;
+	int		k;
+
+	i = 0;
+	k = 0;
+	while (cmd[i])
+	{
+		j = 0;
+		while (cmd[i][j])
+		{
+			if (ft_isalnum(cmd[i][j]) || cmd[i][j] == '_')
+				j++;
+			else
+			{
+				ft_putstr_fd("minishell: unset: ", 2);
+				print_error("not a valid identifier", 1, cmd[i]);
+				k = 1;
+				j++;
+			}
+		}
+		i++;
+	}
+	return (k);
 }

@@ -6,7 +6,7 @@
 /*   By: bmonteir <bmonteir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 15:55:28 by bmonteir          #+#    #+#             */
-/*   Updated: 2023/11/06 15:58:27 by bmonteir         ###   ########.fr       */
+/*   Updated: 2023/11/13 18:17:51 by bmonteir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,10 +85,13 @@ void	unset_cmd(char **cmd, t_shell *shell)
 	char	*key;
 	int		i;
 	int		j;
+	int		k;
 
 	if (contains_pipe(shell))
 		return ;
 	i = 0;
+	k = 0;
+	k = check_unset(cmd);
 	while (cmd[i])
 	{
 		j = 0;
@@ -100,5 +103,5 @@ void	unset_cmd(char **cmd, t_shell *shell)
 		free(key);
 		i++;
 	}
-	g_signal_exit = 0;
+	g_signal_exit = k;
 }
