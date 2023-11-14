@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmonteir <bmonteir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 16:08:31 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/11/13 18:18:20 by bmonteir         ###   ########.fr       */
+/*   Updated: 2023/11/14 18:46:16 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,6 @@
 # define REDIR		2
 # define PIPE		3
 # define FILE		4
-/* # define SIMP_CMD	5
-# define AND		6
-# define OR			7 */
 
 # define IN		0
 # define OUT	1
@@ -81,6 +78,7 @@ typedef struct s_heredoc
 {
 	t_shell			*shell;
 	char			*name;
+	char			*file;
 }			t_heredoc;
 
 /*------------main------------*/

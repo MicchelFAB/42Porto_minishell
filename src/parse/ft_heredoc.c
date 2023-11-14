@@ -6,7 +6,7 @@
 /*   By: bmonteir <bmonteir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 17:02:28 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/11/13 18:22:28 by bmonteir         ###   ########.fr       */
+/*   Updated: 2023/11/14 11:09:54 by bmonteir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,15 @@
 
 extern int	g_signal_exit;
 
-static int	ft_heredoc_loop2(char *s1)
+static int	ft_heredoc_loop2(char *s1, char *s2)
 {
 	int		tmp;
 
-	tmp = open(".heredoc", O_WRONLY | O_CREAT | O_APPEND, 0644);
+	tmp = open(s2, O_WRONLY | O_CREAT | O_APPEND, 0644);
 	if (tmp < 0)
 		return (1);
 	ft_putendl_fd(s1, tmp);
 	close(tmp);
-	free(s1);
 	return (0);
 }
 
@@ -42,7 +41,7 @@ static int	ft_heredoc_loop(t_heredoc *name)
 		else if (ft_strcmp(name->shell->line, name->name))
 		{
 			name->shell->line = ft_expand_env(name->shell);
-			i = ft_heredoc_loop2(name->shell->line);
+			i = ft_heredoc_loop2(name->shell->line, name->file);
 			continue ;
 		}
 		if (name->shell->line)
@@ -60,6 +59,7 @@ int	ft_heredoc_child(t_heredoc *tmp)
 	signal(SIGQUIT, SIG_IGN);
 	i = ft_heredoc_loop(tmp);
 	free(tmp->name);
+	free(tmp->file);
 	ft_free_heredoc(tmp->shell);
 	close_fd();
 	return (i);
@@ -68,16 +68,20 @@ int	ft_heredoc_child(t_heredoc *tmp)
 void	ft_heredoc_open(t_shell *shell, t_tree *tmp)
 {
 	t_heredoc	heredoc;
+	char		*str;
 
 	if (!tmp->next)
 		return ;
 	heredoc.name = ft_strdup(tmp->next->str1);
+	str = ft_strdup(tmp->next->str1);
+	heredoc.file = ft_joinstr(str, ".tmp");
 	heredoc.shell = shell;
 	ft_signals_heredoc(&heredoc);
 	ft_start_heredoc(&heredoc);
-	free(tmp->next->str1);
 	free(heredoc.name);
-	tmp->next->str1 = ft_strdup(".heredoc");
+	free(tmp->next->str1);
+	tmp->next->str1 = ft_strdup(heredoc.file);
+	free(heredoc.file);
 	tmp->next->type = FILE;
 }
 

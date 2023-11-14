@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_signals.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
+/*   By: bmonteir <bmonteir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 12:50:33 by mamaral-          #+#    #+#             */
-/*   Updated: 2023/11/10 12:26:08 by mamaral-         ###   ########.fr       */
+/*   Updated: 2023/11/14 10:53:42 by bmonteir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	ft_heredoc_ctrlc(int sig, t_heredoc *shell)
 		g_signal_exit = 130;
 		ft_free_heredoc(tmp->shell);
 		free(tmp->name);
+		free(tmp->file);
 		close_fd();
 		exit(g_signal_exit);
 	}

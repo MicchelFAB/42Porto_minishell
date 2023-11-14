@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtin_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmonteir <bmonteir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mamaral- <mamaral-@student.42porto.com     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 15:51:03 by bmonteir          #+#    #+#             */
-/*   Updated: 2023/11/13 18:20:16 by bmonteir         ###   ########.fr       */
+/*   Updated: 2023/11/14 18:23:05 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ int	check_unset(char **cmd)
 				ft_putstr_fd("minishell: unset: ", 2);
 				print_error("not a valid identifier", 1, cmd[i]);
 				k = 1;
-				j++;
+				break;
 			}
 		}
 		i++;
