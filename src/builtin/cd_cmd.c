@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd_cmd.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmonteir <bmonteir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mamaral- <mamaral-@student.42porto.com >   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 15:51:20 by bmonteir          #+#    #+#             */
-/*   Updated: 2023/11/06 15:51:21 by bmonteir         ###   ########.fr       */
+/*   Updated: 2023/11/16 13:37:04 by mamaral-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,8 @@ void	cd_cmd(char **cmd, t_shell *shell)
 		g_signal_exit = 1;
 		return ;
 	}
+	if (path && *path == '\0')
+		return ;
 	if ((path == NULL || *path == '\0') || (*path == '-' && *(path + 1) == '-'
 			&& *(path + 2) == '\0'))
 		path = ft_get_path("HOME", shell);
